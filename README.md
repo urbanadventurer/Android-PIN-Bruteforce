@@ -85,11 +85,10 @@ These methods can be expensive and are usually only used by specialised phone fo
 
 ### 🕵 USB HID Keyboard Bruteforce
 
-Finally you can use the USB HID keyboard brute-force.
-
-- Darren Kitchen demonstrated this using 
-- RubberDucky and Darren Kitchen's hak5 script (great)
-- Duck Hunter HID attacks in NetHunter (this is great but it didn't work with a very long script to try 10,0000 PINs)
+- A RubberDucky and Darren Kitchen's Hak5 brute-force script
+- A Teensy device and base it on @orvtech's code
+- Duck Hunter HID attacks in NetHunter (this is cool but it didn't work with a brute-force PIN list)
+- Or you can use this and you can use your NetHunter phone!
 
 
 ## 🎳 PIN Lists
