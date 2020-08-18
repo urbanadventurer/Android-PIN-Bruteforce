@@ -7,6 +7,8 @@ LIGHT_RED="\e[91m"
 LIGHT_GREEN="\e[92m"
 LIGHT_YELLOW="\e[93m"
 DEFAULT="\e[39m"
+CLEAR_LINE="\033[1K"
+MOVE_CURSOR_LEFT="\033[80D"
 
 function send_enter() {
   echo enter | $HID_KEYBOARD $KEYBOARD_DEVICE keyboard 2>/dev/null
@@ -94,25 +96,25 @@ do
 
   # COOLDOWN_TIME is optional
   if [[ $COOLDOWN_TIME > 0 && $COOLDOWN_AFTER_N_ATTEMPTS > 0 ]]; then
+   
     # if we are after N attempts
     if [ $((count % $COOLDOWN_AFTER_N_ATTEMPTS)) = 0 ]; then
-      echo -ne "[${LIGHT_GREEN}WAIT${DEFAULT}] "
       # countdown COOLDOWN_TIME seconds
       for (( countdown=$COOLDOWN_TIME; countdown > 0; countdown-- ))
       do
+        echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" # clear line and move cursor left
+        echo -ne "[${LIGHT_GREEN}WAIT${DEFAULT}] "
+        echo -ne "$countdown"
         if [ $(($countdown%5)) = 0 ]; then
-          echo -n "."
           send_enter
         fi
         sleep 1
       done
-
-      echo
+      echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" 
     fi
   fi
 
 done
-
 
 #  pin=$(printf "%04s" $pin)
 
