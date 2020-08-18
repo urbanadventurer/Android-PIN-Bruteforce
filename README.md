@@ -34,7 +34,14 @@ Tested with :
 
 ## Roadmap
 
+- progress bar
+- colour
+- brute n digit PINs
 
+## Known Issues
+
+- battery is low, on screen popup. does not receive enter/keys. 
+- can't detect when it unlocks
 
 
 ## Comparioson of methods to unlock a locked Android phone
