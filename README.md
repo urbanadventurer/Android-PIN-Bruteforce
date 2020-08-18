@@ -47,44 +47,10 @@ TBC
 TBC
 
 
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## Frequently Asked Questions
-
-- How long does it take? 16.6 hours for all 4 digit PINs.
-- Why not use the Hak5 USB Rubber Ducky script with Duck Hunter in NetHunter? I tried this first and it didn't work (as of August, 2020).
-
-
 ## Supported Android Phones/Devices
 
 It has been tested with these devices:
 - Samsung S5 with Android 6.0.1
-
-
-## Known Issues
-
-- The locked phone will miss keyboard input (PIN attempts) when the battery is low, and an on-screen popup appears.
-- This cannot detect when it unlocks
-
-
-## Roadmap
-
-- [DONE] works
-- [DONE] detects USB HID failures
-- Improve Usage and commandline options/config files
-- Add progress bar
-- Add bruteforce for n digit PINs
-- ASCII art
-- Nicer GUI for NetHunter
-- Find/test more devices to bruteforce
-- Try to detect when phone is unlocked
-- Crack PIN list in reverse (to find which recent PIN unlocked the device)
-
-
 
 ## Comparison of methods to unlock a locked Android phone
 
