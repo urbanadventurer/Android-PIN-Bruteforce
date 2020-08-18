@@ -67,7 +67,7 @@ It has been tested with these devices:
 
 ### Regular phone users
 
-- Try the top 20 PINs from the [DataGenetics PIN analysis][https://datagenetics.com/blog/september32012/index.html] that apparently unlocks 26.83% of phones.
+- Try the top 20 PINs from the [DataGenetics PIN analysis](https://datagenetics.com/blog/september32012/index.html) that apparently unlocks 26.83% of phones.
 - Use an SMS lock-screen bypass app (requires app install before phone is locked)
 - Use Samsung Find My Mobile (requires you set it up before phone is locked)
 - Crash the Lock Screen UI (Android 5.0 and 5.1)
@@ -107,7 +107,7 @@ Finally if these methods do not work for you use USB HID keyboard brute-force.
 pinlist.txt is from https://github.com/mandatoryprogrammer/droidbrute
 
 This list originally comes from Justin Engler & Paul Vines from Senior Security Engineer, iSEC Partners
-and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic Reconfigurable Button Basher (and C3BO).][https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Engler]
+and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic Reconfigurable Button Basher (and C3BO).](https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Engler)
 
 ## Generated Bruteforce
 
@@ -141,6 +141,9 @@ https://forum.xda-developers.com/showthread.php?t=2620456
 
 PATCtech Digital Forensics: Getting Past the Android Passcode
 http://patc.com/online/a/Portals/965/Android%20Passcode.pdf
+
+Electromechanical PIN Cracking with Robotic Reconfigurable Button Basher (and C3BO)
+https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Engler
 
 Human Interface Devices (HID)
 https://www.kernel.org/doc/html/latest/hid/index.html#
