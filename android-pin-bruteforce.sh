@@ -32,6 +32,8 @@ HID_KEYBOARD=/system/xbin/hid-keyboard
 COOLDOWN_TIME=30
 COOLDOWN_AFTER_N_ATTEMPTS=5
 VERSION=0.1
+
+DATE_COMMAND="date +%b%d_%r"
 #RET=0
 
 if [ -z "$1"]; then
@@ -88,7 +90,7 @@ do
     send_enter
   done
 
-  echo "[+] `date` $count: Trying $pin" | tee -a "$LOG"
+  echo "[+] $($DATE_COMMAND) $count: Trying $pin" | tee -a "$LOG"
   for i in `echo "$pin" | grep -o .`; do
     send_key $i
   done 
