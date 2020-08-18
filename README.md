@@ -47,6 +47,8 @@ The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID
 - Nicer GUI for NetHunter
 - Find/test more devices to bruteforce
 - Try to detect when phone is unlocked
+- Crack PIN list in reverse (to find which recent PIN unlocked the device)
+
 
 
 ## Supported Android Phones/Devices

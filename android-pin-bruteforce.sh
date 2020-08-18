@@ -4,6 +4,7 @@
 # 5 attempts, followed by 30 second timeout
 # 
 # test on extra popups like low battery
+# try differnt keys to gget rid of low battery popup
 
 # doesn't help
 # see if setprop sys.usb.config hid helps to bring them back, you can use setprop sys.usb.config reset to reset to boot up usb config
