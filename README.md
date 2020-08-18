@@ -46,6 +46,13 @@ The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID
 - ASCII art
 - Nicer GUI for NetHunter
 - Find/test more devices to bruteforce
+- Try to detect when phone is unlocked
+
+
+## Supported Android Phones/Devices
+
+It has been tested with these devices:
+- Samsung S5 with Android 6.0.1
 
 
 ## Known Issues
