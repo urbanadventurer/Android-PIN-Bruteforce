@@ -209,3 +209,6 @@ https://github.com/Gh005t/Android-BruteForce
 AndroidPINCrack - bruteforce the Android Passcode given the hash and salt (requires root on the phone)
 https://github.com/PentesterES/AndroidPINCrack
 
+Android Pattern Lock Cracker - bruteforce the Android Pattern given an SHA1 hash (requires root on the phone)
+https://github.com/sch3m4/androidpatternlock
+
