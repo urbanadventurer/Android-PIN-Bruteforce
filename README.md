@@ -4,6 +4,9 @@ Unlock an Android phone (or any device) by bruteforcing the lockscreen PIN.
 
 This software is for Android devices locked with a PIN. 
 
+Nethunter Android 
+
+
 ## How it works
 
 This method uses the USB HID interface to provide keyboard input to the locked phone.
@@ -60,12 +63,13 @@ This requires expensive hardware and sofware, or a dedicated forensic lab.
 - JTAG extraction
 - Chip Off
 
-## USB HID Keyboard Bruteforce
+### USB HID Keyboard Bruteforce
 
 Finally if these methods do not work for you use USB HID keyboard brute-force.
 
 - RubberDucky and Darren Kitchen's hak5 script (great)
 - NetHunter HID Attacks (didn't work with a very long script, such as 10,0000 PINs)
+- XPIN Clip
 
 
 # PIN Lists
@@ -145,4 +149,5 @@ https://www.kernel.org/doc/html/latest/hid/index.html#
 Linux USB HID gadget driver
 https://www.kernel.org/doc/html/latest/usb/gadget_hid.html
 
-
+XPIN Clip
+https://xpinclip.com/
