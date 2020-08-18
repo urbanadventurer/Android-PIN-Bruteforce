@@ -22,6 +22,10 @@ function send_key(){
   sleep $DELAY_BETWEEN_KEYS
 }
 
+function repeat(){
+  printf "%0.s$1" $(eval echo {1..$2})
+}
+
 # by default do not resume
 RESUME_FROM_PIN=
 LOG=bruter.log
