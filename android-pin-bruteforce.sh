@@ -79,29 +79,30 @@ echo "Android PIN brute-force :: version $VERSION" | tee -a $LOG
 
 # Show configuration
 
-echo -e "[${LIGHT_YELLOW}INFO${DEFAULT}] PIN list: $PIN_LIST" | tee -a $LOG
-echo -e "[${LIGHT_YELLOW}INFO${DEFAULT}] Delay between keystrokes: $DELAY_BETWEEN_KEYS" | tee -a $LOG
-echo -e "[${LIGHT_YELLOW}INFO${DEFAULT}] HID Keyboard device: $KEYBOARD_DEVICE" | tee -a $LOG
-echo -e "[${LIGHT_YELLOW}INFO${DEFAULT}] Log file: $LOG" | tee -a $LOG
+log_info "PIN list: $PIN_LIST"
+log_info "Delay between keystrokes: $DELAY_BETWEEN_KEYS"
+log_info "HID Keyboard device: $KEYBOARD_DEVICE"
+log_info "Log file: $LOG"
+
 if [ ! -z "$1" ]; then
   RESUME_FROM_PIN=$1
-  echo -e "[${LIGHT_YELLOW}INFO${DEFAULT}] Resuming from PIN $RESUME_FROM_PIN" | tee -a $LOG
+  log_info "Resuming from PIN $RESUME_FROM_PIN"
 fi
 
 # Check Environment
-echo -e "[${LIGHT_YELLOW}INFO${DEFAULT}] Checking environment" | tee -a $LOG
+log_info "Checking environment"
 
 if [ -e $KEYBOARD_DEVICE ]; then
-  echo -e "[${LIGHT_GREEN}PASS${DEFAULT}] HID device ($KEYBOARD_DEVICE) found" | tee -a $LOG
+  log_pass "HID device ($KEYBOARD_DEVICE) found"
 else
-  echo -e "[${LIGHT_RED}FAIL${DEFAULT}] HID device ($KEYBOARD_DEVICE) not found" | tee -a $LOG
+  log_fail "HID device ($KEYBOARD_DEVICE) not found"
   exit 1
 fi
 
 if [ -f $HID_KEYBOARD ]; then
-  echo -e "[${LIGHT_GREEN}PASS${DEFAULT}] hid-keyboard executable ($HID_KEYBOARD) found" | tee -a $LOG
+  log_pass "hid-keyboard executable ($HID_KEYBOARD) found" 
 else
-  echo -e "[${LIGHT_RED}FAIL${DEFAULT}] hid-keyboard executable ($HID_KEYBOARD) not found" | tee -a $LOG
+  log_fail "hid-keyboard executable ($HID_KEYBOARD) not found"
   exit 1  
 fi
 
@@ -117,13 +118,13 @@ do
   # check connection to phone
   fail_counter=0
   while [ $RET != 0 ]; do
-    echo -e "[${LIGHT_RED}FAIL${DEFAULT}] HID USB device not ready. $HID_KEYBOARD returned $RET." 
+    log_fail "HID USB device not ready. $HID_KEYBOARD returned $RET." 
     sleep 2
     send_enter
     ((fail_counter++))
 
     if [ $fail_counter -gt $EXIT_AFTER_FAIL_COUNT ]; then
-      echo -e "[${LIGHT_RED}FAIL${DEFAULT}] Exiting after $EXIT_AFTER_FAIL_COUNT successive failures."
+      log_fail "Exiting after $EXIT_AFTER_FAIL_COUNT successive failures."
       exit 1
     fi
   done
