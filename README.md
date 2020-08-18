@@ -13,17 +13,17 @@ The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID
 
 [Nethunter phone] ---[USB cable emulates keyboard]--->  [Locked Android phone]
 
-## All you need
+## What you need
 
 - Nethunter phone (or any Android with HID kernel support)
 - USB OTG (On The Go) cable/adapter. Usually a USB Male Micro-B to male USB A adapter.
 - Locked Android phone
 - That's all!
 
-### Benefits
+## Benefits
 
 - You can use a Nethunter phone
-- You don't need a USB Rubber Ducky
+- You don't need a USB Rubber Ducky or other hardware
 - You can easily modify the backoff time to crack other types of devices
 - It works!
 
@@ -68,14 +68,14 @@ This requires expensive hardware and sofware, or a dedicated forensic lab.
 - Oxygen Forensic Suite (Requires USB debugging enabled)
 - JTAG extraction
 - Chip Off
+- XPIN Clip
 
 ### USB HID Keyboard Bruteforce
 
 Finally if these methods do not work for you use USB HID keyboard brute-force.
 
 - RubberDucky and Darren Kitchen's hak5 script (great)
-- NetHunter HID Attacks (didn't work with a very long script, such as 10,0000 PINs)
-- XPIN Clip
+- Duck Hunter HID attacks in NetHunter (didn't work with a very long script, such as 10,0000 PINs)
 
 
 # PIN Lists
