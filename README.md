@@ -1,10 +1,8 @@
 # Android-HID-Bruteforce
 
-Unlock an Android phone (or any device) by bruteforcing the lockscreen PIN.
+Unlock an Android phone (or device) by bruteforcing the lockscreen PIN.
 
-
-This tool turns your Nethunter phone into a bruteforce PIN cracker! 
-
+Turn your Kali Nethunter phone into a bruteforce PIN cracker for Android devices! This uses the USB OTG cable to emulate a keyboard, automatically try PINs, and wait after trying too many wrong guesses.
 
 ## How it works
 
@@ -13,27 +11,59 @@ The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID
 
 [Nethunter phone] ---[USB cable emulates keyboard]--->  [Locked Android phone]
 
-## What you need
+### You will need
 
-- Nethunter phone (or any Android with HID kernel support)
-- USB OTG (On The Go) cable/adapter. Usually a USB Male Micro-B to male USB A adapter.
-- Locked Android phone
+- A locked Android phone
+- A Nethunter phone (or any rooted Android with HID kernel support)
+- USB OTG (On The Go) cable/adapter (USB male Micro-B to female USB A), and a standard charging cable (USB male Micro-B to male A).
 - That's all!
 
 ## Benefits
 
 - You can use a Nethunter phone
-- You don't need a Rubber Ducky or more expensive forensic hardware
+- You don't need to buy a Rubber Ducky or expensive forensic hardware
 - You can easily modify the backoff time to crack other types of devices
 - It works!
-
 
 ## Features
 
 - Log file
-- Detects when phone is unplugged or powered off
-- Retries phone connection every 5 seconds
+- Detects when the phone is unplugged or powered off, and waits while retrying every 5 seconds
 - Configurable delays of N seconds after every X PIN attempts
+- Optimised PIN list
+
+## Installation
+
+TBC
+
+
+## Usage
+
+TBC
+
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## Frequently Asked Questions
+
+- How long does it take? 16.6 hours for all 4 digit PINs.
+- Why not use the Hak5 USB Rubber Ducky script with Duck Hunter in NetHunter? I tried this first and it didn't work (as of August, 2020).
+
+
+## Supported Android Phones/Devices
+
+It has been tested with these devices:
+- Samsung S5 with Android 6.0.1
+
+
+## Known Issues
+
+- The locked phone will miss keyboard input (PIN attempts) when the battery is low, and an on-screen popup appears.
+- This cannot detect when it unlocks
 
 
 ## Roadmap
@@ -51,18 +81,6 @@ The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID
 
 
 
-## Supported Android Phones/Devices
-
-It has been tested with these devices:
-- Samsung S5 with Android 6.0.1
-
-
-## Known Issues
-
-- The locked phone will miss keyboard input (PIN attempts) when the battery is low, and an on-screen popup appears.
-- This cannot detect when it unlocks
-
-
 ## Comparison of methods to unlock a locked Android phone
 
 ### Regular phone users
@@ -74,7 +92,9 @@ It has been tested with these devices:
 - Use the Google Forgot pattern, Forgot PIN, or Forgot password (Android 4.4 KitKat and earlier)
 - Factory Reset (you lose all your data)
 
-### Users who replace their Android ROM
+### Users who have replaced their Android ROM
+
+If the phone already has been rooted, has USB debugging enabled, or has adb enabled.
 
 - Flash the `Pattern Password Disable` ZIP using a custom recovery (Requires TWRP, CMW, Xrec, etc.)
 - Delete `/data/system/gesture.key` or `password.key` (requires root and adb on locked device)
@@ -83,7 +103,7 @@ It has been tested with these devices:
 
 ### Forensic Investigators
 
-This requires expensive hardware and sofware, or a dedicated forensic lab.
+These methods can be expensive and are usually only used by specialised phone forensic investigators.
 
 - Physical Extraction using Cellebrite UFED
 - Oxygen Forensic Suite (Requires USB debugging enabled)
@@ -93,8 +113,9 @@ This requires expensive hardware and sofware, or a dedicated forensic lab.
 
 ### USB HID Keyboard Bruteforce
 
-Finally if these methods do not work for you use USB HID keyboard brute-force.
+Finally you can use the USB HID keyboard brute-force.
 
+- Darren Kitchen demonstrated this using 
 - RubberDucky and Darren Kitchen's hak5 script (great)
 - Duck Hunter HID attacks in NetHunter (didn't work with a very long script, such as 10,0000 PINs)
 
@@ -109,11 +130,11 @@ pinlist.txt is from https://github.com/mandatoryprogrammer/droidbrute
 This list originally comes from Justin Engler & Paul Vines from Senior Security Engineer, iSEC Partners
 and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic Reconfigurable Button Basher (and C3BO).](https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Engler)
 
-## Generated Bruteforce
+## Bruteforce
 
 0000..9999 
 
-To be implemented
+To be implemented.
 
 
 # Related Projects & Futher Reading
