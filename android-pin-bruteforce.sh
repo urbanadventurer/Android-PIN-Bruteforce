@@ -25,6 +25,7 @@
 
 LIGHT_RED="\e[91m"
 LIGHT_GREEN="\e[92m"
+LIGHT_YELLOW="\e[93m"
 DEFAULT="\e[39m"
 
 function send_enter() {
@@ -59,21 +60,21 @@ if [ -z "$1"]; then
 
 fi
 
-echo "Android PIN brute-force version $VERSION" | tee -a $LOG
+echo "Android PIN brute-force :: version $VERSION" | tee -a $LOG
 
 # Show configuration
 
-echo "[INFO] PIN list: $PIN_LIST" | tee -a $LOG
-echo "[INFO] Delay between keystrokes: $DELAY_BETWEEN_KEYS" | tee -a $LOG
-echo "[INFO] HID Keyboard device: $KEYBOARD_DEVICE" | tee -a $LOG
-echo "[INFO] Log file: $LOG" | tee -a $LOG
+echo -e "[${LIGHT_YELLOW}INFO${DEFAULT}] PIN list: $PIN_LIST" | tee -a $LOG
+echo -e "[${LIGHT_YELLOW}INFO${DEFAULT}] Delay between keystrokes: $DELAY_BETWEEN_KEYS" | tee -a $LOG
+echo -e "[${LIGHT_YELLOW}INFO${DEFAULT}] HID Keyboard device: $KEYBOARD_DEVICE" | tee -a $LOG
+echo -e "[${LIGHT_YELLOW}INFO${DEFAULT}] Log file: $LOG" | tee -a $LOG
 if [ ! -z "$1" ]; then
   RESUME_FROM_PIN=$1
-  echo "[CFG] Resuming from PIN $RESUME_FROM_PIN" | tee -a $LOG
+  echo -e "[${LIGHT_YELLOW}INFO${DEFAULT}] Resuming from PIN $RESUME_FROM_PIN" | tee -a $LOG
 fi
 
 # Check Environment
-echo "[INFO] Checking environment" | tee -a $LOG
+echo -e "[${LIGHT_YELLOW}INFO${DEFAULT}] Checking environment" | tee -a $LOG
 
 if [ -e $KEYBOARD_DEVICE ]; then
   echo -e "[${LIGHT_GREEN}PASS${DEFAULT}] HID device ($KEYBOARD_DEVICE) found" | tee -a $LOG
@@ -115,7 +116,7 @@ do
   if [[ $COOLDOWN_TIME > 0 && $COOLDOWN_AFTER_N_ATTEMPTS > 0 ]]; then
     # if we are after N attempts
     if [ $((count % $COOLDOWN_AFTER_N_ATTEMPTS)) = 0 ]; then
-      echo -n "[WAIT] "
+      echo -ne "[${LIGHT_GREEN}WAIT${DEFAULT}] "
       # countdown COOLDOWN_TIME seconds
       for (( countdown=$COOLDOWN_TIME; countdown > 0; countdown-- ))
       do
@@ -125,11 +126,13 @@ do
         fi
         sleep 1
       done
+
       echo
     fi
   fi
 
 done
+
 
 #  pin=$(printf "%04s" $pin)
 
