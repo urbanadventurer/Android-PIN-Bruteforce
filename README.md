@@ -88,12 +88,12 @@ Finally you can use the USB HID keyboard brute-force.
 
 - Darren Kitchen demonstrated this using 
 - RubberDucky and Darren Kitchen's hak5 script (great)
-- Duck Hunter HID attacks in NetHunter (didn't work with a very long script, such as 10,0000 PINs)
+- Duck Hunter HID attacks in NetHunter (this is great but it didn't work with a very long script to try 10,0000 PINs)
 
 
-# PIN Lists
+## PIN Lists
 
-## Optimised PIN list
+### Optimised PIN list
 
 `pinlist.txt` is an optimised list of all possible 4 digit PINs, sorted by order of likelihood.
 pinlist.txt is from https://github.com/mandatoryprogrammer/droidbrute
@@ -101,14 +101,48 @@ pinlist.txt is from https://github.com/mandatoryprogrammer/droidbrute
 This list originally comes from Justin Engler & Paul Vines from Senior Security Engineer, iSEC Partners
 and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic Reconfigurable Button Basher (and C3BO).](https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Engler)
 
-## Bruteforce
+### Bruteforce
 
 0000..9999 
 
 To be implemented.
 
 
-# Related Projects & Futher Reading
+## Roadmap
+
+- [DONE] works
+- [DONE] detects USB HID failures
+- Improve Usage and commandline options/config files
+- Add progress bar
+- Add bruteforce for n digit PINs
+- ASCII art
+- Nicer GUI for NetHunter
+- Find/test more devices to bruteforce
+- Try to detect when phone is unlocked
+- Crack PIN list in reverse (to find which recent PIN unlocked the device)
+
+
+## Known Issues
+
+- The locked phone will miss keyboard input (PIN attempts) when the battery is low, and an on-screen popup appears.
+- This cannot detect when it unlocks
+
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## Authors and acknowledgment
+
+Developed by Andrew Horton (urbanadventurer).
+
+The optimised PIN list is from Justin Engler & Paul Vines from Senior Security Engineer, iSEC Partners
+and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic Reconfigurable Button Basher (and C3BO).](https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Engler).
+
+
+## Related Projects & Futher Reading
 
 NetHunter HID Keyboard Attacks
 https://www.kali.org/docs/nethunter/nethunter-hid-attacks/
