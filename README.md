@@ -56,9 +56,9 @@ The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID
 ### Users who replace their Android ROM
 
 - Flash the `Pattern Password Disable` ZIP using a custom recovery (Requires TWRP, CMW, Xrec, etc.)
-- Delete /data/system/gesture.key and password.key (requires root and adb on locked device)
-- Crack /data/system/gesture.key and password.key (requires root and adb on locked device)
-- Update sqlite3 settings.db (requires root and adb on locked device)
+- Delete `/data/system/gesture.key` or `password.key` (requires root and adb on locked device)
+- Crack `/data/system/gesture.key` and `password.key` (requires root and adb on locked device)
+- Update sqlite3 database `settings.db` (requires root and adb on locked device)
 
 ### Forensic Investigators
 
