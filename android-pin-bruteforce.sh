@@ -1,16 +1,6 @@
 #!/bin/bash
 #
 
-# select optimised pin list or X digit 
-# progress bar!!!
-#
-# go in reverse
-#
-# COLOUR
-#
-# battery is low -- on screen. not receiving enter/keys. won't work.
-#
-# launch from nethunter?
 
 
 LIGHT_RED="\e[91m"
