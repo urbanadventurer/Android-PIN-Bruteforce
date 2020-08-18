@@ -38,6 +38,7 @@ HID_KEYBOARD=/system/xbin/hid-keyboard
 COOLDOWN_TIME=30
 COOLDOWN_AFTER_N_ATTEMPTS=5
 VERSION=0.1
+EXIT_AFTER_FAIL_COUNT=15
 
 DATE_COMMAND="date +%b%d_%r"
 #RET=0
@@ -90,10 +91,17 @@ do
   send_enter
 
   # check connection to phone
+  fail_counter=0
   while [ $RET != 0 ]; do
-    echo -e "[${LIGHT_RED}FAIL${DEFAULT}] HID USB device not ready. Return code from $HID_KEYBOARD was $RET."
+    echo -e "[${LIGHT_RED}FAIL${DEFAULT}] HID USB device not ready. $HID_KEYBOARD returned $RET." 
     sleep 2
     send_enter
+    ((fail_counter++))
+
+    if [ $fail_counter -gt $EXIT_AFTER_FAIL_COUNT ]; then
+      echo -e "[${LIGHT_RED}FAIL${DEFAULT}] Exiting after $EXIT_AFTER_FAIL_COUNT successive failures."
+      exit 1
+    fi
   done
 
   echo "[+] $($DATE_COMMAND) $count: Trying $pin" | tee -a "$LOG"
