@@ -61,28 +61,19 @@ function repeat(){
   printf "%0.s$1" $(eval echo {1..$2})
 }
 
-# by default do not resume
-RESUME_FROM_PIN=
-LOG=bruter.log
-DELAY_BETWEEN_KEYS=0.1
-PIN_LIST=pinlist.txt
-KEYBOARD_DEVICE=/dev/hidg0
-HID_KEYBOARD=/system/xbin/hid-keyboard
-COOLDOWN_TIME=30
-COOLDOWN_AFTER_N_ATTEMPTS=5
-VERSION=0.1
-EXIT_AFTER_FAIL_COUNT=15
+function log_info(){
+  echo -e "[${LIGHT_YELLOW}INFO${DEFAULT}] $1" | tee -a $LOG
+}
 
-DATE_COMMAND="date +%b%d_%r"
-#RET=0
+function log_pass(){
+  echo -e "[${LIGHT_GREEN}PASS${DEFAULT}] $1" | tee -a $LOG
+}
 
-if [ -z "$1"]; then
-  echo "Usage: $0 [RESUME_FROM_PIN]"
-  echo -e "RESUME_FROM_PIN:\tResume brute-force from specified PIN"
-  echo -e "start\tStart from the beginning of the PIN_LIST file"
-  echo
+function log_fail(){
+  echo -e "[${LIGHT_RED}FAIL${DEFAULT}] $1" | tee -a $LOG
+}
 
-fi
+
 
 echo "Android PIN brute-force :: version $VERSION" | tee -a $LOG
 
