@@ -1,15 +1,5 @@
 #!/bin/bash
 #
-# works on Android 6.0.1
-# 5 attempts, followed by 30 second timeout
-# 
-# test on extra popups like low battery
-# try differnt keys to gget rid of low battery popup
-
-# doesn't help
-# see if setprop sys.usb.config hid helps to bring them back, you can use setprop sys.usb.config reset to reset to boot up usb config
-#
-# https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-project/blob/05ecaee59c4937d588b44a52eec2a2dd576f5473/nethunter-installer/boot-patcher/ramdisk-patch/init.nethunter.rc
 
 # select optimised pin list or X digit 
 # progress bar!!!
