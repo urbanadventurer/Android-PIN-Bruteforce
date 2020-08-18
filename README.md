@@ -122,6 +122,13 @@ To be implemented.
 - Crack PIN list in reverse (to find which recent PIN unlocked the device)
 
 
+## Troubleshooting
+
+If you receive this message when the USB cable is plugged in then try taking the battery out of the locked Android phone and power cycling it.
+
+[FAIL] HID USB device not ready. Return code from /system/xbin/hid-keyboard was 5.
+
+
 ## Known Issues
 
 - The locked phone will miss keyboard input (PIN attempts) when the battery is low, and an on-screen popup appears.
