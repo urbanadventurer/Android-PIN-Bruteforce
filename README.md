@@ -37,6 +37,7 @@ The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID
 - Detects when the phone is unplugged or powered off, and waits while retrying every 5 seconds
 - Configurable delays of N seconds after every X PIN attempts
 - Optimised PIN list
+- Bypasses phone pop-ups including the Low Power warning
 
 ## Installation
 
