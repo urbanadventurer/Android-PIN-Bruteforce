@@ -23,10 +23,14 @@ The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID
 ## Benefits
 
 - You can use a Nethunter phone
-- You don't need a USB Rubber Ducky or other hardware
+- You don't need a Rubber Ducky or more expensive forensic hardware
 - You can easily modify the backoff time to crack other types of devices
 - It works!
 
+
+## Features
+
+- 
 
 ## Roadmap
 
