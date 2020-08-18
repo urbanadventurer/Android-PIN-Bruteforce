@@ -197,3 +197,8 @@ XPIN Clip
 https://xpinclip.com/
 
 DataGenetics PIN analysis https://datagenetics.com/blog/september32012/index.html
+
+Automated brute force attack against the Mac EFI PIN (Using a Teensy)
+https://orvtech.com/atacar-efi-pin-macbook-pro-en.html
+https://hackaday.io/project/2196-efi-bruteforcer
+
