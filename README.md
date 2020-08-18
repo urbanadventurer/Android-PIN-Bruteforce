@@ -203,3 +203,9 @@ Automated brute force attack against the Mac EFI PIN (Using a Teensy)
 https://orvtech.com/atacar-efi-pin-macbook-pro-en.html
 https://hackaday.io/project/2196-efi-bruteforcer
 
+Android BruteForce using ADB & Shell Scripting
+https://github.com/Gh005t/Android-BruteForce
+
+AndroidPINCrack - bruteforce the Android Passcode given the hash and salt (requires root on the phone)
+https://github.com/PentesterES/AndroidPINCrack
+
