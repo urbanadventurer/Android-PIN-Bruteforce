@@ -89,7 +89,7 @@ These methods can be expensive and are usually only used by specialised phone fo
 - A RubberDucky and Darren Kitchen's Hak5 brute-force script
 - A Teensy device and base it on @orvtech's code
 - Duck Hunter HID attacks in NetHunter (this is cool but it didn't work with a brute-force PIN list)
-- Or you can use this and you can use your NetHunter phone!
+- Or you can use this with your NetHunter phone!
 
 
 ## 🎳 PIN Lists
