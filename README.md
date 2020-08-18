@@ -32,9 +32,12 @@ The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID
 
 - [DONE] works
 - [DONE] detects USB HID failures
-- progress bar
-- colour
-- brute n digit PINs
+- Improve Usage and commandline options/config files
+- Add progress bar
+- Add bruteforce for n digit PINs
+- ASCII art
+- Nicer GUI for NetHunter
+- Find/test more devices to bruteforce
 
 
 ## Known Issues
