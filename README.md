@@ -99,7 +99,7 @@ These methods can be expensive and are usually only used by specialised phone fo
 `pinlist.txt` is an optimised list of all possible 4 digit PINs, sorted by order of likelihood.
 pinlist.txt is from https://github.com/mandatoryprogrammer/droidbrute
 
-This list originally comes from Justin Engler & Paul Vines from Senior Security Engineer, iSEC Partners
+This list is used with permission from Justin Engler & Paul Vines from Senior Security Engineer, iSEC Partners,
 and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic Reconfigurable Button Basher (and C3BO).](https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Engler)
 
 ### Bruteforce
