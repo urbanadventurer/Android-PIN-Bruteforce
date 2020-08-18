@@ -123,7 +123,7 @@ do
     send_enter
     ((fail_counter++))
 
-    if [ $fail_counter -gt $EXIT_AFTER_FAIL_COUNT ]; then
+    if [[ $fail_counter -gt $EXIT_AFTER_FAIL_COUNT ]]; then
       log_fail "Exiting after $EXIT_AFTER_FAIL_COUNT successive failures."
       exit 1
     fi
