@@ -9,6 +9,32 @@
 # https://github.com/urbanadventurer/Android-HID-Bruteforce
 
 
+# Configurable Options
+
+# by default do not resume
+RESUME_FROM_PIN=
+LOG=bruter.log
+DELAY_BETWEEN_KEYS=0.1
+PIN_LIST=pinlist.txt
+KEYBOARD_DEVICE=/dev/hidg0
+HID_KEYBOARD=/system/xbin/hid-keyboard
+COOLDOWN_TIME=30
+COOLDOWN_AFTER_N_ATTEMPTS=5
+VERSION=0.1
+EXIT_AFTER_FAIL_COUNT=15
+DATE_COMMAND="date +%b%d_%r"
+#RET=0
+
+
+
+if [ -z "$1"]; then
+  echo "Usage: $0 [RESUME_FROM_PIN]"
+  echo -e "RESUME_FROM_PIN:\tResume brute-force from specified PIN"
+  echo -e "start\tStart from the beginning of the PIN_LIST file"
+  echo
+
+fi
+
 
 LIGHT_RED="\e[91m"
 LIGHT_GREEN="\e[92m"
