@@ -116,34 +116,6 @@ and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic 
 To be implemented
 
 
-## Top 20 PINs
-
-If you have a limited number of PIN attempts, try this top 20 PINs list from DataGenetics.
-
-- 1234
-- 1111
-- 0000
-- 1212
-- 7777
-- 1004
-- 2000
-- 4444
-- 2222
-- 6969
-- 9999
-- 3333
-- 5555
-- 6666
-- 1122
-- 1313
-- 8888
-- 4321
-- 2001
-- 1010
-
-Source: https://datagenetics.com/blog/september32012/index.html
-
-
 # Related Projects & Futher Reading
 
 NetHunter HID Keyboard Attacks
