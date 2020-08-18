@@ -131,8 +131,15 @@ If you receive this message when the USB cable is plugged in then try taking the
 
 ## Known Issues
 
-- The locked phone will miss keyboard input (PIN attempts) when the battery is low, and an on-screen popup appears.
 - This cannot detect when it unlocks
+
+
+## Technical Details
+
+Keys are sent using `/system/xbin/hid-keyboard`.
+To test this and send the key 1 you can use `echo 1 | /system/xbin/hid-keyboard dev/hidg0 keyboard`
+
+Before each PIN, we send the escape and enter keys. This is to keep the Android responsive and dismiss any popups about the number of incorrect PIN attempts or a low battery warning.
 
 
 ## Contributing
