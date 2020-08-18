@@ -1,36 +1,37 @@
-# Android-HID-Bruteforce
+# 🔓📱 Android-HID-Bruteforce
 
 Unlock an Android phone (or device) by bruteforcing the lockscreen PIN.
 
 Turn your Kali Nethunter phone into a bruteforce PIN cracker for Android devices! This uses the USB OTG cable to emulate a keyboard, automatically try PINs, and wait after trying too many wrong guesses.
 
-This takes about 16.6 hours to try all possible 4 digit PINs, but with the optimised PIN list it should take you much less time.
+⏱ This takes about 16.6 hours to try all possible 4 digit PINs, but with the optimised PIN list it should take you much less time.
 
 My original motivation to develop this was to unlock a Samsung S5 Android phone. It had belonged to someone who had passed away, and their family needed access to the data on it. As I didn't have a USB Rubber Ducky handy, I tried using a variety of methods, and eventually realised I had to develop someting new.
 
 
-## How it works
+## 📱 How it works
 
 This method uses the USB HID interface to provide keyboard input to the locked phone.
 The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID). 
 
+
 [Nethunter phone] ---[USB cable emulates keyboard]--->  [Locked Android phone]
 
-### You will need
+### 📱 ⛓ 📲 You will need
 
 - A locked Android phone
 - A Nethunter phone (or any rooted Android with HID kernel support)
 - USB OTG (On The Go) cable/adapter (USB male Micro-B to female USB A), and a standard charging cable (USB male Micro-B to male A).
 - That's all!
 
-## Benefits
+## 🌟 Benefits
 
 - You can use a Nethunter phone
 - You don't need to buy a Rubber Ducky or expensive forensic hardware
 - You can easily modify the backoff time to crack other types of devices
 - It works!
 
-## Features
+## ⭐ Features
 
 - Log file
 - Detects when the phone is unplugged or powered off, and waits while retrying every 5 seconds
@@ -52,9 +53,9 @@ TBC
 It has been tested with these devices:
 - Samsung S5 with Android 6.0.1
 
-## Comparison of methods to unlock a locked Android phone
+## 🗿 Comparison of methods to unlock a locked Android phone
 
-### Regular phone users
+### 😭 Regular phone users
 
 - Try the top 20 PINs from the [DataGenetics PIN analysis](https://datagenetics.com/blog/september32012/index.html) that apparently unlocks 26.83% of phones.
 - Use an SMS lock-screen bypass app (requires app install before phone is locked)
@@ -63,7 +64,7 @@ It has been tested with these devices:
 - Use the Google Forgot pattern, Forgot PIN, or Forgot password (Android 4.4 KitKat and earlier)
 - Factory Reset (you lose all your data)
 
-### Users who have replaced their Android ROM
+### 🤖 Users who have replaced their Android ROM
 
 If the phone already has been rooted, has USB debugging enabled, or has adb enabled.
 
@@ -72,7 +73,7 @@ If the phone already has been rooted, has USB debugging enabled, or has adb enab
 - Crack `/data/system/gesture.key` and `password.key` (requires root and adb on locked device)
 - Update sqlite3 database `settings.db` (requires root and adb on locked device)
 
-### Forensic Investigators
+### 🔬 Forensic Investigators
 
 These methods can be expensive and are usually only used by specialised phone forensic investigators.
 
@@ -82,7 +83,7 @@ These methods can be expensive and are usually only used by specialised phone fo
 - Chip Off
 - XPIN Clip
 
-### USB HID Keyboard Bruteforce
+### 🕵 USB HID Keyboard Bruteforce
 
 Finally you can use the USB HID keyboard brute-force.
 
@@ -91,7 +92,7 @@ Finally you can use the USB HID keyboard brute-force.
 - Duck Hunter HID attacks in NetHunter (this is great but it didn't work with a very long script to try 10,0000 PINs)
 
 
-## PIN Lists
+## 🎳 PIN Lists
 
 ### Optimised PIN list
 
@@ -108,7 +109,7 @@ and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic 
 To be implemented.
 
 
-## Roadmap
+## 🚀 Roadmap
 
 - [DONE] works
 - [DONE] detects USB HID failures
@@ -122,19 +123,19 @@ To be implemented.
 - Crack PIN list in reverse (to find which recent PIN unlocked the device)
 
 
-## Troubleshooting
+## 🔧 Troubleshooting
 
 If you receive this message when the USB cable is plugged in then try taking the battery out of the locked Android phone and power cycling it.
 
 [FAIL] HID USB device not ready. Return code from /system/xbin/hid-keyboard was 5.
 
 
-## Known Issues
+## 💣 Known Issues
 
 - This cannot detect when it unlocks
 
 
-## Technical Details
+## 🛰 Technical Details
 
 Keys are sent using `/system/xbin/hid-keyboard`.
 To test this and send the key 1 you can use `echo 1 | /system/xbin/hid-keyboard dev/hidg0 keyboard`
@@ -142,13 +143,13 @@ To test this and send the key 1 you can use `echo 1 | /system/xbin/hid-keyboard 
 Before each PIN, we send the escape and enter keys. This is to keep the Android responsive and dismiss any popups about the number of incorrect PIN attempts or a low battery warning.
 
 
-## Contributing
+## 🙋 Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
-## Authors and acknowledgment
+## 😎 Authors and acknowledgment
 
 Developed by Andrew Horton (urbanadventurer).
 
@@ -158,7 +159,7 @@ and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic 
 The Top 20 PINs is from [DataGenetics PIN analysis](https://datagenetics.com/blog/september32012/index.html) 
 
 
-## Related Projects & Futher Reading
+## 📚 Related Projects & Futher Reading
 
 NetHunter HID Keyboard Attacks
 https://www.kali.org/docs/nethunter/nethunter-hid-attacks/
