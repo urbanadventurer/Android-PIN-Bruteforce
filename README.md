@@ -2,9 +2,8 @@
 
 Unlock an Android phone (or any device) by bruteforcing the lockscreen PIN.
 
-This software is for Android devices locked with a PIN. 
 
-Nethunter Android 
+This tool turns your Nethunter phone into a bruteforce PIN cracker! 
 
 
 ## How it works
@@ -12,39 +11,39 @@ Nethunter Android
 This method uses the USB HID interface to provide keyboard input to the locked phone.
 The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID). 
 
-### Requirements:
+[Nethunter phone] ---[USB cable emulates keyboard]--->  [Locked Android phone]
 
-- Attacking Android phone
-- Locked Android phone (Android )
-- USB OTG (On The Go) cable/adapter
+## All you need
 
-
-Tested with : 
-
-- Samsung S5 with Android 6.0.1
-- Oneplusone with Kali Nethunter on LineageOS
+- Nethunter phone (or any Android with HID kernel support)
+- USB OTG (On The Go) cable/adapter. Usually a USB Male Micro-B to male USB A adapter.
+- Locked Android phone
+- That's all!
 
 ### Benefits
 
-- You don't need a USB Rubber Ducky
 - You can use a Nethunter phone
-- You can easily modify the backoff time
+- You don't need a USB Rubber Ducky
+- You can easily modify the backoff time to crack other types of devices
 - It works!
 
 
 ## Roadmap
 
+- [DONE] works
+- [DONE] detects USB HID failures
 - progress bar
 - colour
 - brute n digit PINs
 
+
 ## Known Issues
 
-- battery is low, on screen popup. does not receive enter/keys. 
-- can't detect when it unlocks
+- The locked phone will miss keyboard input (PIN attempts) when the battery is low, and an on-screen popup appears.
+- This cannot detect when it unlocks
 
 
-## Comparioson of methods to unlock a locked Android phone
+## Comparison of methods to unlock a locked Android phone
 
 ### Regular phone users
 
