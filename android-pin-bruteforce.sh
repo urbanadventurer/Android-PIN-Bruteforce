@@ -11,9 +11,11 @@ CLEAR_LINE="\033[1K"
 MOVE_CURSOR_LEFT="\033[80D"
 
 function send_enter() {
-  echo enter | $HID_KEYBOARD $KEYBOARD_DEVICE keyboard 2>/dev/null
-  RET=$?
-  sleep $DELAY_BETWEEN_KEYS
+  send_key enter
+}
+
+function send_esc() {
+  send_key esc
 }
 
 function send_key(){
@@ -83,8 +85,8 @@ for pin in `cat "$PIN_LIST" | grep -A 99999 "$RESUME_FROM_PIN"`
 do
   ((count++))
 
-  # hit enter twice before every PIN attempted
-  send_enter
+  # hit escape and enter before every PIN attempted
+  send_esc
   send_enter
 
   # check connection to phone
