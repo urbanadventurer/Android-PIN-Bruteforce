@@ -67,6 +67,7 @@ It has been tested with these devices:
 
 ### Regular phone users
 
+- Try the top 20 PINs from the [DataGenetics PIN analysis][https://datagenetics.com/blog/september32012/index.html] that apparently unlocks 26.83% of phones.
 - Use an SMS lock-screen bypass app (requires app install before phone is locked)
 - Use Samsung Find My Mobile (requires you set it up before phone is locked)
 - Crash the Lock Screen UI (Android 5.0 and 5.1)
@@ -177,3 +178,5 @@ https://www.kernel.org/doc/html/latest/usb/gadget_hid.html
 
 XPIN Clip
 https://xpinclip.com/
+
+DataGenetics PIN analysis https://datagenetics.com/blog/september32012/index.html
