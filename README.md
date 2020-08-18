@@ -6,7 +6,7 @@ Turn your Kali Nethunter phone into a bruteforce PIN cracker for Android devices
 
 ⏱ This takes about 16.6 hours to try all possible 4 digit PINs, but with the optimised PIN list it should take you much less time.
 
-My original motivation to develop this was to unlock a Samsung S5 Android phone. It had belonged to someone who had passed away, and their family needed access to the data on it. As I didn't have a USB Rubber Ducky handy, I tried using a variety of methods, and eventually realised I had to develop someting new.
+My original motivation to develop this was to unlock a Samsung S5 Android phone. It had belonged to someone who had passed away, and their family needed access to the data on it. As I didn't have a USB Rubber Ducky handy, I tried using a variety of methods, and eventually realised I had to develop something new.
 
 
 ## 📱 How it works
