@@ -2,11 +2,11 @@
 
 Unlock an Android phone (or device) by bruteforcing the lockscreen PIN.
 
-Turn your Kali Nethunter phone into a bruteforce PIN cracker for Android devices! This uses the USB OTG cable to emulate a keyboard, automatically try PINs, and wait after trying too many wrong guesses.
+Turn your Kali Nethunter phone into a bruteforce PIN cracker for Android devices! This uses a USB OTG cable to emulate a keyboard, automatically try PINs, and wait after trying too many wrong guesses.
 
-⏱ This takes about 16.6 hours to try all possible 4 digit PINs, but with the optimised PIN list it should take you much less time.
+⏱ This takes a bit over 16.6 hours to try all possible 4 digit PINs, but with the optimised PIN list it should take you much less time.
 
-My original motivation to develop this was to unlock a Samsung S5 Android phone. It had belonged to someone who had passed away, and their family needed access to the data on it. As I didn't have a USB Rubber Ducky handy, I tried using a variety of methods, and eventually realised I had to develop something new.
+My original motivation to develop this was to unlock a Samsung S5 Android phone. It had belonged to someone who had passed away, and their family needed access to the data on it. As I didn't have a USB Rubber Ducky or any other hardware handy, I tried using a variety of methods, and eventually realised I had to develop something new.
 
 
 ## 📱 How it works
