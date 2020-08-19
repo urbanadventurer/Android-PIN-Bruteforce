@@ -10,7 +10,7 @@
 
 
 # Load Configuration
-source config.sh
+source config
 VERSION=0.1
 DATE_COMMAND="date +%b%d_%r"
 #RET=0
