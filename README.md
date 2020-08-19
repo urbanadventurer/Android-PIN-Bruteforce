@@ -84,6 +84,7 @@ To be implemented.
 - Find/test more devices to bruteforce
 - Try to detect when phone is unlocked
 - Crack PIN list in reverse (to find which recent PIN unlocked the device)
+- Crack Android Patterns (try common patterns first)
 
 
 ## 🔧 Troubleshooting
