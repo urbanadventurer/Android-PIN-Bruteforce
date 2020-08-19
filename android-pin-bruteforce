@@ -9,22 +9,11 @@
 # https://github.com/urbanadventurer/Android-HID-Bruteforce
 
 
-# Configurable Options
-
-# by default do not resume
-RESUME_FROM_PIN=
-LOG=bruter.log
-DELAY_BETWEEN_KEYS=0.1
-PIN_LIST=pinlist.txt
-KEYBOARD_DEVICE=/dev/hidg0
-HID_KEYBOARD=/system/xbin/hid-keyboard
-COOLDOWN_TIME=30
-COOLDOWN_AFTER_N_ATTEMPTS=5
+# Load Configuration
+source config.sh
 VERSION=0.1
-EXIT_AFTER_FAIL_COUNT=15
 DATE_COMMAND="date +%b%d_%r"
 #RET=0
-
 
 
 if [ -z "$1"]; then
