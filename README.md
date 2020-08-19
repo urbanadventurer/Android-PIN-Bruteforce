@@ -54,43 +54,6 @@ TBC
 It has been tested with these devices:
 - Samsung S5 with Android 6.0.1
 
-## 🗿 Comparison of methods to unlock a locked Android phone
-
-### 😭 Regular phone users
-
-- Try the top 20 PINs from the [DataGenetics PIN analysis](https://datagenetics.com/blog/september32012/index.html) that apparently unlocks 26.83% of phones.
-- Use an SMS lock-screen bypass app (requires app install before phone is locked)
-- Use Samsung Find My Mobile (requires you set it up before phone is locked)
-- Crash the Lock Screen UI (Android 5.0 and 5.1)
-- Use the Google Forgot pattern, Forgot PIN, or Forgot password (Android 4.4 KitKat and earlier)
-- Factory Reset (you lose all your data)
-
-### 🤖 Users who have replaced their Android ROM
-
-If the phone already has been rooted, has USB debugging enabled, or has adb enabled.
-
-- Flash the `Pattern Password Disable` ZIP using a custom recovery (Requires TWRP, CMW, Xrec, etc.)
-- Delete `/data/system/gesture.key` or `password.key` (requires root and adb on locked device)
-- Crack `/data/system/gesture.key` and `password.key` (requires root and adb on locked device)
-- Update sqlite3 database `settings.db` (requires root and adb on locked device)
-
-### 🔬 Forensic Investigators
-
-These methods can be expensive and are usually only used by specialised phone forensic investigators.
-
-- Physical Extraction using Cellebrite UFED
-- Oxygen Forensic Suite (Requires USB debugging enabled)
-- JTAG extraction
-- Chip Off
-- XPIN Clip
-
-### 🕵 USB HID Keyboard Bruteforce
-
-- A RubberDucky and Darren Kitchen's Hak5 brute-force script
-- A Teensy device and base it on @orvtech's code
-- Duck Hunter HID attacks in NetHunter (this is cool but it didn't work with a brute-force PIN list)
-- Or you can use this with your NetHunter phone!
-
 
 ## 🎳 PIN Lists
 
