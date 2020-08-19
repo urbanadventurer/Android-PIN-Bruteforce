@@ -120,8 +120,6 @@ Developed by Andrew Horton (urbanadventurer).
 The optimised PIN list is from Justin Engler (@justinengler) & Paul Vines from Senior Security Engineer, iSEC Partners
 and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic Reconfigurable Button Basher (and C3BO).](https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Engler).
 
-The Top 20 PINs is from [DataGenetics PIN analysis](https://datagenetics.com/blog/september32012/index.html) 
-
 
 ## 🗿 Comparison of methods to unlock a locked Android phone
 
