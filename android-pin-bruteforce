@@ -13,6 +13,12 @@
 source config
 VERSION=0.1
 DATE_COMMAND="date +%b%d_%r"
+
+# Operating System Environment
+KEYBOARD_DEVICE=/dev/hidg0
+HID_KEYBOARD=/system/xbin/hid-keyboard
+USB_DEVICES=/usr/bin/usb-devices
+
 #RET=0
 
 
