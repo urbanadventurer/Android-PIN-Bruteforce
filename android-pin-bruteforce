@@ -21,7 +21,6 @@ if [ -z "$1"]; then
   echo -e "RESUME_FROM_PIN:\tResume brute-force from specified PIN"
   echo -e "start\tStart from the beginning of the PIN_LIST file"
   echo
-
 fi
 
 LIGHT_GREEN="\e[92m"
@@ -31,6 +30,19 @@ LIGHT_BLUE="\e[94m"
 DEFAULT="\e[39m"
 CLEAR_LINE="\033[1K"
 MOVE_CURSOR_LEFT="\033[80D"
+
+function check_devices() {
+ log_info "Checking USB devices"
+
+ # accepts any USB device manufacturer except Linux
+ devices=$(usb-devices | egrep -C 5 "Manufacturer=[^L][^i][^n][^u][^x]" \
+ | egrep "Vendor|Manufacturer|Product|SerialNumber" | cut -c 5- )
+
+ if [ $devices ]
+
+ log_pass "Device identified: $devices"
+
+}
 
 function send_enter() {
   send_key enter
@@ -67,7 +79,6 @@ function log_fail(){
 echo "Android PIN brute-force :: version $VERSION" | tee -a $LOG
 
 # Show configuration
-
 log_info "PIN list: $PIN_LIST"
 log_info "Delay between keystrokes: $DELAY_BETWEEN_KEYS"
 log_info "HID Keyboard device: $KEYBOARD_DEVICE"
@@ -94,6 +105,17 @@ else
   log_fail "hid-keyboard executable ($HID_KEYBOARD) not found"
   exit 1  
 fi
+
+
+if [ -f $USB_DEVICES ]; then
+  log_pass "usb-devices executable ($USB_DEVICES) found" 
+else
+  log_fail "usb-devices executable ($USB_DEVICES) not found"
+  exit 1  
+fi
+
+# Check Device
+check_devices
 
 count=0
 for pin in `cat "$PIN_LIST" | grep -A 99999 "$RESUME_FROM_PIN"`
