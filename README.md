@@ -2,20 +2,7 @@
 
 Unlock an Android phone (or device) by bruteforcing the lockscreen PIN.
 
-Turn your Kali Nethunter phone into a bruteforce PIN cracker for Android devices! This uses a USB OTG cable to emulate a keyboard, automatically try PINs, and wait after trying too many wrong guesses.
-
-⏱ This takes a bit over 16.6 hours to try all possible 4 digit PINs, but with the optimised PIN list it should take you much less time.
-
-My original motivation to develop this was to unlock a Samsung S5 Android phone. It had belonged to someone who had passed away, and their family needed access to the data on it. As I didn't have a USB Rubber Ducky or any other hardware handy, I tried using a variety of methods, and eventually realised I had to develop something new.
-
-
-## 📱 How it works
-
-This method uses the USB HID interface to provide keyboard input to the locked phone.
-The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID). 
-
-
-[Nethunter phone] ---[USB cable emulates keyboard]--->  [Locked Android phone]
+Turn your Kali Nethunter phone into a bruteforce PIN cracker for Android devices! 
 
 ### 📱 ⛓ 📲 You will need
 
@@ -24,20 +11,31 @@ The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID
 - USB OTG (On The Go) cable/adapter (USB male Micro-B to female USB A), and a standard charging cable (USB male Micro-B to male A).
 - That's all!
 
+## 📱 How it works
+
+It uses a USB OTG cable to connect the locked phone to the Nethunter device. It emulates a keyboard, automatically trys PINs, and waits after trying too many wrong guesses.
+
+[Nethunter phone] <--> [USB OTG adaptor] <--> [USB cable] <--> [Locked Android phone]
+
+The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID). This enables an Android Nethunter device to emulate keyboard input to the locked phone. It's just like plugging a keyboard into the locked phone and pressing keys.
+
+⏱ This takes a bit over 16.6 hours to try all possible 4 digit PINs, but with the optimised PIN list it should take you much less time.
+
 ## 🌟 Benefits
 
-- You can use a Nethunter phone
-- You don't need to buy a Rubber Ducky or expensive forensic hardware
+- Turn your NetHunter phone into an Android PIN cracking machine
+- Unlike other methods, you do not need ADB or USB debugging enabled on the locked phone
+- You don't need to buy special hardware, e.g. Rubber Ducky, Teensy, Cellebrite, XPIN Clip, etc.
 - You can easily modify the backoff time to crack other types of devices
 - It works!
 
 ## ⭐ Features
 
-- Log file
-- Detects when the phone is unplugged or powered off, and waits while retrying every 5 seconds
-- Configurable delays of N seconds after every X PIN attempts
 - Optimised PIN list
 - Bypasses phone pop-ups including the Low Power warning
+- Detects when the phone is unplugged or powered off, and waits while retrying every 5 seconds
+- Configurable delays of N seconds after every X PIN attempts
+- Log file
 
 ## Installation
 
@@ -63,7 +61,7 @@ It has been tested with these devices:
 pinlist.txt is from https://github.com/mandatoryprogrammer/droidbrute
 
 This list is used with permission from Justin Engler & Paul Vines from Senior Security Engineer, iSEC Partners,
-and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic Reconfigurable Button Basher (and C3BO).](https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Engler)
+and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic Reconfigurable Button Basher (and C3BO)](https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Engler)
 
 ### Bruteforce
 
@@ -74,8 +72,8 @@ To be implemented.
 
 ## 🚀 Roadmap
 
-- [DONE] works
-- [DONE] detects USB HID failures
+- [DONE] Works
+- [DONE] Detects USB HID failures
 - Improve Usage and commandline options/config files
 - Add progress bar
 - Add bruteforce for n digit PINs
@@ -116,6 +114,12 @@ Please make sure to update tests as appropriate.
 ## 😎 Authors and acknowledgment
 
 Developed by Andrew Horton (urbanadventurer).
+
+### Motivation
+
+My original motivation to develop this was to unlock a Samsung S5 Android phone. It had belonged to someone who had passed away, and their family needed access to the data on it. As I didn't have a USB Rubber Ducky or any other hardware handy, I tried using a variety of methods, and eventually realised I had to develop something new.
+
+### Credit
 
 The optimised PIN list is from Justin Engler (@justinengler) & Paul Vines from Senior Security Engineer, iSEC Partners
 and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic Reconfigurable Button Basher (and C3BO).](https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Engler).
