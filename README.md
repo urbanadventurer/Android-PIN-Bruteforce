@@ -4,13 +4,6 @@ Unlock an Android phone (or device) by bruteforcing the lockscreen PIN.
 
 Turn your Kali Nethunter phone into a bruteforce PIN cracker for Android devices! 
 
-### 📱 ⛓ 📲 You will need
-
-- A locked Android phone
-- A Nethunter phone (or any rooted Android with HID kernel support)
-- USB OTG (On The Go) cable/adapter (USB male Micro-B to female USB A), and a standard charging cable (USB male Micro-B to male A).
-- That's all!
-
 ## 📱 How it works
 
 It uses a USB OTG cable to connect the locked phone to the Nethunter device. It emulates a keyboard, automatically trys PINs, and waits after trying too many wrong guesses.
@@ -20,6 +13,13 @@ It uses a USB OTG cable to connect the locked phone to the Nethunter device. It 
 The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID). This enables an Android Nethunter device to emulate keyboard input to the locked phone. It's just like plugging a keyboard into the locked phone and pressing keys.
 
 ⏱ This takes a bit over 16.6 hours to try all possible 4 digit PINs, but with the optimised PIN list it should take you much less time.
+
+### 📱 ⛓ 📲 You will need
+
+- A locked Android phone
+- A Nethunter phone (or any rooted Android with HID kernel support)
+- USB OTG (On The Go) cable/adapter (USB male Micro-B to female USB A), and a standard charging cable (USB male Micro-B to male A).
+- That's all!
 
 ## 🌟 Benefits
 
