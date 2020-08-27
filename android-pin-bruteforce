@@ -39,12 +39,14 @@ DEFAULT="\033[39m"
 CLEAR_LINE="\033[1K"
 MOVE_CURSOR_LEFT="\033[80D"
 
-function check_devices() {
- log_info "Checking USB devices"
-
- # accepts any USB device manufacturer except Linux
- devices=$(usb-devices | egrep -C 5 "Manufacturer=[^L][^i][^n][^u][^x]" \
+function discover_device() {
+ if [ $DRY_RUN -eq 0 ]; then
+    # accepts any USB device manufacturer except Linux
+    devices=$(usb-devices | egrep -C 5 "Manufacturer=[^L][^i][^n][^u][^x]" \
  | egrep "Vendor|Manufacturer|Product|SerialNumber" | cut -c 5- )
+ else
+    devices="Manufacturer: Dry-run Dummy Android Device"
+ fi
 
  if [ -n "$devices" ]; then
    log_pass "Device identified: $devices"
@@ -77,9 +79,15 @@ function send_esc() {
 }
 
 function send_key(){
-  echo $1 | $HID_KEYBOARD $KEYBOARD_DEVICE keyboard 2>/dev/null
-  RET=$?
-  sleep $DELAY_BETWEEN_KEYS
+
+  if [ $DRY_RUN -eq 0 ]; then
+    echo $1 | $HID_KEYBOARD $KEYBOARD_DEVICE keyboard 2>/dev/null
+    RET=$?
+    sleep $DELAY_BETWEEN_KEYS
+  else
+    RET=0 # as if it succeeded
+    sleep $DELAY_BETWEEN_KEYS
+  fi
 }
 
 function repeat(){
