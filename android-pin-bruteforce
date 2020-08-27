@@ -25,7 +25,6 @@ USB_DEVICES=/usr/bin/usb-devices
 
 #RET=0
 
-
 if [ -z "$1"]; then
   echo "Usage: $0 [RESUME_FROM_PIN]"
   echo -e "RESUME_FROM_PIN:\tResume brute-force from specified PIN"
