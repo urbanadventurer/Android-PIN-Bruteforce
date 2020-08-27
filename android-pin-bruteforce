@@ -33,7 +33,8 @@ CLEAR_LINE="\033[1K"
 MOVE_CURSOR_LEFT="\033[80D"
 
 function usage() {
-  echo -e "Android-HID-Bruteforce is used to crack PINs on Android phones
+  echo -e "
+Android-HID-Bruteforce is used to unlock an Android phone (or device) by bruteforcing the lockscreen PIN.
 
   Find more information at: https://github.com/urbanadventurer/Android-HID-Bruteforce
 
