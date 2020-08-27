@@ -83,6 +83,7 @@ To be implemented.
 - Try to detect when phone is unlocked
 - Crack PIN list in reverse (to find which recent PIN unlocked the device)
 - Crack Android Patterns (try common patterns first)
+- Mask for known digits
 
 
 ## 🔧 Troubleshooting
