@@ -32,6 +32,30 @@ DEFAULT="\033[39m"
 CLEAR_LINE="\033[1K"
 MOVE_CURSOR_LEFT="\033[80D"
 
+function usage() {
+  echo -e "Android-HID-Bruteforce is used to crack PINs on Android phones
+
+  Find more information at: https://github.com/urbanadventurer/Android-HID-Bruteforce
+
+Commands:
+  crack\t\t\tBegin cracking PINs
+  resume\t\tResume from a chosen PIN
+  rewind\t\tCrack PINs in reverse from a chosen PIN
+  diag\t\t\tDisplay diagnostic information
+
+Flags:
+  --from PIN\t\tResume from this PIN
+  --mask REGEX\t\tUse a mask for known digits in the PIN
+  --type PIN|PATTERN\tSelect PIN or Pattern cracking
+  --length NUM\t\tCrack PINs of NUM length
+
+Usage:
+  android-pin-bruteforce <command> [flags]
+
+"
+
+}
+
 function discover_device() {
  if [ $DRY_RUN -eq 0 ]; then
     # accepts any USB device manufacturer except Linux
