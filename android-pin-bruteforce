@@ -54,7 +54,7 @@ function discover_device() {
 }
 
 # Show configuration
-function display_configuration() {
+function show_configuration() {
   log_info "PIN list: $PIN_LIST"
   log_info "Delay between keystrokes: $DELAY_BETWEEN_KEYS"
   log_info "HID Keyboard device: $KEYBOARD_DEVICE"
