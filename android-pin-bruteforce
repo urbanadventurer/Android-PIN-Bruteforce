@@ -326,8 +326,7 @@ count=0
 for pin in `cat "$PIN_LIST" | grep -A 99999 "$RESUME_FROM_PIN"`
 do
   ((count++))
-
-  # hit escape and enter before every PIN attempted
+   # hit escape and enter before every PIN attempted
   send_esc
   send_enter
 
