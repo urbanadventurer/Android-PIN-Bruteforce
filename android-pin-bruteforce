@@ -208,6 +208,11 @@ function check_environment(){
 }
 
 
+if [ -z "$1" ] || [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+  usage
+  exit 1
+fi
+
 
 
 echo "Android PIN brute-force :: version $VERSION" | tee -a $LOG
