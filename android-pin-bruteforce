@@ -284,7 +284,10 @@ do
     ACTION=resume ;;
 
   rewind)
-    ACTION=rewind ;;
+    ACTION=rewind 
+    log_fail "Sorry but rewind is not yet implemented."
+    exit 1
+    ;;
 
   -*) { echo "Error: $ac_option: invalid option; use --help to show usage" 1>&2; exit 1; }
     ;;
