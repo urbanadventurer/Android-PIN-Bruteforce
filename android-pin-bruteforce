@@ -53,6 +53,14 @@ function check_devices() {
  fi
 }
 
+# Show configuration
+function display_configuration() {
+  log_info "PIN list: $PIN_LIST"
+  log_info "Delay between keystrokes: $DELAY_BETWEEN_KEYS"
+  log_info "HID Keyboard device: $KEYBOARD_DEVICE"
+  log_info "Log file: $LOG"
+}
+
 function abort() {
   if [ $DRY_RUN -eq 0 ]; then
     exit 1
@@ -96,11 +104,7 @@ function log_fail(){
 
 echo "Android PIN brute-force :: version $VERSION" | tee -a $LOG
 
-# Show configuration
-log_info "PIN list: $PIN_LIST"
-log_info "Delay between keystrokes: $DELAY_BETWEEN_KEYS"
-log_info "HID Keyboard device: $KEYBOARD_DEVICE"
-log_info "Log file: $LOG"
+# display_configuration
 
 if [ ! -z "$1" ]; then
   RESUME_FROM_PIN=$1
