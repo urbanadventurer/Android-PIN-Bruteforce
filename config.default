@@ -20,3 +20,9 @@ EXIT_AFTER_FAIL_COUNT=15
 # Operating System Environment
 KEYBOARD_DEVICE=/dev/hidg0
 HID_KEYBOARD=/system/xbin/hid-keyboard
+
+# Defaults
+PIN_TYPE=PIN
+PIN_LENGTH=4
+DRY_RUN=0
+VERBOSE=0

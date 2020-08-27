@@ -14,8 +14,6 @@ source config
 
 
 VERSION=0.1
-DRY_RUN=1
-VERBOSE=0
 
 # Operating System Environment
 KEYBOARD_DEVICE=/dev/hidg0
