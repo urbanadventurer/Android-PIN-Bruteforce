@@ -9,6 +9,8 @@
 # https://github.com/urbanadventurer/Android-HID-Bruteforce
 
 
+# Load Default Configuration
+source config.default
 # Load Configuration
 source config
 
