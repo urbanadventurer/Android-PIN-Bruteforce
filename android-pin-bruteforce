@@ -48,6 +48,7 @@ Flags:
   --type PIN|PATTERN\tSelect PIN or Pattern cracking
   --length NUM\t\tCrack PINs of NUM length
   --dry-run\t\tDry run for testing. Doesn't send any keys.
+  --verbose\t\tOutput verbose logs.
 
 Usage:
   android-pin-bruteforce <command> [flags]
@@ -257,6 +258,9 @@ do
 
   -type | -t | --type)
     ac_prev=type ;;
+
+  -verbose | -v | --verbose)
+    VERBOSE=1 ;;
 
   -help | -h | --help)
     usage 
