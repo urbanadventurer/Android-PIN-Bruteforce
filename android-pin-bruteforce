@@ -306,13 +306,48 @@ if test -n "$ac_prev"; then
   { echo "configure: error: missing argument to --`echo $ac_prev | sed 's/_/-/g'`" 1>&2; exit 1; }
 fi
 
-MASK=$mask
-RESUME_FROM_PIN=$from
-PIN_TYPE=$type
-PIN_LENGTH=$length
+# only set VARS if specified in commandline arguments
+if [[ -n "$mask" ]]; then
+  MASK=$mask
+fi
+if [[ -n "$from" ]]; then
+  RESUME_FROM_PIN=$from
+fi
+if [[ -n "$type" ]]; then
+  PIN_TYPE=$type
+fi
+if [[ -n "$length" ]]; then
+  PIN_LENGTH=$length
+fi
 
-#show_configuration
-#exit
+
+# Validation
+
+# Validate PIN TYPE 
+case "$PIN_TYPE" in
+  pattern | PATTERN )
+    log_fail "Pattern cracking is not yet implemented."
+    abort ;;
+  pin | PIN )
+    ;;
+  *)
+    log_fail "Type $PIN_TYPE cracking is not available."
+    abort ;;
+esac
+
+# Validate PIN LENGTH
+if [[ "$PIN_LENGTH" > 0 ]] && [[ "$PIN_LENGTH" < 9 ]]; then
+  log_info "PIN Length is $PIN_LENGTH"
+else
+  log_fail "PIN length is invalid. Valid lengths are 1 to 9."
+fi
+
+
+# rewind, resume require that RESUME_FROM_PIN be set
+if [[ "$ACTION" = "resume" ]] || [[ "$ACTION" = "rewind" ]] && [[ -z "$RESUME_FROM_PIN" ]]; then
+  log_fail "$ACTION requires that --from be set"
+  exit 1
+fi
 
 if [ -z "$1" ]; then
   usage
