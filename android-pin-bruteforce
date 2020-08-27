@@ -119,6 +119,12 @@ function show_configuration() {
   log_info "Delay between keystrokes: $DELAY_BETWEEN_KEYS"
   log_info "HID Keyboard device: $KEYBOARD_DEVICE"
   log_info "Log file: $LOG"
+  log_info "Mask: $MASK"
+  log_info "Resume from: $RESUME_FROM_PIN"
+  log_info "PIN Type (PIN or Pattern): $PIN_TYPE"
+  log_info "PIN Length: $PIN_LENGTH"
+
+
 }
 
 function abort() {
