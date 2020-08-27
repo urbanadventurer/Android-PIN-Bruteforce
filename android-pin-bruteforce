@@ -49,6 +49,7 @@ Flags:
   --mask REGEX\t\tUse a mask for known digits in the PIN
   --type PIN|PATTERN\tSelect PIN or Pattern cracking
   --length NUM\t\tCrack PINs of NUM length
+  --dry-run\t\tDry run for testing. Doesn't send any keys.
 
 Usage:
   android-pin-bruteforce <command> [flags]
@@ -261,7 +262,10 @@ do
 
   -help | -h | --help)
     usage 
-    exit 1;;
+    exit 1 ;;
+
+  -dryrun | --dryrun | -dry-run | --dry-run )
+    DRY_RUN=1 ;;
 
   diag*)
     diagnostic_info
@@ -308,6 +312,10 @@ fi
 
 
 echo "Android PIN brute-force :: version $VERSION" | tee -a $LOG
+
+if [[ $DRY_RUN -eq 1 ]]; then
+  log_info "Dry run enabled"
+fi
 
 if [[ $VERBOSE > 0 ]]; then
   log_info "Current Configuration"
