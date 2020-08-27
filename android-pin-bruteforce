@@ -302,7 +302,7 @@ RESUME_FROM_PIN=$from
 PIN_TYPE=$type
 PIN_LENGTH=$length
 
-show_configuration
+#show_configuration
 #exit
 
 if [ -z "$1" ]; then
