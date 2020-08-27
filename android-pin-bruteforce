@@ -215,24 +215,103 @@ function check_environment(){
 }
 
 
-if [ -z "$1" ] || [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+
+# Commandline option handling inspired by ./configure
+
+ac_prev=
+for ac_option
+do
+  # If the previous option needs an argument, assign it.
+  if test -n "$ac_prev"; then
+    eval "$ac_prev=\$ac_option"
+    ac_prev=
+    continue
+  fi
+
+  case "$ac_option" in
+  -*=*) ac_optarg=`echo "$ac_option" | sed 's/[-_a-zA-Z0-9]*=//'` ;;
+  *) ac_optarg= ;;
+  esac
+
+  case "$ac_option" in
+
+  -from | -f | --from)
+    ac_prev=from ;;
+
+  -from=* | -f=* | --from=*)
+    from="$ac_optarg" ;;
+
+  -length=* | -l=* | --length=*)
+    length="$ac_optarg" ;;
+
+  -length | -l | --length)
+    ac_prev=length ;;
+
+  -mask | -m | --mask)
+    ac_prev=mask ;;
+
+  -mask=* | -m=* | --mask=*)
+    mask="$ac_optarg" ;;
+
+  -type=* | -t=* | --type=*)
+    type="$ac_optarg" ;;
+
+  -type | -t | --type)
+    ac_prev=type ;;
+
+  -help | -h | --help)
+    usage 
+    exit 1;;
+
+  diag*)
+    diagnostic_info
+    exit ;;
+
+  crack)
+    ACTION=crack ;;
+
+  resume)
+    ACTION=resume ;;
+
+  rewind)
+    ACTION=rewind ;;
+
+  -*) { echo "Error: $ac_option: invalid option; use --help to show usage" 1>&2; exit 1; }
+    ;;
+
+  *)
+    if test "x$nonopt" != xNONE; then
+      { echo "Error: invalid options" 1>&2; exit 1; }
+    fi
+    nonopt="$ac_option"
+    ;;
+
+  esac
+done
+
+if test -n "$ac_prev"; then
+  { echo "configure: error: missing argument to --`echo $ac_prev | sed 's/_/-/g'`" 1>&2; exit 1; }
+fi
+
+MASK=$mask
+RESUME_FROM_PIN=$from
+PIN_TYPE=$type
+PIN_LENGTH=$length
+
+show_configuration
+#exit
+
+if [ -z "$1" ]; then
   usage
   exit 1
 fi
 
 
-
 echo "Android PIN brute-force :: version $VERSION" | tee -a $LOG
-
 
 if [[ $VERBOSE > 0 ]]; then
   log_info "Current Configuration"
   show_configuration
-fi
-
-if [ ! -z "$1" ]; then
-  RESUME_FROM_PIN=$1
-  log_info "Resuming from PIN $RESUME_FROM_PIN"
 fi
 
 # Check Environment
