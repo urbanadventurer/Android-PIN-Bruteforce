@@ -11,6 +11,8 @@
 
 # Load Configuration
 source config
+
+
 VERSION=0.1
 DATE_COMMAND="date +%b%d_%r"
 
@@ -44,10 +46,9 @@ function check_devices() {
  devices=$(usb-devices | egrep -C 5 "Manufacturer=[^L][^i][^n][^u][^x]" \
  | egrep "Vendor|Manufacturer|Product|SerialNumber" | cut -c 5- )
 
- if [ $devices ]
-
- log_pass "Device identified: $devices"
-
+ if [ -n "$devices" ]; then
+   log_pass "Device identified: $devices"
+ fi
 }
 
 function send_enter() {
