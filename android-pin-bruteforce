@@ -153,7 +153,11 @@ function check_environment(){
 
 echo "Android PIN brute-force :: version $VERSION" | tee -a $LOG
 
-# display_configuration
+
+if [[ $VERBOSE > 0 ]]; then
+  log_info "Current Configuration"
+  show_configuration
+fi
 
 if [ ! -z "$1" ]; then
   RESUME_FROM_PIN=$1
