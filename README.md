@@ -74,7 +74,7 @@ To be implemented.
 
 - [DONE] Works
 - [DONE] Detects USB HID failures
-- Improve Usage and commandline options/config files
+- [DONE] Improve Usage and commandline options/config files
 - Add progress bar
 - Add bruteforce for n digit PINs
 - ASCII art
