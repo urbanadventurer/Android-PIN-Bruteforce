@@ -342,11 +342,11 @@ esac
 
 # Validate PIN LENGTH
 if [[ "$PIN_LENGTH" > 0 ]] && [[ "$PIN_LENGTH" < 9 ]]; then
-  log_info "PIN Length is $PIN_LENGTH"
+  # nothing
+  echo -n
 else
   log_fail "PIN length is invalid. Valid lengths are 1 to 9."
 fi
-
 
 # rewind, resume require that RESUME_FROM_PIN be set
 if [[ "$ACTION" = "resume" ]] || [[ "$ACTION" = "rewind" ]] && [[ -z "$RESUME_FROM_PIN" ]]; then
