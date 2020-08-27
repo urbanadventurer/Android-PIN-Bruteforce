@@ -24,13 +24,6 @@ USB_DEVICES=/usr/bin/usb-devices
 
 #RET=0
 
-if [ -z "$1"]; then
-  echo "Usage: $0 [RESUME_FROM_PIN]"
-  echo -e "RESUME_FROM_PIN:\tResume brute-force from specified PIN"
-  echo -e "start\tStart from the beginning of the PIN_LIST file"
-  echo
-fi
-
 LIGHT_GREEN="\033[92m"
 LIGHT_YELLOW="\033[93m"
 LIGHT_RED="\033[91m"
