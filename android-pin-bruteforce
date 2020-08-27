@@ -309,6 +309,9 @@ fi
 # only set VARS if specified in commandline arguments
 if [[ -n "$mask" ]]; then
   MASK=$mask
+
+  log_fail "Sorry but mask is not yet implemented."
+  exit 1
 fi
 if [[ -n "$from" ]]; then
   RESUME_FROM_PIN=$from
