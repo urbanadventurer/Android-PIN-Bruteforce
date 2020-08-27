@@ -325,7 +325,6 @@ if [[ -n "$length" ]]; then
   PIN_LENGTH=$length
 fi
 
-
 # Validation
 
 # Validate PIN TYPE 
@@ -417,10 +416,7 @@ do
       echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" 
     fi
   fi
-
 done
-
-#  pin=$(printf "%04s" $pin)
 
 
 
