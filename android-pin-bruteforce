@@ -56,6 +56,48 @@ Usage:
 
 }
 
+function diagnostic_info() {
+  log_info "Diagnostic info"
+
+  if [ -e $KEYBOARD_DEVICE ]; then
+    log_pass "HID device ($KEYBOARD_DEVICE) found"
+    ls -l $KEYBOARD_DEVICE
+  else
+    log_fail "HID device ($KEYBOARD_DEVICE) not found"
+  fi
+
+  if [ -f $HID_KEYBOARD ]; then
+    log_pass "hid-keyboard executable ($HID_KEYBOARD) found" 
+    ls -l $HID_KEYBOARD
+  else
+    log_fail "hid-keyboard executable ($HID_KEYBOARD) not found"  
+  fi
+
+  if [ -f $USB_DEVICES ]; then
+    log_pass "usb-devices executable ($USB_DEVICES) found" 
+    ls -l $USB_DEVICES
+  else
+    log_fail "usb-devices executable ($USB_DEVICES) not found"  
+  fi
+  
+  log_info "Executing Command: USB_DEVICES"
+  $USB_DEVICES
+
+  log_info "Finding Android Phone USB Device"
+  devices=$($USB_DEVICES | egrep -C 5 "Manufacturer=[^L][^i][^n][^u][^x]" \
+ | egrep "Vendor|Manufacturer|Product|SerialNumber" | cut -c 5- )
+  
+  if [ -n "$devices" ]; then
+    log_pass "Device identified: $devices"
+  else
+    log_fail "Device not found"
+  fi
+
+  echo "Tip: Try powering off the phone and taking out the battery"
+  echo
+  exit
+}
+
 function discover_device() {
  if [ $DRY_RUN -eq 0 ]; then
     # accepts any USB device manufacturer except Linux
