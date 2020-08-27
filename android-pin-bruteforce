@@ -166,31 +166,11 @@ fi
 
 # Check Environment
 log_info "Checking environment"
+check_environment
 
-if [ -e $KEYBOARD_DEVICE ]; then
-  log_pass "HID device ($KEYBOARD_DEVICE) found"
-else
-  log_fail "HID device ($KEYBOARD_DEVICE) not found"
-  abort
-fi
-
-if [ -f $HID_KEYBOARD ]; then
-  log_pass "hid-keyboard executable ($HID_KEYBOARD) found" 
-else
-  log_fail "hid-keyboard executable ($HID_KEYBOARD) not found"
-  abort  
-fi
-
-
-if [ -f $USB_DEVICES ]; then
-  log_pass "usb-devices executable ($USB_DEVICES) found" 
-else
-  log_fail "usb-devices executable ($USB_DEVICES) not found"
-  abort  
-fi
-
-# Check Device
-check_devices
+# Find Android phone over USB cable
+log_info "Identifying Android Phone"
+discover_device
 
 count=0
 for pin in `cat "$PIN_LIST" | grep -A 99999 "$RESUME_FROM_PIN"`
