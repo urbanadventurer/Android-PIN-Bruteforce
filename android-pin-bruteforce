@@ -16,6 +16,8 @@ source config
 VERSION=0.1
 DATE_COMMAND="date +%b%d_%r"
 
+DRY_RUN=0
+
 # Operating System Environment
 KEYBOARD_DEVICE=/dev/hidg0
 HID_KEYBOARD=/system/xbin/hid-keyboard
