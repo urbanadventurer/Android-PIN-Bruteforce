@@ -107,6 +107,49 @@ function log_fail(){
 }
 
 
+function monitor_phone_connection(){
+  # check connection to phone
+  # RET is set by the send_key/send_enter function
+  fail_counter=0
+  while [ $RET != 0 ]; do
+    log_fail "HID USB device not ready. $HID_KEYBOARD returned $RET." 
+    sleep 2
+    send_enter
+    ((fail_counter++))
+
+    if [[ $fail_counter -gt $EXIT_AFTER_FAIL_COUNT ]]; then
+      log_fail "Exiting after $EXIT_AFTER_FAIL_COUNT successive failures."
+      abort
+    fi
+  done
+}
+
+
+function check_environment(){
+  if [ -e $KEYBOARD_DEVICE ]; then
+    log_pass "HID device ($KEYBOARD_DEVICE) found"
+  else
+    log_fail "HID device ($KEYBOARD_DEVICE) not found"
+    abort
+  fi
+
+  if [ -f $HID_KEYBOARD ]; then
+    log_pass "hid-keyboard executable ($HID_KEYBOARD) found" 
+  else
+    log_fail "hid-keyboard executable ($HID_KEYBOARD) not found"
+    abort  
+  fi
+
+  if [ -f $USB_DEVICES ]; then
+    log_pass "usb-devices executable ($USB_DEVICES) found" 
+  else
+    log_fail "usb-devices executable ($USB_DEVICES) not found"
+    abort  
+  fi
+}
+
+
+
 
 echo "Android PIN brute-force :: version $VERSION" | tee -a $LOG
 
