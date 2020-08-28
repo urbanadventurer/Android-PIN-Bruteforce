@@ -110,10 +110,20 @@ To be implemented.
 
 ## 🔧 Troubleshooting
 
+Try the diagnostic command first.
+
+```bash ./android-pin-bruteforce  diag```
+
+Note that Nethunter USB HID support was inconsistent during testing and development. However after it starts working, it should continue working until you crack the PIN.
+
 If you receive this message when the USB cable is plugged in then try taking the battery out of the locked Android phone and power cycling it.
 
-[FAIL] HID USB device not ready. Return code from /system/xbin/hid-keyboard was 5.
+```[FAIL] HID USB device not ready. Return code from /system/xbin/hid-keyboard was 5.```
 
+Some tips:
+
+- Try powering off the phone and taking out the battery
+- Try sending keys to your PC or laptop
 
 ## 💣 Known Issues
 
