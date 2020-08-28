@@ -124,6 +124,8 @@ Some tips:
 
 - Try powering off the phone and taking out the battery
 - Try sending keys to your PC or laptop
+- Note that the ```Device not Found``` messages are not as important as sending keys successfully.
+
 
 ## 💣 Known Issues
 
