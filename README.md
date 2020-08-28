@@ -175,9 +175,9 @@ My original motivation to develop this was to unlock a Samsung S5 Android phone.
 The optimised PIN list is from Justin Engler (@justinengler) & Paul Vines from Senior Security Engineer, iSEC Partners
 and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic Reconfigurable Button Basher (and C3BO).](https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Engler).
 
-#### Vector graphics
+### Graphics
 
-Designed by Andrew Horton using free vector packs:
+Designed by Andrew Horton and gratefully using these free vector packs:
 
 - [https://www.vecteezy.com/vector-art/159576-usb-ports-isometric-free-vector](USB Ports Isometric Free Vector by visionheldup)
 - [https://www.vecteezy.com/vector-art/107006-hdmi-and-usb-vector-set](HDMI and USB Vector Set by Mary Winkler)
