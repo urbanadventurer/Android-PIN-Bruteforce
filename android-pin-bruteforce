@@ -44,16 +44,16 @@ Commands:
   rewind\t\tCrack PINs in reverse from a chosen PIN
   diag\t\t\tDisplay diagnostic information
 
-Flags:
-  --from PIN\t\tResume from this PIN
-  --mask REGEX\t\tUse a mask for known digits in the PIN
-  --type PIN|PATTERN\tSelect PIN or Pattern cracking
-  --length NUM\t\tCrack PINs of NUM length
-  --dry-run\t\tDry run for testing. Doesn't send any keys.
-  --verbose\t\tOutput verbose logs.
+Options:
+  -f, --from PIN\tResume from this PIN
+  -m, --mask REGEX\tUse a mask for known digits in the PIN
+  -t, --type TYPE\tSelect PIN or PATTERN cracking
+  -l, --length NUM\tCrack PINs of NUM length
+  -d, --dry-run\t\tDry run for testing. Doesn't send any keys.
+  -v, --verbose\t\tOutput verbose logs.
 
 Usage:
-  android-pin-bruteforce <command> [flags]
+  android-pin-bruteforce <command> [options]
 
 "
 
@@ -272,7 +272,7 @@ do
     usage 
     exit 1 ;;
 
-  -dryrun | --dryrun | -dry-run | --dry-run )
+  -dryrun | -d | --dryrun | -dry-run | --dry-run )
     DRY_RUN=1 ;;
 
   diag*)
