@@ -82,9 +82,15 @@ function diagnostic_info() {
   else
     log_fail "usb-devices executable ($USB_DEVICES) not found"  
   fi
-  
-  log_info "Executing Command: USB_DEVICES"
+
+  log_info "Executing Command: $USB_DEVICES"
   $USB_DEVICES
+  RET=$?
+  if [ $RET -eq 0 ]; then
+    log_pass "usb-devices script executed succeessfully."
+  else
+    log_fail "usb-devices script failed. Return code $RET."
+  fi
 
   log_info "Finding Android Phone USB Device"
   devices=$($USB_DEVICES | egrep -C 5 "Manufacturer=[^L][^i][^n][^u][^x]" \
