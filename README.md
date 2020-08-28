@@ -179,9 +179,9 @@ and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic 
 
 Designed by Andrew Horton and gratefully using these free vector packs:
 
-- [USB Ports Isometric Free Vector by visionheldup](https://www.vecteezy.com/vector-art/159576-usb-ports-isometric-free-vector)
+- [USB Ports Isometric Free Vector by VisionHeldup](https://www.vecteezy.com/vector-art/159576-usb-ports-isometric-free-vector)
 - [HDMI and USB Vector Set by Mary Winkler](https://www.vecteezy.com/vector-art/107006-hdmi-and-usb-vector-set)
-- [isometric data security illustration by rizal.medanguide](https://www.vecteezy.com/vector-art/661831-isometric-data-security-illustration)
+- [Isometric Data Security Illustration by Rizal.Medanguide](https://www.vecteezy.com/vector-art/661831-isometric-data-security-illustration)
 - Kali NetHunter Logo
 
 
