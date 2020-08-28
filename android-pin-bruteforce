@@ -404,6 +404,11 @@ check_environment
 log_info "Identifying Android Phone"
 discover_device
 
+send_enter
+sleep 1
+send_enter
+sleep 1
+
 count=0
 for pin in `cat "$PIN_LIST" | grep -A 99999 "$RESUME_FROM_PIN"`
 do
