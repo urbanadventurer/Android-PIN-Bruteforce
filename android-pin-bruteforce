@@ -115,7 +115,10 @@ function diagnostic_info() {
   log_info "Executing Command: /system/bin/getprop |grep usb"
   /system/bin/getprop |grep usb
   RET=$?
+  echo  
 
+  log_info "Executing Command: dmesg | grep -i usb | tail"
+  dmesg | grep -i usb | tail
   echo  
 
   log_info "Troubleshooting tips"
