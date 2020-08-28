@@ -110,9 +110,23 @@ To be implemented.
 
 ## 🔧 Troubleshooting
 
-Try the diagnostic command first.
+### Executing the script
 
-```bash ./android-pin-bruteforce  diag```
+If you installed the script to /sdcard/, you can execute it with the following command.
+
+```bash ./android-pin-bruteforce``` 
+
+Note that Android mounts /sdcard with the noexec flag. You can verify this with ```mount```.
+
+### Check the cables
+
+The OTG cable should be connected to the locked Android phone. The regular USB cable should be connected to the Nethunter phone.
+
+### Diagnostics
+
+Use the diagnostic command.
+
+```bash ./android-pin-bruteforce diag```
 
 Note that Nethunter USB HID support was inconsistent during testing and development. However after it starts working, it should continue working until you crack the PIN.
 
@@ -120,7 +134,7 @@ If you receive this message when the USB cable is plugged in then try taking the
 
 ```[FAIL] HID USB device not ready. Return code from /system/xbin/hid-keyboard was 5.```
 
-Some tips:
+### Tips
 
 - Try powering off the phone and taking out the battery
 - Try sending keys to your PC or laptop
