@@ -51,18 +51,18 @@ Android-HID-Bruteforce is used to unlock an Android phone (or device) by brutefo
   Find more information at: https://github.com/urbanadventurer/Android-HID-Bruteforce
 
 Commands:
-  crack     Begin cracking PINs
-  resume    Resume from a chosen PIN
-  rewind    Crack PINs in reverse from a chosen PIN
-  diag      Display diagnostic information
+  crack             Begin cracking PINs
+  resume            Resume from a chosen PIN
+  rewind            Crack PINs in reverse from a chosen PIN
+  diag              Display diagnostic information
 
 Options:
-  -f, --from PIN  Resume from this PIN
+  -f, --from PIN    Resume from this PIN
   -m, --mask REGEX  Use a mask for known digits in the PIN
-  -t, --type TYPE Select PIN or PATTERN cracking
+  -t, --type TYPE   Select PIN or PATTERN cracking
   -l, --length NUM  Crack PINs of NUM length
-  -d, --dry-run   Dry run for testing. Doesn't send any keys.
-  -v, --verbose   Output verbose logs.
+  -d, --dry-run     Dry run for testing. Doesn't send any keys.
+  -v, --verbose     Output verbose logs.
 
 Usage:
   android-pin-bruteforce <command> [options]
