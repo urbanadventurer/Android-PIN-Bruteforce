@@ -8,7 +8,7 @@ Turn your Kali Nethunter phone into a bruteforce PIN cracker for Android devices
 
 It uses a USB OTG cable to connect the locked phone to the Nethunter device. It emulates a keyboard, automatically tries PINs, and waits after trying too many wrong guesses.
 
-![How to Connect Phones](https://user-images.githubusercontent.com/101783/91579479-09122280-e98f-11ea-8b93-419221711cb3.png)
+![How to Connect Phones](https://user-images.githubusercontent.com/101783/91640891-2cf36800-ea64-11ea-8f37-9d7548013905.png)
 
 [Nethunter phone] <--> [USB cable] <--> [USB OTG adaptor] <--> [Locked Android phone]
 
