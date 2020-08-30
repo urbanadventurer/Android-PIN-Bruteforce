@@ -99,8 +99,8 @@ To be implemented.
 - [DONE] Works
 - [DONE] Detects USB HID failures
 - [DONE] Improve Usage and commandline options/config files
+- [DONE] Add bruteforce for n digit PINs
 - Add progress bar
-- Add bruteforce for n digit PINs
 - ASCII art
 - Nicer GUI for NetHunter
 - Find/test more devices to bruteforce
