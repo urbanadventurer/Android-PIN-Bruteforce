@@ -1,4 +1,4 @@
-# 🔓📱 Android-HID-Bruteforce
+# 🔓📱 Android-PIN-Bruteforce
 
 Unlock an Android phone (or device) by bruteforcing the lockscreen PIN.
 
@@ -48,9 +48,9 @@ TBC
 
 ```
 
-Android-HID-Bruteforce is used to unlock an Android phone (or device) by bruteforcing the lockscreen PIN.
+Android-PIN-Bruteforce is used to unlock an Android phone (or device) by bruteforcing the lockscreen PIN.
 
-  Find more information at: https://github.com/urbanadventurer/Android-HID-Bruteforce
+  Find more information at: https://github.com/urbanadventurer/Android-PIN-Bruteforce
 
 Commands:
   crack             Begin cracking PINs
