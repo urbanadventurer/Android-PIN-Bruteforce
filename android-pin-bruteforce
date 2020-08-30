@@ -461,8 +461,12 @@ sleep 1
 send_enter
 sleep 1
 
-count=0
-for pin in `cat "$PIN_LIST" | grep -A 99999 "$RESUME_FROM_PIN"`
+
+
+load_pinlist $PIN_LENGTH
+position=$resume_from_index
+
+for pin in ${pinlist[@]:$resume_from_index}
 do
   ((count++))
    # hit escape and enter before every PIN attempted
@@ -474,14 +478,17 @@ do
     monitor_phone_connection
   fi
 
-  echo "[SEND] $pin. Attempt $count at $(date +"%b%d %r")" | tee -a "$LOG"
+  percent_complete=$((100*$position/$top_number))  
+  echo "[SEND] $pin. Attempt $count ($percent_complete%) at $(date +"%b%d %r")" | tee -a "$LOG" 
+#  prog $percent_complete
+
   for i in `echo "$pin" | grep -o .`; do
     send_key $i
   done 
   send_enter
 
   # COOLDOWN_TIME is optional
-  if [[ $COOLDOWN_TIME > 0 && $COOLDOWN_AFTER_N_ATTEMPTS > 0 ]]; then
+  if [[ $COOLDOWN_TIME > 0 && $COOLDOWN_AFTER_N_ATTEMPTS > 0 && $percent_complete < 100 ]]; then
    
     # if we are after N attempts
     if [ $((count % $COOLDOWN_AFTER_N_ATTEMPTS)) = 0 ]; then
@@ -499,7 +506,8 @@ do
       echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" 
     fi
   fi
+  ((position++))
 done
 
-
+log_info "Attempted all $PIN_LENGTH PINs."
 
