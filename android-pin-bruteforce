@@ -232,9 +232,6 @@ function send_key(){
   fi
 }
 
-function repeat(){
-  printf "%0.s$1" $(eval echo {1..$2})
-}
 
 function log_info(){
   echo -e "[${LIGHT_BLUE}INFO${DEFAULT}] $1" | tee -a $LOG
@@ -248,9 +245,15 @@ function log_fail(){
   echo -e "[${LIGHT_RED}FAIL${DEFAULT}] $1" | tee -a $LOG
 }
 
-
 function log_conf(){
   echo -e "[${LIGHT_YELLOW}CONF${DEFAULT}] $1" | tee -a $LOG
+}
+
+
+function log_debug(){
+  if [ $VERBOSE -gt 0 ]; then
+    echo -e "[${LIGHT_YELLOW}DEBUG${DEFAULT}] $1" | tee -a $LOG
+  fi
 }
 
 
