@@ -59,6 +59,52 @@ Usage:
 
 }
 
+
+function load_pinlist() {
+  length=$1
+
+  top_number=$((10**$length-1))
+
+  # Only load from file if it's 4 digits
+  if [ $length -eq 4 ]; then
+    pinlist=(`cat $PIN_LIST`)
+  else
+    # generate the list
+    pinlist=(`seq -w 0 $top_number`)
+  fi
+
+  resume_from_index=0
+  if [ -n "$RESUME_FROM_PIN" ]; then
+ #   log_debug "Looking for $RESUME_FROM_PIN in pinlist"
+    for i in "${!pinlist[@]}"; do
+       if [[ "${pinlist[$i]}" = "${RESUME_FROM_PIN}" ]]; then
+  #         log_debug  "Found ${RESUME_FROM_PIN} at element ${i}"
+          resume_from_index=$i
+       fi
+    done
+  fi
+}
+
+
+function repeat(){
+  printf "%0.s$1" $(eval echo {1..$2})
+}
+
+
+# progress bar
+# https://unix.stackexchange.com/questions/415421/linux-how-to-create-simple-progress-bar-in-bash
+function prog() {
+    tput cup 0 0
+    local w=80 p=$1
+    shift
+    # create a string of spaces, then change them to dots
+    printf -v dots "%*s" "$(( $p*$w/100 ))" ""
+    dots=${dots// /x}
+    # print those dots on a fixed-width space plus the percentage etc. 
+    printf "\r\e[K|%-*s| %3d %% %s" "$w" "$dots" "$p" "$*"
+}
+
+
 function diagnostic_info() {
   log_info "Diagnostic info"
 
