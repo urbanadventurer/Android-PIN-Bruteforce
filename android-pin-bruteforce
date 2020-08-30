@@ -509,5 +509,5 @@ do
   ((position++))
 done
 
-log_info "Attempted all $PIN_LENGTH PINs."
+log_info "Attempted all $PIN_LENGTH digit PINs."
 
