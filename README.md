@@ -87,11 +87,15 @@ pinlist.txt is from https://github.com/mandatoryprogrammer/droidbrute
 This list is used with permission from Justin Engler & Paul Vines from Senior Security Engineer, iSEC Partners,
 and was used in their Defcon talk, [Electromechanical PIN Cracking with Robotic Reconfigurable Button Basher (and C3BO)](https://www.defcon.org/html/defcon-21/dc-21-speakers.html#Engler)
 
-### Bruteforce
+### Cracking with Masks
 
-0000..9999 
+Masks use regular expressions with the standard grep extended format.
 
-To be implemented.
+`./android-pin-bruteforce crack --mask "...[45]" --dry-run`
+
+- To try all years from 1900 to 1999, use a mask of `19..`
+- To try PINs that have a 1 in the first digit, and a 1 in the last digit, use a mask of `1..1`
+- To try PINs that end in 4 or 5, use `...[45]`
 
 
 ## 🚀 Roadmap
@@ -100,6 +104,7 @@ To be implemented.
 - [DONE] Detects USB HID failures
 - [DONE] Improve Usage and commandline options/config files
 - [DONE] Add bruteforce for n digit PINs
+- [DONE] Mask for known digits
 - Add progress bar
 - ASCII art
 - Nicer GUI for NetHunter
@@ -107,7 +112,6 @@ To be implemented.
 - Try to detect when phone is unlocked
 - Crack PIN list in reverse (to find which recent PIN unlocked the device)
 - Crack Android Patterns (try common patterns first)
-- Mask for known digits
 
 
 ## 🔧 Troubleshooting
@@ -225,8 +229,6 @@ These methods can be expensive and are usually only used by specialised phone fo
 
 
 ## 📚 Related Projects & Futher Reading
-
-Note: organise this list more
 
 ### USB HID Hardware without NetHunter
 
