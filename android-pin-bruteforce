@@ -73,6 +73,16 @@ function load_pinlist() {
     pinlist=(`seq -w 0 $top_number`)
   fi
 
+  if [ -n "$MASK" ]; then
+    pinlist=(`echo "${pinlist[@]}" | tr ' ' '\n' | grep "$MASK" | tr '\n' ' '`)
+  fi
+
+  # validate mask returned PINs
+  if [ ${#pinlist[@]} -eq 0 ]; then
+    log_fail "MASK $MASK created an invalid PIN list with zero PINs"
+    abort
+  fi
+
   resume_from_index=0
   if [ -n "$RESUME_FROM_PIN" ]; then
  #   log_debug "Looking for $RESUME_FROM_PIN in pinlist"
@@ -389,9 +399,6 @@ fi
 # only set VARS if specified in commandline arguments
 if [[ -n "$mask" ]]; then
   MASK=$mask
-
-  log_fail "Sorry but mask is not yet implemented."
-  exit 1
 fi
 if [[ -n "$from" ]]; then
   RESUME_FROM_PIN=$from
@@ -478,7 +485,7 @@ do
     monitor_phone_connection
   fi
 
-  percent_complete=$((100*$position/$top_number))  
+  percent_complete=$((100*$position/${#pinlist[@]}))  
   echo "[SEND] $pin. Attempt $count ($percent_complete%) at $(date +"%b%d %r")" | tee -a "$LOG" 
 #  prog $percent_complete
 
@@ -509,5 +516,5 @@ do
   ((position++))
 done
 
-log_info "Attempted all $PIN_LENGTH digit PINs."
+log_info "End of PIN list reached"
 
