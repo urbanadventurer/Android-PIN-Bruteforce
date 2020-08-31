@@ -485,18 +485,17 @@ do
     monitor_phone_connection
   fi
 
-  percent_complete=$((100*$position/${#pinlist[@]}))  
+  percent_complete=$((100*$position/${#pinlist[@]}))
   echo "[SEND] $pin. Attempt $count ($percent_complete%) at $(date +"%b%d %r")" | tee -a "$LOG" 
 #  prog $percent_complete
 
   for i in `echo "$pin" | grep -o .`; do
     send_key $i
-  done 
+  done
   send_enter
 
   # COOLDOWN_TIME is optional
-  if [[ $COOLDOWN_TIME > 0 && $COOLDOWN_AFTER_N_ATTEMPTS > 0 && $percent_complete < 100 ]]; then
-   
+  if [[ $COOLDOWN_TIME > 0 && $COOLDOWN_AFTER_N_ATTEMPTS > 0 ]]; then
     # if we are after N attempts
     if [ $((count % $COOLDOWN_AFTER_N_ATTEMPTS)) = 0 ]; then
       # countdown COOLDOWN_TIME seconds
