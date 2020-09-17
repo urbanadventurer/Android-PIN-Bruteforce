@@ -106,9 +106,10 @@ Masks use regular expressions with the standard grep extended format.
 - [DONE] Add bruteforce for n digit PINs
 - [DONE] Mask for known digits
 - Add progress bar
+- Add ETA
 - ASCII art
 - Nicer GUI for NetHunter
-- Find/test more devices to bruteforce
+- Find/test more devices to bruteforce (iPhone)
 - Try to detect when phone is unlocked
 - Crack PIN list in reverse (to find which recent PIN unlocked the device)
 - Crack Android Patterns (try common patterns first)
@@ -191,6 +192,40 @@ Designed by Andrew Horton and gratefully using these free vector packs:
 
 ## 🗿 Comparison of methods to unlock a locked Android phone
 
+### What makes this project unique? 
+
+I've been asked what makes this project unique when there are other open-source Android PIN cracking projects.
+
+Android-PIN-Bruteforce is unique because it cracks the PIN on Android devices from a NetHunter phone and doesn't need the phone to be pre-hacked.
+
+It works:
+- Without having to buy special hardware, such as a Rubber Ducky, Celebrite, or XKEY.
+- Without ADB or root access (the phone doesn't have to be pre-hacked).
+
+| Project                                               | ADB/USB Debugging  | Requires root | Requires $ hardware | Commercial  |
+------------------------------------------------------- | ------------------ | ------------- | ------------------- | ----------- | 
+| ⭐ Android-PIN-Bruteforce                             | No                 | No            | Nethunter phone     | No          | 
+| github.com/PentesterES/AndroidPINCrack                | Yes                | Yes           | No                  | No          |
+| github.com/ByteRockstar1996/Cracking-Android-Pin-Lock | Yes                | Yes           | No                  | No          |
+| github.com/sch3m4/androidpatternlock                  | Yes                | Yes           | No                  | No          |
+| github.com/georgenicolaou/androidlockcracker          | Yes                | Yes           | No                  | No          |
+| github.com/MGF15/P-Decode                             | Yes                | Yes           | No                  | No          |
+| github.com/BitesFor/ABL                               | Yes                | Yes           | No                  | No          |
+| github.com/wuseman/WBRUTER                            | Yes                | No            | No                  | No          |
+| github.com/mandatoryprogrammer/droidbrute             | No                 | No            | Rubber Ducky $      | No          |
+| github.com/hak5darren/USB-Rubber-Ducky                | No                 | No            | Rubber Ducky $      | Yes         |
+| xpinclip.com                                          | No                 | No            | XPINClip  $$        | Yes         |
+| cellebrite.com/en/ufed/                               | No                 | No            | Cellebrite UFED $$$ | Yes         |
+
+These projects/products are really awesome but they achieve a different goal to Android-PIN-Bruteforce.
+
+If a project requires a gestures.key or password.key, I've listed it as requiring root.
+If a project requires a custom bootloader, I've listed that as requiring both ADB and root.
+If you would like your project listed in this table then please open a new issue.
+There are links to each of these projects in the 📚 Related Projects & Futher Reading section.
+
+
+
 ### 😭 Regular phone users
 
 - Try the top 20 PINs from the [DataGenetics PIN analysis](https://datagenetics.com/blog/september32012/index.html) that apparently unlocks 26.83% of phones.
@@ -222,10 +257,10 @@ These methods can be expensive and are usually only used by specialised phone fo
 ### 🕵 USB HID Keyboard Bruteforce
 
 - A RubberDucky and Darren Kitchen's Hak5 brute-force script
-- A Teensy device and base it on @orvtech's code
-- Duck Hunter HID attacks in NetHunter (it didn't work with a brute-force PIN attack)
+- Buy expensive forensic hardware
 - Or you can use this with your NetHunter phone!
 
+Attempts to use an otherwise awesome project Duck Hunter, to emulate a RubberDucky payload for Android PIN cracking did not work. It crashed the phone probably because of the payload length.
 
 
 ## 📚 Related Projects & Futher Reading
