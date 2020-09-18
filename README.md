@@ -152,8 +152,9 @@ If you receive this message when the USB cable is plugged in then try taking the
 
 - This cannot detect when it unlocks
 
-
 ## 🛰 Technical Details
+
+This works from an Android phone because the USB ports are not bidirectional, unlike the ports on a laptop.
 
 Keys are sent using `/system/xbin/hid-keyboard`.
 To test this and send the key 1 you can use `echo 1 | /system/xbin/hid-keyboard dev/hidg0 keyboard`
@@ -189,14 +190,13 @@ Designed by Andrew Horton and gratefully using these free vector packs:
 - [Isometric Data Security Illustration by Rizal.Medanguide](https://www.vecteezy.com/vector-art/661831-isometric-data-security-illustration)
 - Kali NetHunter Logo
 
-
-## 🗿 Comparison of methods to unlock a locked Android phone
+## 🗿 Comparison with other projects and methods to unlock a locked Android phone
 
 ### What makes this project unique? 
 
 I've been asked what makes this project unique when there are other open-source Android PIN cracking projects.
 
-Android-PIN-Bruteforce is unique because it cracks the PIN on Android devices from a NetHunter phone and doesn't need the phone to be pre-hacked.
+Android-PIN-Bruteforce is unique because it cracks the PIN on Android phones from a NetHunter phone and it doesn't need the locked phone to be pre-hacked.
 
 It works:
 - Without having to buy special hardware, such as a Rubber Ducky, Celebrite, or XKEY.
@@ -224,8 +224,6 @@ If a project requires a custom bootloader, I've listed that as requiring both AD
 If you would like your project listed in this table then please open a new issue.
 There are links to each of these projects in the 📚 Related Projects & Futher Reading section.
 
-
-
 ### 😭 Regular phone users
 
 - Try the top 20 PINs from the [DataGenetics PIN analysis](https://datagenetics.com/blog/september32012/index.html) that apparently unlocks 26.83% of phones.
@@ -248,15 +246,20 @@ If the phone already has been rooted, has USB debugging enabled, or has adb enab
 
 These methods can be expensive and are usually only used by specialised phone forensic investigators.
 
+Note that the Cellebrite and XPIN Clip can also use the USB HID Keyboard Bruteforce method.
+
 - Physical Extraction using Cellebrite UFED
 - XPIN Clip
 - Oxygen Forensic Suite (Requires USB debugging enabled)
 - JTAG extraction
 - Chip Off
 
-### 🕵 USB HID Keyboard Bruteforce
+### 🕵 Security Professionals and Technical Phone Users
+
+Use the USB HID Keyboard Bruteforce with some dedicated hardware.
 
 - A RubberDucky and Darren Kitchen's Hak5 brute-force script
+- Write a script for a USB Teensy
 - Buy expensive forensic hardware
 - Or you can use this with your NetHunter phone!
 
