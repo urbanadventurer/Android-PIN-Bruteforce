@@ -105,13 +105,13 @@ Masks use regular expressions with the standard grep extended format.
 - [DONE] Improve Usage and commandline options/config files
 - [DONE] Add bruteforce for n digit PINs
 - [DONE] Mask for known digits
+- [DONE] Crack PIN list in reverse (to find which recent PIN unlocked the device)
 - Add progress bar
 - Add ETA
 - ASCII art
 - Nicer GUI for NetHunter
 - Find/test more devices to bruteforce (iPhone)
 - Try to detect when phone is unlocked
-- Crack PIN list in reverse (to find which recent PIN unlocked the device)
 - Crack Android Patterns (try common patterns first)
 
 
