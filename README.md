@@ -212,12 +212,15 @@ It works:
 | github.com/MGF15/P-Decode                             | Yes                | Yes           | No                  | No          |
 | github.com/BitesFor/ABL                               | Yes                | Yes           | No                  | No          |
 | github.com/wuseman/WBRUTER                            | Yes                | No            | No                  | No          |
+| github.com/Gh005t/Android-BruteForce                  | Yes                | No            | No                  | No          |
 | github.com/mandatoryprogrammer/droidbrute             | No                 | No            | Rubber Ducky $      | No          |
 | github.com/hak5darren/USB-Rubber-Ducky                | No                 | No            | Rubber Ducky $      | Yes         |
+| github.com/bbrother/stm32f4androidbruteforce          | No                 | No            | STM32F4 dev board $ | No          |
+| hdb-team.com/product/hdbox/                           | No                 | No            | HDBOX  $$           | Yes         |
 | xpinclip.com                                          | No                 | No            | XPINClip  $$        | Yes         |
 | cellebrite.com/en/ufed/                               | No                 | No            | Cellebrite UFED $$$ | Yes         |
 
-These projects/products are really awesome but they achieve a different goal to Android-PIN-Bruteforce.
+Some of these projects/products are really awesome but they achieve a different goal to Android-PIN-Bruteforce.
 
 If a project requires a gestures.key or password.key, I've listed it as requiring root.
 If a project requires a custom bootloader, I've listed that as requiring both ADB and root.
@@ -282,6 +285,10 @@ https://github.com/hak5darren/USB-Rubber-Ducky/wiki/Payloads
 Teensy
 https://www.pjrc.com/teensy/
 
+Brute Forcing An Android Phone with a STM32F4Discovery Development Board
+https://github.com/bbrother/stm32f4androidbruteforce
+https://hackaday.com/2013/11/10/brute-forcing-an-android-phone/
+
 Automated brute force attack against the Mac EFI PIN (Using a Teensy)
 https://orvtech.com/atacar-efi-pin-macbook-pro-en.html
 https://hackaday.io/project/2196-efi-bruteforcer
@@ -328,6 +335,9 @@ http://patc.com/online/a/Portals/965/Android%20Passcode.pdf
 
 XPIN Clip
 https://xpinclip.com/
+
+HDBox from HDB Team
+https://hdb-team.com/product/hdbox/
 
 Cellebrite UFED
 https://www.cellebrite.com/en/ufed/
