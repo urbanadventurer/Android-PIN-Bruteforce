@@ -22,6 +22,7 @@ KEYBOARD_DEVICE=/dev/hidg0
 HID_KEYBOARD=/system/xbin/hid-keyboard
 USB_DEVICES=/usr/bin/usb-devices
 
+DIRECTION=1 # go forwards
 #RET=0
 
 LIGHT_GREEN="\033[92m"
@@ -375,9 +376,7 @@ do
 
   rewind)
     ACTION=rewind 
-    log_fail "Sorry but rewind is not yet implemented."
-    exit 1
-    ;;
+    DIRECTION=-1 ;;
 
   -*) { echo "Error: $ac_option: invalid option; use --help to show usage" 1>&2; exit 1; }
     ;;
@@ -472,11 +471,14 @@ sleep 1
 
 load_pinlist $PIN_LENGTH
 position=$resume_from_index
+pinlist_n_elements=${#pinlist[@]}
 
-for pin in ${pinlist[@]:$resume_from_index}
+for (( position=$resume_from_index ; position>=0 && position <= pinlist_n_elements; position=position+DIRECTION ))
 do
   ((count++))
-   # hit escape and enter before every PIN attempted
+  pin=${pinlist[position]}
+
+  # hit escape and enter before every PIN attempted
   send_esc
   send_enter
 
@@ -485,7 +487,7 @@ do
     monitor_phone_connection
   fi
 
-  percent_complete=$((100*$position/${#pinlist[@]}))
+  percent_complete=$((100*$position/$pinlist_n_elements))
   echo "[SEND] $pin. Attempt $count ($percent_complete%) at $(date +"%b%d %r")" | tee -a "$LOG" 
 #  prog $percent_complete
 
@@ -512,7 +514,6 @@ do
       echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" 
     fi
   fi
-  ((position++))
 done
 
 log_info "End of PIN list reached"
