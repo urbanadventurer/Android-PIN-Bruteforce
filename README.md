@@ -111,7 +111,7 @@ Masks use regular expressions with the standard grep extended format.
 - ASCII art
 - Nicer GUI for NetHunter
 - Find/test more devices to bruteforce (iPhone)
-- Try to detect when phone is unlocked
+- Try to detect when phone is unlocked (Use Nethunter camera as a sensor?)
 - Crack Android Patterns (try common patterns first)
 
 
