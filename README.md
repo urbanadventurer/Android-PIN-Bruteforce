@@ -49,8 +49,7 @@ TBC
 
 ```
 
-Android-PIN-Bruteforce is used to unlock an Android phone (or device) by bruteforcing the lockscreen PIN.
-
+Android-PIN-Bruteforce (0.1) is used to unlock an Android phone (or device) by bruteforcing the lockscreen PIN.
   Find more information at: https://github.com/urbanadventurer/Android-PIN-Bruteforce
 
 Commands:
@@ -58,6 +57,7 @@ Commands:
   resume            Resume from a chosen PIN
   rewind            Crack PINs in reverse from a chosen PIN
   diag              Display diagnostic information
+  version           Display version information and exit
 
 Options:
   -f, --from PIN    Resume from this PIN
@@ -65,7 +65,6 @@ Options:
   -t, --type TYPE   Select PIN or PATTERN cracking
   -l, --length NUM  Crack PINs of NUM length
   -d, --dry-run     Dry run for testing. Doesn't send any keys.
-  -v, --verbose     Output verbose logs.
 
 Usage:
   android-pin-bruteforce <command> [options]
