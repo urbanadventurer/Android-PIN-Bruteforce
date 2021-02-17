@@ -517,6 +517,13 @@ do
       echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" 
     fi
   fi
+
+  # check CHANGE_AFTER_10_ATTEMPTS
+  if [ $count -eq 10 ] && [ $CHANGE_AFTER_10_ATTEMPTS -eq 1 ]; then
+    log_info "Ten attempts have been reached! Now cooldown for $COOLDOWN_TIME seconds after every PIN attempt."
+    COOLDOWN_AFTER_N_ATTEMPTS=1
+  fi
+
 done
 
 log_info "End of PIN list reached"
