@@ -20,6 +20,7 @@ EXIT_AFTER_FAIL_COUNT=15
 # Operating System Environment
 KEYBOARD_DEVICE=/dev/hidg0
 HID_KEYBOARD=/system/xbin/hid-keyboard
+USB_DEVICES=/usr/bin/usb-devices
 
 # Defaults
 PIN_TYPE=PIN

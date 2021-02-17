@@ -8,7 +8,6 @@
 #
 # https://github.com/urbanadventurer/Android-PIN-Bruteforce
 
-
 # Load Default Configuration
 source config.default
 # Load Configuration
@@ -16,11 +15,6 @@ source config
 
 
 VERSION=0.1
-
-# Operating System Environment
-KEYBOARD_DEVICE=/dev/hidg0
-HID_KEYBOARD=/system/xbin/hid-keyboard
-USB_DEVICES=/usr/bin/usb-devices
 
 DIRECTION=1 # go forwards
 #RET=0
@@ -258,10 +252,13 @@ function log_fail(){
   echo -e "[${LIGHT_RED}FAIL${DEFAULT}] $1" | tee -a $LOG
 }
 
+function log_warn(){
+  echo -e "[${LIGHT_YELLOW}WARN${DEFAULT}] $1" | tee -a $LOG
+}
+
 function log_conf(){
   echo -e "[${LIGHT_YELLOW}CONF${DEFAULT}] $1" | tee -a $LOG
 }
-
 
 function log_debug(){
   if [ $VERBOSE -gt 0 ]; then
@@ -306,8 +303,7 @@ function check_environment(){
   if [ -f $USB_DEVICES ]; then
     log_pass "usb-devices executable ($USB_DEVICES) found" 
   else
-    log_fail "usb-devices executable ($USB_DEVICES) not found"
-    abort  
+    log_fail "usb-devices executable ($USB_DEVICES) not found."  
   fi
 }
 
