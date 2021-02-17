@@ -35,8 +35,7 @@ MOVE_CURSOR_LEFT="\033[80D"
 
 function usage() {
   echo -e "
-Android-PIN-Bruteforce is used to unlock an Android phone (or device) by bruteforcing the lockscreen PIN.
-
+Android-PIN-Bruteforce ($VERSION) is used to unlock an Android phone (or device) by bruteforcing the lockscreen PIN.
   Find more information at: https://github.com/urbanadventurer/Android-PIN-Bruteforce
 
 Commands:
@@ -44,6 +43,7 @@ Commands:
   resume\t\tResume from a chosen PIN
   rewind\t\tCrack PINs in reverse from a chosen PIN
   diag\t\t\tDisplay diagnostic information
+  version\t\tDisplay version information and exit
 
 Options:
   -f, --from PIN\tResume from this PIN
@@ -377,6 +377,10 @@ do
   rewind)
     ACTION=rewind 
     DIRECTION=-1 ;;
+
+  version)
+    echo "Android-PIN-Bruteforce $VERSION"
+    exit ;;
 
   -*) { echo "Error: $ac_option: invalid option; use --help to show usage" 1>&2; exit 1; }
     ;;
