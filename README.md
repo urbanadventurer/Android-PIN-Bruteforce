@@ -157,11 +157,11 @@ If you receive this message when the USB cable is plugged in then try taking the
 
 This works from an Android phone because the USB ports are not bidirectional, unlike the ports on a laptop.
 
-Keys are sent using `/system/xbin/hid-keyboard`.
-To test this and send the key 1 you can use `echo 1 | /system/xbin/hid-keyboard dev/hidg0 keyboard`
+Keys are sent using `/system/xbin/hid-keyboard`. To test this and send the key 1 you can use `echo 1 | /system/xbin/hid-keyboard dev/hidg0 keyboard`
 
 Before each PIN, we send the escape and enter keys. This is to keep the Android responsive and dismiss any popups about the number of incorrect PIN attempts or a low battery warning.
 
+In Kali Nethunter, `/system/xbin/hid-keyboard` is a compiled copy of `hid_gadget_test.c`. This is a small program for testing the HID gadget driver that is included in the Linux Kernel. The source code for this file can be found at https://www.kernel.org/doc/html/latest/usb/gadget_hid.html.
 
 ## 🙋 Contributing
 
@@ -268,7 +268,6 @@ Use the USB HID Keyboard Bruteforce with some dedicated hardware.
 - Or you can use this with your NetHunter phone!
 
 Attempts to use an otherwise awesome project Duck Hunter, to emulate a RubberDucky payload for Android PIN cracking did not work. It crashed the phone probably because of the payload length.
-
 
 ## 📚 Related Projects & Futher Reading
 
