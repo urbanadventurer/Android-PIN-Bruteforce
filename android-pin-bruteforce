@@ -110,8 +110,6 @@ function prog() {
 
 
 function diagnostic_info() {
-  show_configuration
-
   log_info "# Diagnostic info"
 
   if [ -e $KEYBOARD_DEVICE ]; then
