@@ -178,7 +178,7 @@ Keys are sent using `/system/xbin/hid-keyboard`. To test this and send the key 1
 
 Before each PIN, we send the escape and enter keys. This is to keep the Android responsive and dismiss any popups about the number of incorrect PIN attempts or a low battery warning.
 
-In Kali Nethunter, `/system/xbin/hid-keyboard` is a compiled copy of `hid_gadget_test.c`. This is a small program for testing the HID gadget driver that is included in the Linux Kernel. The source code for this file can be found at https://www.kernel.org/doc/html/latest/usb/gadget_hid.html.
+In Kali Nethunter, `/system/xbin/hid-keyboard` is a compiled copy of `hid_gadget_test.c`. This is a small program for testing the HID gadget driver that is included in the Linux Kernel. The source code for this file can be found at https://www.kernel.org/doc/html/latest/usb/gadget_hid.html and https://github.com/aagallag/hid_gadget_test.
 
 The diagnostics command uses the `usb-devices` script but it is only necessary as part of determining whether the USB cables are incorrectly connected. This can be downloaded from
 https://github.com/gregkh/usbutils/blob/master/usb-devices
