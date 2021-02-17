@@ -169,7 +169,7 @@ function diagnostic_info() {
 
   log_info "Executing Command: dmesg | grep -i usb | tail"
   dmesg | grep -i usb | tail
-  echo  
+  echo
 
   log_info "Troubleshooting tips"
   echo "- Check the NetHunter phone is succesfully emulating a keyboard by connecting it to a computer with a regular charging/data USB cable. Open a text editor like Notepad and you should see it sending PINs. Note that you do not need an OTG cable for this."
@@ -180,21 +180,6 @@ function diagnostic_info() {
 
   echo
   exit
-}
-
-# if your cables are correctly oriented then this should not discover a device
-function discover_device() {
- if [ $DRY_RUN -eq 0 ]; then
-    # accepts any USB device manufacturer except Linux
-    devices=$(usb-devices | egrep -C 5 "Manufacturer=[^L][^i][^n][^u][^x]" \
- | egrep "Vendor|Manufacturer|Product|SerialNumber" | cut -c 5- )
- else
-    devices="Manufacturer: Dry-run Dummy Android Device"
- fi
-
- if [ -n "$devices" ]; then
-   log_pass "Device identified: $devices"
- fi
 }
 
 # Show configuration
@@ -298,12 +283,6 @@ function check_environment(){
   else
     log_fail "hid-keyboard executable ($HID_KEYBOARD) not found"
     abort  
-  fi
-
-  if [ -f $USB_DEVICES ]; then
-    log_pass "usb-devices executable ($USB_DEVICES) found" 
-  else
-    log_fail "usb-devices executable ($USB_DEVICES) not found."  
   fi
 }
 
@@ -459,10 +438,6 @@ fi
 # Check Environment
 log_info "Checking environment"
 check_environment
-
-# Find Android phone over USB cable
-log_info "Identifying Android Phone"
-discover_device
 
 send_enter
 sleep 1
