@@ -159,6 +159,10 @@ If you receive this message when the USB cable is plugged in then try taking the
 
 ```[FAIL] HID USB device not ready. Return code from /system/xbin/hid-keyboard was 5.```
 
+### Use verbose output
+
+Use the `--verbose` option to check the configuration is as expected.
+
 ### Other
 
 Try this command in a shell on the NetHunter phone:
