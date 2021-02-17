@@ -155,7 +155,9 @@ PROMPT_BEFORE_EACH_PIN="escape space"
 
 ## 🔧 Troubleshooting
 
-### Check the orientation of the cables
+### If it is not bruteforcing PINs
+
+#### Check the orientation of the cables
 
 The Nethunter phone should have a regular USB cable attached, while the locked phone should have an OTG adaptor attached.
 
@@ -163,19 +165,28 @@ The OTG cable should be connected to the locked Android phone. The regular USB c
 
 Refer to the graphic on how to connect the phones.
 
-### Check it is emulating a keyboard
+#### Check it is emulating a keyboard
 
 You can verify that the NetHunter phone is succesfully emulating a keyboard by connecting it to a computer using a regular charging/data USB cable. Open a text editor like Notepad while it is cracking and you should see it entering PIN numbers into the text editor.
 
 Note that you will not need an OTG cable for this. 
 
-### Try restarting the phones
+#### Try restarting the phones
 
 Try powering off the phones and even taking out the batteries if that is possible.
 
-### Try new cables
+#### Try new cables
 
 - Try using new cables/adaptors as you may have a faulty cable/adaptor.
+
+### If it doesn't unlock the phone with a correct PIN
+
+You might be sending keys too fast for the phone to process. Increase the DELAY_BETWEEN_KEYS variable in the config file.
+💡 If you don't see 4 dots come up on the phone's screen then maybe it is not receiving 4 keys.
+
+### 🔋 If your phone runs out of power too soon
+
+Try using a USB OTG cable that has an external power supply. This will charge the phone's battery while it operates.
 
 ### Diagnostics
 
@@ -202,7 +213,7 @@ Try this command in a shell on the NetHunter phone:
 ## 💣 Known Issues
 
 - This cannot detect when the correct PIN is guessed and the phone unlocks.
-- Your phones may run out of battery before the correct PIN is found.
+- Your phones may run out of 🔋 battery before the correct PIN is found.
 
 ## 🛰 Technical Details
 
@@ -315,8 +326,8 @@ In order of difficulty and expense:
 - Clock Glitching / Voltage Fault Injection (Hardware CPU timing attacks to bypass PIN restrictions)
 - Bootloader exploits (Zero-day exploits that attack the bootloader. GrayKey from Grayshift and Cellebrite)
 
-Note that JTAG, ISP, and Chip Off techniques are usually not useful to gain access to encrypted devices.
-Please contact me if you know of any practical attacks on phone PINs using Clock Gitching.
+JTAG, ISP, and Chip Off techniques are less useful now because most devices are encrypted.
+I don't know of any practical attacks on phone PINs that use clock glitching, if you know of a product that uses this technique please let me know so I can include it.
 
 ### 🕵 Security Professionals and Technical Phone Users
 
