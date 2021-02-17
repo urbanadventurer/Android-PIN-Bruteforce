@@ -184,15 +184,31 @@ function diagnostic_info() {
 
 # Show configuration
 function show_configuration() {
+  log_conf "# PINs"
   log_conf "PIN list: $PIN_LIST"
-  log_conf "Delay between keystrokes: $DELAY_BETWEEN_KEYS"
-  log_conf "HID Keyboard device: $KEYBOARD_DEVICE"
-  log_conf "Log file: $LOG"
   log_conf "Mask: $MASK"
   log_conf "Resume from: $RESUME_FROM_PIN"
   log_conf "PIN Type (PIN or Pattern): $PIN_TYPE"
   log_conf "PIN Length: $PIN_LENGTH"
-
+  log_conf "Direction (normal or rewind): $DIRECTION"
+  log_conf
+  log_conf "# Timing:"
+  log_conf "Delay between keys: $DELAY_BETWEEN_KEYS"
+  log_conf "Cooldown time: $COOLDOWN_TIME"
+  log_conf "Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
+  log_conf
+  log_conf "# Exiting"
+  log_conf "Exit after fail count: $EXIT_AFTER_FAIL_COUNT"
+  log_conf
+  log_conf "# File paths"
+  log_conf "Log file: $LOG"
+  log_conf "HID Keyboard device: $KEYBOARD_DEVICE"
+  log_conf "Path to hid-keyboard: $HID_KEYBOARD"
+  log_conf "Path to usb-devices: $USB_DEVICES"
+  log_conf
+  log_conf "# Configuration"
+  log_conf "Dry Run: $DRY_RUN"
+  log_conf "Verbose: $VERBOSE"
 }
 
 function abort() {
