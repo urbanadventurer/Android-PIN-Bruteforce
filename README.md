@@ -117,11 +117,13 @@ You can customise the timing and prompt keys to bring up the unlock scren by set
 This is the default configuration. It sends 5 PINs before waiting for a cooldown timeout of 30 seconds.
 Before each PIN is sent it sends a prompt of the ESCAPE and ENTER keys to bring up the unlock screen.
 
+```
 DELAY_BETWEEN_KEYS=0.1
 COOLDOWN_TIME=30
 COOLDOWN_AFTER_N_ATTEMPTS=5
 CHANGE_AFTER_10_ATTEMPTS=0
 PROMPT_BEFORE_EACH_PIN="escape enter"
+```
 
 ### Configuration for Android 10
 
@@ -129,12 +131,13 @@ This configuration sends a lockscreen prompt of escape and space before each PIN
 It has a 30 second cooldown after each attempt.
 After 10 attempts, the cooldown will occur after each PIN attempt.
 
+```
 DELAY_BETWEEN_KEYS=0.1
 COOLDOWN_TIME=30
 COOLDOWN_AFTER_N_ATTEMPTS=5
 CHANGE_AFTER_10_ATTEMPTS=1
 PROMPT_BEFORE_EACH_PIN="escape space"
-
+```
 
 ## 🚀 Roadmap
 
@@ -144,6 +147,8 @@ PROMPT_BEFORE_EACH_PIN="escape space"
 - [DONE] Add bruteforce for n digit PINs
 - [DONE] Mask for known digits
 - [DONE] Crack PIN list in reverse (to find which recent PIN unlocked the device)
+- [DONE] Implement configurable lockscreen prompt
+- [DONE] Implement cooldown change after 10 attempts
 - Add progress bar
 - Add ETA
 - ASCII art
