@@ -271,13 +271,13 @@ If the phone already has been rooted, has USB debugging enabled, or has adb enab
 
 These methods can be expensive and are usually only used by specialised phone forensic investigators.
 
-Note that the Cellebrite and XPIN Clip can also use the USB HID Keyboard Bruteforce method.
-
-- Physical Extraction using Cellebrite UFED
-- XPIN Clip
-- Oxygen Forensic Suite (Requires USB debugging enabled)
-- JTAG extraction
-- Chip Off
+In order of difficulty and expense:
+- Taking advanced of USB debugging enabled (Oxygen Forensic Suite)
+- Bruteforce with keyboard emulation (Android-PIN-Bruteforce, RubberDucky attack, XPIN Clip, HBbox)
+- JTAG (Interface with test access ports on the device)
+- Chip Off (Desolder and remove flash memory chips from the device)
+- Clock Glitching / Voltage Fault Injection (Hardware CPU timing attacks to bypass PIN restrictions)
+- Bootloader exploits (GrayKey from Grayshift and Cellebrite)
 
 ### 🕵 Security Professionals and Technical Phone Users
 
@@ -286,7 +286,7 @@ Use the USB HID Keyboard Bruteforce with some dedicated hardware.
 - A RubberDucky and Darren Kitchen's Hak5 brute-force script
 - Write a script for a USB Teensy
 - Buy expensive forensic hardware
-- Or you can use this with your NetHunter phone!
+- Or you can use Android-PIN-Bruteforce with your NetHunter phone!
 
 Attempts to use an otherwise awesome project Duck Hunter, to emulate a RubberDucky payload for Android PIN cracking did not work. It crashed the phone probably because of the payload length.
 
