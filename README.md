@@ -260,7 +260,7 @@ There are links to each of these projects in the 📚 Related Projects & Futher 
 
 ### 🤖 Users who have already replaced their Android ROM
 
-If the phone already has been rooted, has USB debugging enabled, or has adb enabled.
+If the phone has already been rooted, has USB debugging enabled, or has adb enabled.
 
 - Flash the `Pattern Password Disable` ZIP using a custom recovery (Requires TWRP, CMW, Xrec, etc.)
 - Delete `/data/system/gesture.key` or `password.key` (requires root and adb on locked device)
