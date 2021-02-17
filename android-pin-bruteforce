@@ -281,11 +281,10 @@ function check_environment(){
   if [ -f $HID_KEYBOARD ]; then
     log_pass "hid-keyboard executable ($HID_KEYBOARD) found" 
   else
-    log_fail "hid-keyboard executable ($HID_KEYBOARD) not found"
-    abort  
+    log_fail "hid-keyboard executable ($HID_KEYBOARD) not found. Hint: You can configure an alternative location for this file with the HID_KEYBOARD variable in the config file."
+    abort
   fi
 }
-
 
 
 # Commandline option handling inspired by ./configure
