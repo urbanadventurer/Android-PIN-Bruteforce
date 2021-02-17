@@ -167,7 +167,8 @@ Try this command in a shell on the NetHunter phone:
 
 ## 💣 Known Issues
 
-- This cannot detect when it unlocks
+- This cannot detect when the correct PIN is guessed and the phone unlocks.
+- Your phones may run out of battery before the correct PIN is found.
 
 ## 🛰 Technical Details
 
