@@ -256,7 +256,7 @@ There are links to each of these projects in the 📚 Related Projects & Futher 
 - Use Samsung Find My Mobile (requires you set it up before phone is locked)
 - Crash the Lock Screen UI (Android 5.0 and 5.1)
 - Use the Google Forgot pattern, Forgot PIN, or Forgot password (Android 4.4 KitKat and earlier)
-- Factory Reset (you lose all your data)
+- Factory Reset (you lose all your data 😭)
 
 ### 🤖 Users who have already replaced their Android ROM
 
@@ -272,12 +272,17 @@ If the phone already has been rooted, has USB debugging enabled, or has adb enab
 These methods can be expensive and are usually only used by specialised phone forensic investigators.
 
 In order of difficulty and expense:
-- Taking advanced of USB debugging enabled (Oxygen Forensic Suite)
-- Bruteforce with keyboard emulation (Android-PIN-Bruteforce, RubberDucky attack, XPIN Clip, HBbox)
-- JTAG (Interface with test access ports on the device)
+
+- Taking advantage of USB debugging being enabled (Oxygen Forensic Suite)
+- Bruteforce with keyboard emulation (⭐ Android-PIN-Bruteforce, RubberDucky attack, XPIN Clip, HBbox)
+- JTAG (Interface with TAPs (Test Access Ports) on the device board)
+- In-System Programming (ISP) (Involves directly connecting to pins on flash memory chips on the device board)
 - Chip Off (Desolder and remove flash memory chips from the device)
 - Clock Glitching / Voltage Fault Injection (Hardware CPU timing attacks to bypass PIN restrictions)
-- Bootloader exploits (GrayKey from Grayshift and Cellebrite)
+- Bootloader exploits (Zero-day exploits that attack the bootloader. GrayKey from Grayshift and Cellebrite)
+
+Note that JTAG, ISP, and Chip Off techniques are usually not useful to gain access to encrypted devices.
+Please contact me if you know of any practical attacks on phone PINs using Clock Gitching.
 
 ### 🕵 Security Professionals and Technical Phone Users
 
