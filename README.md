@@ -330,8 +330,12 @@ https://www.kali.org/docs/nethunter/nethunter-hid-attacks/
 Human Interface Devices (HID)
 https://www.kernel.org/doc/html/latest/hid/index.html#
 
-Linux USB HID gadget driver
+Linux USB HID gadget driver and hid-keyboard program
 https://www.kernel.org/doc/html/latest/usb/gadget_hid.html
+https://github.com/aagallag/hid_gadget_test
+
+The usb-devices script
+https://github.com/gregkh/usbutils/blob/master/usb-devices
 
 ### Cracking Android PIN and Pattern files
 
@@ -362,6 +366,9 @@ https://hdb-team.com/product/hdbox/
 
 Cellebrite UFED
 https://www.cellebrite.com/en/ufed/
+
+GrayKey from Grayshift
+https://www.grayshift.com/graykey/
 
 ### PIN Analysis
 
