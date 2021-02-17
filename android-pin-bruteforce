@@ -229,10 +229,22 @@ function send_esc() {
   send_key esc
 }
 
-function send_key(){
+function send_prompt() {
+  prompt="$1"
 
+  for key in $prompt; do
+    if [ $key == "ctrl-escape" ]; then
+      send_key "left-ctrl escape"
+    else
+      send_key $key
+    fi
+  done
+}
+
+
+function send_key(){
   if [ $DRY_RUN -eq 0 ]; then
-    echo $1 | $HID_KEYBOARD $KEYBOARD_DEVICE keyboard 2>/dev/null
+    echo "$1" | $HID_KEYBOARD $KEYBOARD_DEVICE keyboard 2>/dev/null
     RET=$?
     sleep $DELAY_BETWEEN_KEYS
   else
@@ -470,10 +482,9 @@ do
   ((count++))
   pin=${pinlist[position]}
 
-  # hit escape and enter before every PIN attempted
-  send_esc
-  send_enter
-
+  # send prompt keys,e.g. escape and enter before every PIN attempted
+  send_prompt "$PROMPT_BEFORE_EACH_PIN"
+ 
   # if we got an error from sending the key, check the phone connection
   if [ $RET -gt 0 ]; then
     monitor_phone_connection
