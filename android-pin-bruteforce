@@ -110,7 +110,9 @@ function prog() {
 
 
 function diagnostic_info() {
-  log_info "Diagnostic info"
+  show_configuration
+
+  log_info "# Diagnostic info"
 
   if [ -e $KEYBOARD_DEVICE ]; then
     log_pass "HID device ($KEYBOARD_DEVICE) found"
@@ -133,7 +135,7 @@ function diagnostic_info() {
     log_fail "usb-devices executable ($USB_DEVICES) not found"  
   fi
 
-  log_info "Executing Command: $USB_DEVICES"
+  log_info "## Executing Command: $USB_DEVICES"
   $USB_DEVICES
   RET=$?
   if [ $RET -eq 0 ]; then
@@ -142,7 +144,7 @@ function diagnostic_info() {
     log_fail "usb-devices script failed. Return code $RET."
   fi
 
-  log_info "Finding Android Phone USB Device"
+  log_info "## Finding Android Phone USB Device"
   devices=$($USB_DEVICES | egrep -C 5 "Manufacturer=[^L][^i][^n][^u][^x]" \
  | egrep "Vendor|Manufacturer|Product|SerialNumber" | cut -c 5- )
   
@@ -152,7 +154,7 @@ function diagnostic_info() {
     log_info "Expected result, no device found."
   fi
 
-  log_info "Sending Enter Key"
+  log_info "## Sending Enter Key"
   echo enter | $HID_KEYBOARD $KEYBOARD_DEVICE keyboard
   RET=$?
 
@@ -162,16 +164,16 @@ function diagnostic_info() {
     log_fail "Key failed to send. Return code $RET."
   fi
 
-  log_info "Executing Command: /system/bin/getprop |grep usb"
+  log_info "## Executing Command: /system/bin/getprop |grep usb"
   /system/bin/getprop |grep usb
   RET=$?
   echo  
 
-  log_info "Executing Command: dmesg | grep -i usb | tail"
+  log_info "## Executing Command: dmesg | grep -i usb | tail"
   dmesg | grep -i usb | tail
   echo
 
-  log_info "Troubleshooting tips"
+  log_info "# Troubleshooting tips"
   echo "- Check the NetHunter phone is succesfully emulating a keyboard by connecting it to a computer with a regular charging/data USB cable. Open a text editor like Notepad and you should see it sending PINs. Note that you do not need an OTG cable for this."
   echo "- Check the Nethunter phone has a regular USB cable attached, and the locked phone has an OTG adaptor attached."
   echo "- Try using different cables/adaptors. You may have a faulty cable/adaptor."
@@ -184,7 +186,8 @@ function diagnostic_info() {
 
 # Show configuration
 function show_configuration() {
-  log_conf "# PINs"
+  log_info "# Current Configuration"
+  log_conf "## PINs"
   log_conf "PIN list: $PIN_LIST"
   log_conf "Mask: $MASK"
   log_conf "Resume from: $RESUME_FROM_PIN"
@@ -192,21 +195,21 @@ function show_configuration() {
   log_conf "PIN Length: $PIN_LENGTH"
   log_conf "Direction (normal or rewind): $DIRECTION"
   log_conf
-  log_conf "# Timing:"
+  log_conf "## Timing:"
   log_conf "Delay between keys: $DELAY_BETWEEN_KEYS"
   log_conf "Cooldown time: $COOLDOWN_TIME"
   log_conf "Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
   log_conf
-  log_conf "# Exiting"
+  log_conf "## Exiting"
   log_conf "Exit after fail count: $EXIT_AFTER_FAIL_COUNT"
   log_conf
-  log_conf "# File paths"
+  log_conf "## File paths"
   log_conf "Log file: $LOG"
   log_conf "HID Keyboard device: $KEYBOARD_DEVICE"
   log_conf "Path to hid-keyboard: $HID_KEYBOARD"
   log_conf "Path to usb-devices: $USB_DEVICES"
   log_conf
-  log_conf "# Configuration"
+  log_conf "## Configuration"
   log_conf "Dry Run: $DRY_RUN"
   log_conf "Verbose: $VERBOSE"
 }
@@ -446,7 +449,6 @@ if [[ $DRY_RUN -eq 1 ]]; then
 fi
 
 if [[ $VERBOSE > 0 ]]; then
-  log_info "Current Configuration"
   show_configuration
 fi
 
