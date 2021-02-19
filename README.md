@@ -182,7 +182,7 @@ Try powering off the phones and even taking out the batteries if that is possibl
 
 #### Try new cables
 
-- Try using new cables/adaptors as you may have a faulty cable/adaptor.
+Try using new cables/adaptors as you may have a faulty cable/adaptor.
 
 ### If it doesn't unlock the phone with a correct PIN
 
@@ -193,13 +193,12 @@ You might be sending keys too fast for the phone to process. Increase the DELAY_
 
 Try using a USB OTG cable that has an external power supply. This will charge the phone's battery while it operates.
 
-### Diagnostics
+### Check the Diagnostics Report
 
-Use the diagnostic command.
+Use the command `diag` display diagnostic information.
 
 ```bash ./android-pin-bruteforce diag```
 
-Note that Nethunter USB HID support was inconsistent during testing and development. However after it starts working, it should continue working until you crack the PIN.
 
 If you receive this message when the USB cable is plugged in then try taking the battery out of the locked Android phone and power cycling it.
 
@@ -207,7 +206,7 @@ If you receive this message when the USB cable is plugged in then try taking the
 
 ### Use verbose output
 
-Use the `--verbose` option to check the configuration is as expected.
+Use the `--verbose` option to check the configuration is as expected. This is especially useful when you are modifying the configuration.
 
 ### Other
 
