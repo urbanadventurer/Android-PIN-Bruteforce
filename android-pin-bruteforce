@@ -197,6 +197,8 @@ function show_configuration() {
   log_conf "Delay between keys: $DELAY_BETWEEN_KEYS"
   log_conf "Cooldown time: $COOLDOWN_TIME"
   log_conf "Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
+  log_conf "Prompt to bring up the lock screen: $PROMPT_BEFORE_EACH_PIN"
+  
   log_conf
   log_conf "## Exiting"
   log_conf "Exit after fail count: $EXIT_AFTER_FAIL_COUNT"
