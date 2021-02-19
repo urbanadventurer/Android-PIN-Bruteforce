@@ -235,7 +235,7 @@ function send_prompt() {
   prompt="$1"
 
   for key in $prompt; do
-    if [ $key == "ctrl-escape" ]; then
+    if [ $key == "ctrl_escape" ] || [ $key == "ctrl-escape" ] ; then
       send_key "left-ctrl escape"
     else
       send_key $key
