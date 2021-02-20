@@ -35,6 +35,7 @@ COOLDOWN_TIME_AFTER_EACH_PIN=0
 # PROMPT_BEFORE_EACH_PIN="ctrl_escape enter"
 # PROMPT_BEFORE_EACH_PIN="escape space"
 PROMPT_BEFORE_EACH_PIN="escape enter"
+PROMPT_STAY_AWAKE_DURING_COOLDOWN="enter"
 
 # Resume
 ## RESUME_FROM_PIN sets the PIN that you resume cracking from.
