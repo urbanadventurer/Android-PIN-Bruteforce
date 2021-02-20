@@ -1,10 +1,8 @@
 # Android-PIN-Bruteforce
-# ! This is the default config file so you can restore your configuration after changing the config file
 
-## This configuration file defines the default configuration values.
-## These values can be overriden by using commandline options.
-
-# Defaults
+# Configuration files
+## config           This file defines the default configuration values. These values can be overriden by using commandline options.
+## config.default   This file is a copy of the default config. Copy this over the config file to restore the defaults.
 
 ## PIN_TYPE can be set to PATTERN or PIN.
 ## This is equivalent to -t, --type TYPE commandline options
@@ -26,6 +24,9 @@ COOLDOWN_AFTER_N_ATTEMPTS=5
 
 ## CHANGE_AFTER_10_ATTEMPTS can be set to 1 for enabled or 0 disabled. When enabled, after 10 attempts it changes the COOLDOWN_AFTER_N_ATTEMPTS to 1.
 CHANGE_AFTER_10_ATTEMPTS=0
+
+## COOLDOWN_TIME_AFTER_EACH_PIN is the period of time in seconds to wait after every PIN attempt in seconds. It is disabled if set to 0.
+COOLDOWN_TIME_AFTER_EACH_PIN=0
 
 ## PROMPT_BEFORE_EACH_PIN configures the keys that are sent to prompt the lock screen to appear. This is sent before each PIN.
 ## By default it sends "escape enter", but some phones will respond to other keys.
