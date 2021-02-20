@@ -231,7 +231,7 @@ function send_esc() {
   send_key esc
 }
 
-function send_prompt() {
+function send_keys() {
   prompt="$1"
 
   for key in $prompt; do
@@ -485,7 +485,7 @@ do
   pin=${pinlist[position]}
 
   # send prompt keys,e.g. escape and enter before every PIN attempted
-  send_prompt "$PROMPT_BEFORE_EACH_PIN"
+  send_keys "$PROMPT_BEFORE_EACH_PIN"
  
   # if we got an error from sending the key, check the phone connection
   if [ $RET -gt 0 ]; then
