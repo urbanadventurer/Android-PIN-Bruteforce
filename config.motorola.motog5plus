@@ -17,13 +17,13 @@ PIN_LENGTH=4
 DELAY_BETWEEN_KEYS=0.25
 
 ## COOLDOWN_TIME is the period of time in seconds to wait after N attempts is reached, by default after 5 attempts it pauses for 30 seconds
-COOLDOWN_TIME=30
+COOLDOWN_TIME=35
 
 ## COOLDOWN_AFTER_N_ATTEMPTS is how many attemps to make before waiting for the COOLDOWN_TIME 
 COOLDOWN_AFTER_N_ATTEMPTS=5
 
 ## CHANGE_AFTER_10_ATTEMPTS can be set to 1 for enabled or 0 disabled. When enabled, after 10 attempts it changes the COOLDOWN_AFTER_N_ATTEMPTS to 1.
-CHANGE_AFTER_10_ATTEMPTS=0
+CHANGE_AFTER_10_ATTEMPTS=1
 
 ## COOLDOWN_TIME_AFTER_EACH_PIN is the period of time in seconds to wait after every PIN attempt in seconds. It is disabled if set to 0.
 COOLDOWN_TIME_AFTER_EACH_PIN=0
@@ -32,15 +32,15 @@ COOLDOWN_TIME_AFTER_EACH_PIN=0
 ## By default it sends "escape enter", but some phones will respond to other keys.
 
 # Examples:
-# KEYS_BEFORE_EACH_PIN="ctrl_escape enter"
+KEYS_BEFORE_EACH_PIN="ctrl_escape enter"
 # KEYS_BEFORE_EACH_PIN="escape space"
-KEYS_BEFORE_EACH_PIN="escape enter"
+# KEYS_BEFORE_EACH_PIN="escape enter"
 KEYS_STAY_AWAKE_DURING_COOLDOWN="enter"
 
 ## DELAY_BEFORE_STARTING is the period of time in seconds to wait before the bruteforce begins
 DELAY_BEFORE_STARTING=2
 ## KEYS_BEFORE_STARTING configures the keys that are sent before the bruteforce begins
-KEYS_BEFORE_STARTING="enter"
+KEYS_BEFORE_STARTING="ctrl_escape"
 
 # Resume
 ## RESUME_FROM_PIN sets the PIN that you resume cracking from.
