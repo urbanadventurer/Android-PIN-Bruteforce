@@ -105,40 +105,6 @@ Masks use regular expressions with the standard grep extended format.
 - To try PINs that have a 1 in the first digit, and a 1 in the last digit, use a mask of `1..1`
 - To try PINs that end in 4 or 5, use `...[45]`
 
-
-## Different Lock Screens
-
-Device manufacturers create their own lock screens that are different to the default or stock Android.
-
-You can customise the timing and prompt keys to bring up the unlock scren by setting variables in the config file.
-
-### Default configuration for Android 6.0
-
-This is the default configuration. It sends 5 PINs before waiting for a cooldown timeout of 30 seconds.
-Before each PIN is sent it sends a prompt of the ESCAPE and ENTER keys to bring up the unlock screen.
-
-```
-DELAY_BETWEEN_KEYS=0.1
-COOLDOWN_TIME=30
-COOLDOWN_AFTER_N_ATTEMPTS=5
-CHANGE_AFTER_10_ATTEMPTS=0
-PROMPT_BEFORE_EACH_PIN="escape enter"
-```
-
-### Configuration for Android 10
-
-This configuration sends a lockscreen prompt of escape and space before each PIN is sent.
-It has a 30 second cooldown after each attempt.
-After 10 attempts, the cooldown will occur after each PIN attempt.
-
-```
-DELAY_BETWEEN_KEYS=0.1
-COOLDOWN_TIME=30
-COOLDOWN_AFTER_N_ATTEMPTS=5
-CHANGE_AFTER_10_ATTEMPTS=1
-PROMPT_BEFORE_EACH_PIN="escape space"
-```
-
 ## 🚀 Roadmap
 
 - [DONE] Works
@@ -219,19 +185,40 @@ Try this command in a shell on the NetHunter phone:
 - This cannot detect when the correct PIN is guessed and the phone unlocks.
 - Your phones may run out of 🔋 battery before the correct PIN is found.
 
-## 🛰 Technical Details
 
-This works from an Android phone because the USB ports are not bidirectional, unlike the ports on a laptop.
+## Supporting different phones
 
-Keys are sent using `/system/xbin/hid-keyboard`. To test this and send the key 1 you can use `echo 1 | /system/xbin/hid-keyboard dev/hidg0 keyboard`
+Device manufacturers create their own lock screens that are different to the default or stock Android. 
+To find out what keys your phone needs, plug a keyboard into the phone and try out different combinations.
 
-Before each PIN, we send the escape and enter keys. This is to keep the Android responsive and dismiss any popups about the number of incorrect PIN attempts or a low battery warning.
+You can customise the timing and prompt keys to bring up the unlock scren by setting variables in the config file.
 
-In Kali Nethunter, `/system/xbin/hid-keyboard` is a compiled copy of `hid_gadget_test.c`. This is a small program for testing the HID gadget driver that is included in the Linux Kernel. The source code for this file can be found at https://www.kernel.org/doc/html/latest/usb/gadget_hid.html and https://github.com/aagallag/hid_gadget_test.
+### Default configuration for Android 6.0
 
-The diagnostics command uses the `usb-devices` script but it is only necessary as part of determining whether the USB cables are incorrectly connected. This can be downloaded from
-https://github.com/gregkh/usbutils/blob/master/usb-devices
+This is the default configuration. It sends 5 PINs before waiting for a cooldown timeout of 30 seconds.
+Before each PIN is sent it sends a prompt of the ESCAPE and ENTER keys to bring up the unlock screen.
 
+```
+DELAY_BETWEEN_KEYS=0.1
+COOLDOWN_TIME=30
+COOLDOWN_AFTER_N_ATTEMPTS=5
+CHANGE_AFTER_10_ATTEMPTS=0
+PROMPT_BEFORE_EACH_PIN="escape enter"
+```
+
+### Configuration for Android 10
+
+This configuration sends a lockscreen prompt of escape and space before each PIN is sent.
+It has a 30 second cooldown after each attempt.
+After 10 attempts, the cooldown will occur after each PIN attempt.
+
+```
+DELAY_BETWEEN_KEYS=0.1
+COOLDOWN_TIME=30
+COOLDOWN_AFTER_N_ATTEMPTS=5
+CHANGE_AFTER_10_ATTEMPTS=1
+PROMPT_BEFORE_EACH_PIN="escape space"
+```
 
 ### How to send special keys
 
@@ -281,6 +268,19 @@ To send combinations of keys use the following list:
 - ctrl_escape
 
 If you need more key combinations please open a new issue in the GitHub issues list.
+
+## 🛰 Technical Details
+
+This works from an Android phone because the USB ports are not bidirectional, unlike the ports on a laptop.
+
+Keys are sent using `/system/xbin/hid-keyboard`. To test this and send the key 1 you can use `echo 1 | /system/xbin/hid-keyboard dev/hidg0 keyboard`
+
+Before each PIN, we send the escape and enter keys. This is to keep the Android responsive and dismiss any popups about the number of incorrect PIN attempts or a low battery warning.
+
+In Kali Nethunter, `/system/xbin/hid-keyboard` is a compiled copy of `hid_gadget_test.c`. This is a small program for testing the HID gadget driver that is included in the Linux Kernel. The source code for this file can be found at https://www.kernel.org/doc/html/latest/usb/gadget_hid.html and https://github.com/aagallag/hid_gadget_test.
+
+The diagnostics command uses the `usb-devices` script but it is only necessary as part of determining whether the USB cables are incorrectly connected. This can be downloaded from
+https://github.com/gregkh/usbutils/blob/master/usb-devices
 
 ## 🙋 Contributing
 
