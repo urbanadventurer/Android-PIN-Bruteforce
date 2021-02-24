@@ -44,7 +44,7 @@ Options:
   -m, --mask REGEX\tUse a mask for known digits in the PIN
   -t, --type TYPE\tSelect PIN or PATTERN cracking
   -l, --length NUM\tCrack PINs of NUM length
-  -c, --config FILE\t\tSpecify configuration file to load
+  -c, --config FILE\tSpecify configuration file to load
   -d, --dry-run\t\tDry run for testing. Doesn't send any keys.
   -v, --verbose\t\tOutput verbose logs.
 
