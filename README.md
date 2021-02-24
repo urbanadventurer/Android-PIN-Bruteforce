@@ -81,9 +81,12 @@ Usage:
 
 ## Supported Android Phones/Devices
 
-It has been tested with these devices:
-- Samsung S5 with Android 6.0.1
+This has been tested with Samsung phones including the S5, S7, S7 Edge, S8, J7, A5, A50 and the LG Nexus 5.
 
+It can unlock Android versions 6.0.1 through to 10.0, however it depends on device manufacturer's lockscreen.
+
+Check the Phone Database for more details
+https://github.com/urbanadventurer/Android-PIN-Bruteforce/wiki/Phone-Database
 
 ## 🎳 PIN Lists
 
