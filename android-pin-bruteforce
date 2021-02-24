@@ -468,12 +468,8 @@ fi
 log_info "Checking environment"
 check_environment
 
-send_enter
-sleep 1
-send_enter
-sleep 1
-
-
+send_keys "$KEYS_BEFORE_STARTING"
+sleep $DELAY_BEFORE_STARTING
 
 load_pinlist $PIN_LENGTH
 position=$resume_from_index

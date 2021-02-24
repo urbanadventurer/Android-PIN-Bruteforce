@@ -37,6 +37,11 @@ COOLDOWN_TIME_AFTER_EACH_PIN=0
 PROMPT_BEFORE_EACH_PIN="escape enter"
 PROMPT_STAY_AWAKE_DURING_COOLDOWN="enter"
 
+## DELAY_BEFORE_STARTING is the period of time in seconds to wait before the bruteforce begins
+DELAY_BEFORE_STARTING=2
+## KEYS_BEFORE_STARTING configures the keys that are sent before the bruteforce begins
+KEYS_BEFORE_STARTING="enter"
+
 # Resume
 ## RESUME_FROM_PIN sets the PIN that you resume cracking from.
 ## This is equivalent to setting the -f, --from PIN commandline option
