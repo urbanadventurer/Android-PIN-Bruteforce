@@ -191,7 +191,7 @@ Try this command in a shell on the NetHunter phone:
 Device manufacturers create their own lock screens that are different to the default or stock Android. 
 To find out what keys your phone needs, plug a keyboard into the phone and try out different combinations.
 
-You can customise the timing and prompt keys to bring up the unlock scren by setting variables in the config file.
+Edit the `config` file to support different phones by customising the timing and prompt keys to bring up the unlock screen.
 
 ### Default configuration for Android 6.0
 
