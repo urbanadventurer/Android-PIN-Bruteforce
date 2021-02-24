@@ -14,7 +14,7 @@ It uses a USB OTG cable to connect the locked phone to the Nethunter device. It 
 
 The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID). This enables an Android Nethunter device to emulate keyboard input to the locked phone. It's just like plugging a keyboard into the locked phone and pressing keys.
 
-⏱ This takes a bit over 16.6 hours to try all possible 4 digit PINs, but with the optimised PIN list it should take you much less time.
+⏱ This takes just over 16.6 hours to try all possible 4 digit PINs, but with the optimised PIN list it should take you much less time.
 
 ### 📱 ⛓ 📲 You will need
 
