@@ -233,6 +233,55 @@ The diagnostics command uses the `usb-devices` script but it is only necessary a
 https://github.com/gregkh/usbutils/blob/master/usb-devices
 
 
+### How to send special keys
+
+To send special keys use the following labels. This list is from the hid_gadget_test source code.
+
+- left-ctrl
+- right-ctrl
+- left-shift
+- right-shift
+- left-alt
+- right-alt
+- left-meta
+- right-meta
+- return
+- esc
+- bckspc
+- tab
+- spacebar
+- caps-lock
+- f1
+- f2
+- f3
+- f4
+- f5
+- f6
+- f7
+- f8
+- f9
+- f10
+- f11
+- f12
+- insert
+- home
+- pageup
+- del
+- end
+- pagedown
+- right
+- left
+- down
+- kp-enter
+- up
+- num-lock
+
+To send combinations of keys use the following list:
+
+- ctrl_escape
+
+If you need more key combinations please open a new issue in the GitHub issues list.
+
 ## 🙋 Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
