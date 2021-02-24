@@ -14,7 +14,7 @@ PIN_LENGTH=4
 
 # Timing
 ## DELAY_BETWEEN_KEYS is the period of time in seconds to wait after each key is sent
-DELAY_BETWEEN_KEYS=0.1
+DELAY_BETWEEN_KEYS=0.25
 
 ## COOLDOWN_TIME is the period of time in seconds to wait after N attempts is reached, by default after 5 attempts it pauses for 30 seconds
 COOLDOWN_TIME=30
