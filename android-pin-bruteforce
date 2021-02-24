@@ -44,6 +44,7 @@ Options:
   -m, --mask REGEX\tUse a mask for known digits in the PIN
   -t, --type TYPE\tSelect PIN or PATTERN cracking
   -l, --length NUM\tCrack PINs of NUM length
+  -c, --config FILE\t\tSpecify configuration file to load
   -d, --dry-run\t\tDry run for testing. Doesn't send any keys.
   -v, --verbose\t\tOutput verbose logs.
 
@@ -185,6 +186,7 @@ function diagnostic_info() {
 # Show configuration
 function show_configuration() {
   log_info "# Current Configuration"
+  log_conf "Configuration file: $CONFIG_FILE"
   log_conf "## PINs"
   log_conf "PIN list: $PIN_LIST"
   log_conf "Mask: $MASK"
@@ -198,7 +200,6 @@ function show_configuration() {
   log_conf "Cooldown time: $COOLDOWN_TIME"
   log_conf "Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
   log_conf "Prompt to bring up the lock screen: $KEYS_BEFORE_EACH_PIN"
-  
   log_conf
   log_conf "## Exiting"
   log_conf "Exit after fail count: $EXIT_AFTER_FAIL_COUNT"
@@ -318,6 +319,12 @@ function check_environment(){
 }
 
 
+if [ -z "$1" ]; then
+  usage
+  exit 1
+fi
+echo "Android PIN brute-force :: version $VERSION" | tee -a $LOG
+
 # Commandline option handling inspired by ./configure
 
 ac_prev=
@@ -337,6 +344,21 @@ do
 
   case "$ac_option" in
 
+  -config | -c | --config)
+    ac_prev=config ;;
+
+  -config=* | -c=* | --config=*)
+    CONFIG_FILE="$ac_optarg"
+    # Validate CONFIG file
+    if [[ -f "$CONFIG_FILE" ]]; then
+      log_info "Loaded configuration file: $CONFIG_FILE"
+      source $CONFIG_FILE
+    else
+      log_fail "Unable to load configuration file: $CONFIG_FILE"
+      abort
+    fi    
+    ;;
+
   -from | -f | --from)
     ac_prev=from ;;
 
@@ -355,11 +377,11 @@ do
   -mask=* | -m=* | --mask=*)
     mask="$ac_optarg" ;;
 
-  -type=* | -t=* | --type=*)
-    type="$ac_optarg" ;;
-
   -type | -t | --type)
     ac_prev=type ;;
+
+  -type=* | -t=* | --type=*)
+    type="$ac_optarg" ;;
 
   -verbose | -v | --verbose)
     VERBOSE=1 ;;
@@ -420,6 +442,7 @@ if [[ -n "$length" ]]; then
   PIN_LENGTH=$length
 fi
 
+
 # Validation
 
 # Validate PIN TYPE 
@@ -447,14 +470,6 @@ if [[ "$ACTION" = "resume" ]] || [[ "$ACTION" = "rewind" ]] && [[ -z "$RESUME_FR
   log_fail "$ACTION requires that --from be set"
   exit 1
 fi
-
-if [ -z "$1" ]; then
-  usage
-  exit 1
-fi
-
-
-echo "Android PIN brute-force :: version $VERSION" | tee -a $LOG
 
 if [[ $DRY_RUN -eq 1 ]]; then
   log_info "Dry run enabled"
