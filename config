@@ -28,14 +28,14 @@ CHANGE_AFTER_10_ATTEMPTS=0
 ## COOLDOWN_TIME_AFTER_EACH_PIN is the period of time in seconds to wait after every PIN attempt in seconds. It is disabled if set to 0.
 COOLDOWN_TIME_AFTER_EACH_PIN=0
 
-## PROMPT_BEFORE_EACH_PIN configures the keys that are sent to prompt the lock screen to appear. This is sent before each PIN.
+## KEYS_BEFORE_EACH_PIN configures the keys that are sent to prompt the lock screen to appear. This is sent before each PIN.
 ## By default it sends "escape enter", but some phones will respond to other keys.
 
 # Examples:
-# PROMPT_BEFORE_EACH_PIN="ctrl_escape enter"
-# PROMPT_BEFORE_EACH_PIN="escape space"
-PROMPT_BEFORE_EACH_PIN="escape enter"
-PROMPT_STAY_AWAKE_DURING_COOLDOWN="enter"
+# KEYS_BEFORE_EACH_PIN="ctrl_escape enter"
+# KEYS_BEFORE_EACH_PIN="escape space"
+KEYS_BEFORE_EACH_PIN="escape enter"
+KEYS_STAY_AWAKE_DURING_COOLDOWN="enter"
 
 ## DELAY_BEFORE_STARTING is the period of time in seconds to wait before the bruteforce begins
 DELAY_BEFORE_STARTING=2

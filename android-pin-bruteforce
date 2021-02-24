@@ -197,7 +197,7 @@ function show_configuration() {
   log_conf "Delay between keys: $DELAY_BETWEEN_KEYS"
   log_conf "Cooldown time: $COOLDOWN_TIME"
   log_conf "Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
-  log_conf "Prompt to bring up the lock screen: $PROMPT_BEFORE_EACH_PIN"
+  log_conf "Prompt to bring up the lock screen: $KEYS_BEFORE_EACH_PIN"
   
   log_conf
   log_conf "## Exiting"
@@ -481,7 +481,7 @@ do
   pin=${pinlist[position]}
 
   # send prompt keys,e.g. escape and enter before every PIN attempted
-  send_keys "$PROMPT_BEFORE_EACH_PIN"
+  send_keys "$KEYS_BEFORE_EACH_PIN"
  
   # if we got an error from sending the key, check the phone connection
   if [ $RET -gt 0 ]; then
@@ -522,7 +522,7 @@ do
         echo -ne "[${LIGHT_YELLOW}WAIT${DEFAULT}] "
         echo -ne "$countdown"
         if [ $(($countdown%5)) = 0 ]; then
-          send_keys "$PROMPT_STAY_AWAKE_DURING_COOLDOWN"
+          send_keys "$KEYS_STAY_AWAKE_DURING_COOLDOWN"
         fi
         sleep 1
       done
