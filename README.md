@@ -225,7 +225,8 @@ PROMPT_BEFORE_EACH_PIN="escape space"
 To send special keys use the following labels. 
 This list can be found in the hid_gadget_test source code.
 
-|---------------|---------------|
+| Key label     | Key label     |
+| ------------- | ------------- |
 | left-ctrl     | f6            |
 | right-ctrl    | f7            |
 | left-shift    | f8            |
@@ -245,7 +246,7 @@ This list can be found in the hid_gadget_test source code.
 | f3            | kp-enter      |
 | f4            | up            |
 | f5            | num-lock      |
-|---------------|---------------|
+
 
 
 To send combinations of keys use the following list:
