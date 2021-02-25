@@ -246,14 +246,14 @@ function send_keys() {
 
 
 function send_key(){
+  log_debug "Sending key: $1"
   if [ $DRY_RUN -eq 0 ]; then
     echo "$1" | $HID_KEYBOARD $KEYBOARD_DEVICE keyboard 2>/dev/null
     RET=$?
-    sleep $DELAY_BETWEEN_KEYS
   else
     RET=0 # as if it succeeded
-    sleep $DELAY_BETWEEN_KEYS
   fi
+  sleep $DELAY_BETWEEN_KEYS
 }
 
 
