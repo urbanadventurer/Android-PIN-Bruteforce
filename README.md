@@ -250,21 +250,31 @@ This list can be found in the hid_gadget_test source code.
 | f4            | up            |
 | f5            | num-lock      |
 
+To send more than one key at the same time, use the following list:
 
-
-To send combinations of keys use the following list:
-
-- ctrl_escape
+- ctrl_escape (This sends left-ctrl and escape)
 
 If you need more key combinations please open a new issue in the GitHub issues list.
 
-## 🛰 Technical Details
+### Test sending keys
+
+Use ssh from your laptop to the NetHunter phone, and use this command to test sending keys:
+
+In this example, the enter key is sent.
+
+`echo "enter" | /system/xbin/hid-keyboard /dev/hidg0 keyboard`
+
+In this example, keys a, b, c are sent.
+
+`echo a b c | /system/xbin/hid-keyboard /dev/hidg0 keyboard`
+
+## 🛰 Technical details
 
 This works from an Android phone because the USB ports are not bidirectional, unlike the ports on a laptop.
 
 Keys are sent using `/system/xbin/hid-keyboard`. To test this and send the key 1 you can use `echo 1 | /system/xbin/hid-keyboard dev/hidg0 keyboard`
 
-Before each PIN, we send the escape and enter keys. This is to keep the Android responsive and dismiss any popups about the number of incorrect PIN attempts or a low battery warning.
+Before each PIN, we send keys that can be configured in the config files. This is to keep the Android responsive and dismiss any popups about the number of incorrect PIN attempts or a low battery warning.
 
 In Kali Nethunter, `/system/xbin/hid-keyboard` is a compiled copy of `hid_gadget_test.c`. This is a small program for testing the HID gadget driver that is included in the Linux Kernel. The source code for this file can be found at https://www.kernel.org/doc/html/latest/usb/gadget_hid.html and https://github.com/aagallag/hid_gadget_test.
 
