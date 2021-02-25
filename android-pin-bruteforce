@@ -90,11 +90,9 @@ function load_pinlist() {
   fi
 }
 
-
 function repeat(){
   printf "%0.s$1" $(eval echo {1..$2})
 }
-
 
 # progress bar
 # https://unix.stackexchange.com/questions/415421/linux-how-to-create-simple-progress-bar-in-bash
@@ -176,7 +174,7 @@ function diagnostic_info() {
   echo "- Check the NetHunter phone is succesfully emulating a keyboard by connecting it to a computer with a regular charging/data USB cable. Open a text editor like Notepad and you should see it sending PINs. Note that you do not need an OTG cable for this."
   echo "- Check the Nethunter phone has a regular USB cable attached, and the locked phone has an OTG adaptor attached."
   echo "- Try using different cables/adaptors. You may have a faulty cable/adaptor."
-  echo "- Try powering off the phones and taking out the batteries."
+  echo "- Perform a hard reset of both phones by holding down the power button for 20 seconds."
   echo "- Try this command: /system/bin/setprop sys.usb.config hid"
 
   echo
