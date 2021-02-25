@@ -47,8 +47,6 @@ DELAY_BEFORE_STARTING=2
 ## KEYS_BEFORE_STARTING configures the keys that are sent before the bruteforce begins
 KEYS_BEFORE_STARTING="ctrl_escape"
 
-
-
 # Resume
 ## RESUME_FROM_PIN sets the PIN that you resume cracking from.
 ## This is equivalent to setting the -f, --from PIN commandline option
