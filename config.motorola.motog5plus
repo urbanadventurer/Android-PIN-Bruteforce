@@ -32,9 +32,7 @@ COOLDOWN_TIME_AFTER_EACH_PIN=0
 ## By default it sends "escape enter", but some phones will respond to other keys.
 
 # Examples:
-KEYS_BEFORE_EACH_PIN="ctrl_escape enter"
-# KEYS_BEFORE_EACH_PIN="escape space"
-# KEYS_BEFORE_EACH_PIN="escape enter"
+KEYS_BEFORE_EACH_PIN="escape enter"
 
 ## KEYS_STAY_AWAKE_DURING_COOLDOWN the keys that are sent during the cooldown period to keep the phone awake
 KEYS_STAY_AWAKE_DURING_COOLDOWN="enter"
