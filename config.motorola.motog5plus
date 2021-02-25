@@ -35,12 +35,19 @@ COOLDOWN_TIME_AFTER_EACH_PIN=0
 KEYS_BEFORE_EACH_PIN="ctrl_escape enter"
 # KEYS_BEFORE_EACH_PIN="escape space"
 # KEYS_BEFORE_EACH_PIN="escape enter"
+
+## KEYS_STAY_AWAKE_DURING_COOLDOWN the keys that are sent during the cooldown period to keep the phone awake
 KEYS_STAY_AWAKE_DURING_COOLDOWN="enter"
+
+## SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS how often the keys are sent, in seconds
+SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS=5
 
 ## DELAY_BEFORE_STARTING is the period of time in seconds to wait before the bruteforce begins
 DELAY_BEFORE_STARTING=2
 ## KEYS_BEFORE_STARTING configures the keys that are sent before the bruteforce begins
 KEYS_BEFORE_STARTING="ctrl_escape"
+
+
 
 # Resume
 ## RESUME_FROM_PIN sets the PIN that you resume cracking from.

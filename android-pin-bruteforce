@@ -536,7 +536,7 @@ do
         echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" # clear line and move cursor left
         echo -ne "[${LIGHT_YELLOW}WAIT${DEFAULT}] "
         echo -ne "$countdown"
-        if [ $(($countdown%5)) = 0 ]; then
+        if [ $(($countdown%$SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS)) = 0 ]; then
           send_keys "$KEYS_STAY_AWAKE_DURING_COOLDOWN"
         fi
         sleep 1
