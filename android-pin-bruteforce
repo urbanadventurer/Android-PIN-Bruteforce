@@ -541,6 +541,8 @@ do
         fi
         sleep 1
       done
+      # extra sleep so we don't get out of sync with the phone
+      sleep 1
       echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" 
     fi
   fi
