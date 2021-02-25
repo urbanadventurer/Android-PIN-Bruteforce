@@ -256,7 +256,7 @@ To send more than one key at the same time, use the following list:
 
 If you need more key combinations please open a new issue in the GitHub issues list.
 
-### Test sending keys
+### Test sending keys from the terminal
 
 Use ssh from your laptop to the NetHunter phone, and use this command to test sending keys:
 
@@ -264,9 +264,19 @@ In this example, the enter key is sent.
 
 `echo "enter" | /system/xbin/hid-keyboard /dev/hidg0 keyboard`
 
+In this example, ctrl-escape is sent.
+
+`echo "left-ctrl escape" | /system/xbin/hid-keyboard /dev/hidg0 keyboard`
+
 In this example, keys a, b, c are sent.
 
 `echo a b c | /system/xbin/hid-keyboard /dev/hidg0 keyboard`
+
+### Test sending keys from an app
+
+This Android app is a virtual USB Keyboard that you can use to test sending keys.
+
+https://store.nethunter.com/en/packages/remote.hid.keyboard.client/
 
 ## 🛰 Technical details
 
