@@ -16,7 +16,7 @@ The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID
 
 ⏱ This takes just over 16.6 hours to try all possible 4 digit PINs, but with the optimised PIN list it should take you much less time.
 
-### 📱 ⛓ 📲 You will need
+### You will need
 
 - A locked Android phone
 - A Nethunter phone (or any rooted Android with HID kernel support)
@@ -168,20 +168,23 @@ Use the command `diag` display diagnostic information.
 
 ```bash ./android-pin-bruteforce diag```
 
-
 If you receive this message when the USB cable is plugged in then try taking the battery out of the locked Android phone and power cycling it.
 
 ```[FAIL] HID USB device not ready. Return code from /system/xbin/hid-keyboard was 5.```
+
+### How the usb-devices command works
+
+The diagnostics command uses the `usb-devices` script but it is only necessary as part of determining whether the USB cables are incorrectly connected. This can be downloaded from
+https://github.com/gregkh/usbutils/blob/master/usb-devices
 
 ### Use verbose output
 
 Use the `--verbose` option to check the configuration is as expected. This is especially useful when you are modifying the configuration.
 
-### Other
+### HID USB Mode
 
 Try this command in a shell on the NetHunter phone:
 ```/system/bin/setprop sys.usb.config hid```
-
 
 ## 💣 Known Issues
 
@@ -189,41 +192,92 @@ Try this command in a shell on the NetHunter phone:
 - Your phones may run out of 🔋 battery before the correct PIN is found.
 
 
-## Supporting different phones
+## 📱 Configuration for different phones
 
 Device manufacturers create their own lock screens that are different to the default or stock Android. 
 To find out what keys your phone needs, plug a keyboard into the phone and try out different combinations.
 
-Edit the `config` file to support different phones by customising the timing and prompt keys to bring up the unlock screen.
+Load a different configuration file, with the `--config FILE` commandline parameter.
 
-### Default configuration for Android 6.0
+Example:
+`./android-pin-bruteforce --config ./config.samsung crack`
 
-This is the default configuration. It sends 5 PINs before waiting for a cooldown timeout of 30 seconds.
-Before each PIN is sent it sends a prompt of the ESCAPE and ENTER keys to bring up the unlock screen.
+You can also edit the `config` file by customising the timing and keys sent.
+
+The following configuration variables can be used to support a different phone's lockscreen.
 
 ```
-DELAY_BETWEEN_KEYS=0.1
+# Timing
+## DELAY_BETWEEN_KEYS is the period of time in seconds to wait after each key is sent
+DELAY_BETWEEN_KEYS=0.25
+
+## COOLDOWN_TIME is the period of time in seconds to wait after N attempts is reached, by default after 5 attempts it pauses for 30 seconds
 COOLDOWN_TIME=30
+
+## COOLDOWN_AFTER_N_ATTEMPTS is how many attemps to make before waiting for the COOLDOWN_TIME 
 COOLDOWN_AFTER_N_ATTEMPTS=5
+
+## CHANGE_AFTER_10_ATTEMPTS can be set to 1 for enabled or 0 disabled. When enabled, after 10 attempts it changes the COOLDOWN_AFTER_N_ATTEMPTS to 1.
 CHANGE_AFTER_10_ATTEMPTS=0
+
+## COOLDOWN_TIME_AFTER_EACH_PIN is the period of time in seconds to wait after every PIN attempt in seconds. It is disabled if set to 0.
+COOLDOWN_TIME_AFTER_EACH_PIN=0
+
+## KEYS_BEFORE_EACH_PIN configures the keys that are sent to prompt the lock screen to appear. This is sent before each PIN.
+## By default it sends "escape enter", but some phones will respond to other keys.
+
+# Examples:
+# KEYS_BEFORE_EACH_PIN="ctrl_escape enter"
+# KEYS_BEFORE_EACH_PIN="escape space"
 KEYS_BEFORE_EACH_PIN="escape enter"
+
+## KEYS_STAY_AWAKE_DURING_COOLDOWN the keys that are sent during the cooldown period to keep the phone awake
+KEYS_STAY_AWAKE_DURING_COOLDOWN="enter"
+
+## SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS how often the keys are sent, in seconds
+SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS=5
+
+## DELAY_BEFORE_STARTING is the period of time in seconds to wait before the bruteforce begins
+DELAY_BEFORE_STARTING=2
+## KEYS_BEFORE_STARTING configures the keys that are sent before the bruteforce begins
+KEYS_BEFORE_STARTING="enter"
 ```
 
-### Configuration for Android 10
+### Popups
 
-This configuration sends a lockscreen prompt of escape and space before each PIN is sent.
-It has a 30 second cooldown after each attempt.
-After 10 attempts, the cooldown will occur after each PIN attempt.
+We send keys during the cooldown period. This is to keep the lockscreen app active and to dismiss any popups about the number of incorrect PIN attempts or a low battery warning.
 
-```
-DELAY_BETWEEN_KEYS=0.1
-COOLDOWN_TIME=30
-COOLDOWN_AFTER_N_ATTEMPTS=5
-CHANGE_AFTER_10_ATTEMPTS=1
-KEYS_BEFORE_EACH_PIN="escape space"
-```
+## Test sending keys from the NetHunter phone
+
+### Test sending keys from the terminal
+
+Use ssh from your laptop to the NetHunter phone, and use this command to test sending keys:
+
+In this example, the enter key is sent.
+
+`echo "enter" | /system/xbin/hid-keyboard /dev/hidg0 keyboard`
+
+In this example, ctrl-escape is sent.
+
+`echo "left-ctrl escape" | /system/xbin/hid-keyboard /dev/hidg0 keyboard`
+
+In this example, keys a, b, c are sent.
+
+`echo a b c | /system/xbin/hid-keyboard /dev/hidg0 keyboard`
+
+### Test sending keys from an app
+
+This Android app is a virtual USB Keyboard that you can use to test sending keys.
+
+https://store.nethunter.com/en/packages/remote.hid.keyboard.client/
 
 ### How to send special keys
+
+Use this list for the following variables:
+
+- KEYS_BEFORE_EACH_PIN
+- KEYS_STAY_AWAKE_DURING_COOLDOWN
+- KEYS_BEFORE_STARTING
 
 To send special keys use the following labels. 
 This list can be found in the hid_gadget_test source code.
@@ -256,40 +310,16 @@ To send more than one key at the same time, use the following list:
 
 If you need more key combinations please open a new issue in the GitHub issues list.
 
-### Test sending keys from the terminal
-
-Use ssh from your laptop to the NetHunter phone, and use this command to test sending keys:
-
-In this example, the enter key is sent.
-
-`echo "enter" | /system/xbin/hid-keyboard /dev/hidg0 keyboard`
-
-In this example, ctrl-escape is sent.
-
-`echo "left-ctrl escape" | /system/xbin/hid-keyboard /dev/hidg0 keyboard`
-
-In this example, keys a, b, c are sent.
-
-`echo a b c | /system/xbin/hid-keyboard /dev/hidg0 keyboard`
-
-### Test sending keys from an app
-
-This Android app is a virtual USB Keyboard that you can use to test sending keys.
-
-https://store.nethunter.com/en/packages/remote.hid.keyboard.client/
-
-## 🛰 Technical details
+### Why can't you use a laptop?
 
 This works from an Android phone because the USB ports are not bidirectional, unlike the ports on a laptop.
 
-Keys are sent using `/system/xbin/hid-keyboard`. To test this and send the key 1 you can use `echo 1 | /system/xbin/hid-keyboard dev/hidg0 keyboard`
+### How Android emulates a keyboard
 
-Before each PIN, we send keys that can be configured in the config files. This is to keep the Android responsive and dismiss any popups about the number of incorrect PIN attempts or a low battery warning.
+Keys are sent using `/system/xbin/hid-keyboard`. To test this and send the key 1 you can use `echo 1 | /system/xbin/hid-keyboard dev/hidg0 keyboard`
 
 In Kali Nethunter, `/system/xbin/hid-keyboard` is a compiled copy of `hid_gadget_test.c`. This is a small program for testing the HID gadget driver that is included in the Linux Kernel. The source code for this file can be found at https://www.kernel.org/doc/html/latest/usb/gadget_hid.html and https://github.com/aagallag/hid_gadget_test.
 
-The diagnostics command uses the `usb-devices` script but it is only necessary as part of determining whether the USB cables are incorrectly connected. This can be downloaded from
-https://github.com/gregkh/usbutils/blob/master/usb-devices
 
 ## 🙋 Contributing
 
