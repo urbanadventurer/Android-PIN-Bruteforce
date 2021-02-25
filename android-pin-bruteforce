@@ -293,7 +293,7 @@ function monitor_phone_connection(){
   while [ $RET != 0 ]; do
     log_fail "HID USB device not ready. $HID_KEYBOARD returned $RET." 
     sleep 2
-    send_enter
+    send_keys "$KEYS_BEFORE_EACH_PIN"
     ((fail_counter++))
 
     if [[ $fail_counter -gt $EXIT_AFTER_FAIL_COUNT ]]; then
