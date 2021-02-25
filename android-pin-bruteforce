@@ -514,7 +514,6 @@ do
   done
   send_enter
 
-
   # COOLDOWN_TIME_AFTER_EACH_PIN is optional
   if [[ $COOLDOWN_TIME_AFTER_EACH_PIN > 0 ]]; then
       # countdown COOLDOWN_TIME seconds
@@ -538,7 +537,7 @@ do
         echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" # clear line and move cursor left
         echo -ne "[${LIGHT_YELLOW}WAIT${DEFAULT}] "
         echo -ne "$countdown"
-        if [ $(($countdown%$SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS)) = 0 ]; then
+        if [ $(($countdown % ${SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS})) = 0 ]; then
           send_keys "$KEYS_STAY_AWAKE_DURING_COOLDOWN"
         fi
         sleep 1
