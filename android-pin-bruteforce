@@ -548,8 +548,8 @@ do
     fi
   fi
 
-  # check CHANGE_AFTER_10_ATTEMPTS
-  if [ $CHANGE_AFTER_10_ATTEMPTS -eq 1 ]; then
+  # check PROGRESSIVE_COOLDOWN
+  if [ $PROGRESSIVE_COOLDOWN -eq 1 ]; then
 
     if [ $count -eq 10 ]; then
       log_info "Ten attempts have been reached! Now cooldown for $COOLDOWN_TIME seconds after every PIN attempt."

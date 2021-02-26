@@ -217,8 +217,8 @@ COOLDOWN_TIME=30
 ## COOLDOWN_AFTER_N_ATTEMPTS is how many attemps to make before waiting for the COOLDOWN_TIME 
 COOLDOWN_AFTER_N_ATTEMPTS=5
 
-## CHANGE_AFTER_10_ATTEMPTS can be set to 1 for enabled or 0 disabled. When enabled, after 10 attempts it changes the COOLDOWN_AFTER_N_ATTEMPTS to 1.
-CHANGE_AFTER_10_ATTEMPTS=0
+## PROGRESSIVE_COOLDOWN can be set to 1 for enabled or 0 disabled. When enabled, after 10 attempts it changes the COOLDOWN_AFTER_N_ATTEMPTS to 1.
+PROGRESSIVE_COOLDOWN=0
 
 ## COOLDOWN_TIME_AFTER_EACH_PIN is the period of time in seconds to wait after every PIN attempt in seconds. It is disabled if set to 0.
 COOLDOWN_TIME_AFTER_EACH_PIN=0
