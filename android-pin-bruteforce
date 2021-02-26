@@ -549,11 +549,18 @@ do
   fi
 
   # check CHANGE_AFTER_10_ATTEMPTS
-  if [ $count -eq 10 ] && [ $CHANGE_AFTER_10_ATTEMPTS -eq 1 ]; then
-    log_info "Ten attempts have been reached! Now cooldown for $COOLDOWN_TIME seconds after every PIN attempt."
-    COOLDOWN_AFTER_N_ATTEMPTS=1
-  fi
+  if [ $CHANGE_AFTER_10_ATTEMPTS -eq 1 ]; then
 
+    if [ $count -eq 10 ]; then
+      log_info "Ten attempts have been reached! Now cooldown for $COOLDOWN_TIME seconds after every PIN attempt."
+      COOLDOWN_AFTER_N_ATTEMPTS=1
+    fi
+    if [ $count -eq 40 ]; then
+      COOLDOWN_TIME=60
+      log_info "Forty attempts have been reached! Now cooldown for $COOLDOWN_TIME seconds after every PIN attempt."
+      COOLDOWN_AFTER_N_ATTEMPTS=1
+    fi
+  fi
 done
 
 log_info "End of PIN list reached"
