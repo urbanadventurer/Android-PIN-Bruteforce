@@ -67,11 +67,3 @@ KEYBOARD_DEVICE=/dev/hidg0
 ## The location of HID_KEYBOARD may be different if you are not using Kali Net Hunter
 HID_KEYBOARD=/system/xbin/hid-keyboard
 USB_DEVICES=/usr/bin/usb-devices
-
-## DRY_RUN can be set to 1 for enabled, or 0 for disabled. When enabled it does not send any keys and is for testing without a phone.
-## It is equivalent to the -d, --dry-run commandline option
-DRY_RUN=0
-
-## VERBOSE can be set to 1 for enabled, or 0 for disabled.
-## It is equivalent to the -v, --verbose commandline option
-VERBOSE=0

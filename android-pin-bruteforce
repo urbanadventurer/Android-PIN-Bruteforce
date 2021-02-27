@@ -17,6 +17,8 @@ source config
 VERSION=0.1
 
 DIRECTION=1 # go forwards
+VERBOSE=0
+DRY_RUN=0
 #RET=0
 
 LIGHT_GREEN="\033[92m"
