@@ -537,6 +537,7 @@ do
     # if we are after N attempts
     if [ $((count % $COOLDOWN_AFTER_N_ATTEMPTS)) = 0 ]; then
       # countdown COOLDOWN_TIME seconds
+      log_debug "Countdown for $COOLDOWN_TIME"
       for (( countdown=$COOLDOWN_TIME; countdown > 0; countdown-- ))
       do
         echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" # clear line and move cursor left
