@@ -352,16 +352,7 @@ do
     ac_prev=config ;;
 
   -config=* | -c=* | --config=*)
-    CONFIG_FILE="$ac_optarg"
-    # Validate CONFIG file
-    if [[ -f "$CONFIG_FILE" ]]; then
-      log_info "Loaded configuration file: $CONFIG_FILE"
-      source $CONFIG_FILE
-    else
-      log_fail "Unable to load configuration file: $CONFIG_FILE"
-      abort
-    fi    
-    ;;
+    config="$ac_optarg" ;;
 
   -from | -f | --from)
     ac_prev=from ;;
@@ -430,6 +421,15 @@ done
 
 if test -n "$ac_prev"; then
   { echo "configure: error: missing argument to --`echo $ac_prev | sed 's/_/-/g'`" 1>&2; exit 1; }
+fi
+
+# load the config file first
+if [[ -f "$config" ]]; then
+  log_info "Loaded configuration file: $config"
+  source $config
+else
+  log_fail "Unable to load configuration file: $config"
+  abort
 fi
 
 # only set VARS if specified in commandline arguments
