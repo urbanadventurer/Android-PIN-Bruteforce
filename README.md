@@ -181,6 +181,15 @@ https://github.com/gregkh/usbutils/blob/master/usb-devices
 
 Use the `--verbose` option to check the configuration is as expected. This is especially useful when you are modifying the configuration.
 
+### Use the dry-run
+
+Use the `--dry-run` option to check how it operates without sending any keys to a device. This is especially useful when you are modifying the configuration or during development.
+
+Dry run will:
+
+- Not send any keys
+- Will continue instead of aborting if the `KEYBOARD_DEVICE` or `HID_KEYBOARD` is missing.
+
 ### HID USB Mode
 
 Try this command in a shell on the NetHunter phone:
