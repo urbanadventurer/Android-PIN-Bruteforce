@@ -118,11 +118,12 @@ Masks use regular expressions with the standard grep extended format.
 - [DONE] Crack PIN list in reverse (to find which recent PIN unlocked the device)
 - [DONE] Implement configurable lockscreen prompt
 - [DONE] Implement cooldown change after 10 attempts
+- [WORKING] Find/test more devices to bruteforce
 - Add progress bar
 - Add ETA
 - ASCII art
 - Nicer GUI for NetHunter
-- Find/test more devices to bruteforce (iPhone)
+- Implement for iPhone
 - Try to detect when phone is unlocked (Use Nethunter camera as a sensor?)
 - Crack Android Patterns (try common patterns first)
 
