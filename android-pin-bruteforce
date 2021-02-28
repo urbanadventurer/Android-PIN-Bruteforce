@@ -561,7 +561,7 @@ do
       log_info "Ten attempts have been reached! Now cooldown for $COOLDOWN_TIME seconds after every PIN attempt."
       COOLDOWN_AFTER_N_ATTEMPTS=1
     fi
-    if [ $count -eq 40 ]; then
+    if [ $count -eq 39 ]; then
       COOLDOWN_TIME=60
       log_info "Forty attempts have been reached! Now cooldown for $COOLDOWN_TIME seconds after every PIN attempt."
       COOLDOWN_AFTER_N_ATTEMPTS=1
