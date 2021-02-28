@@ -62,14 +62,25 @@ function load_pinlist() {
 
   top_number=$((10**$length-1))
 
-  # Only load from file if it's 4 digits
-  if [ $length -eq 4 ]; then
+  # was a PIN_LIST selected by the user?
+  if [ -f "$PIN_LIST" ]; then
+    log_info "Loading user specified PIN list $PIN_LIST for $length digits"
+    # TODO: this doesn't valdiate the PIN_LIST 
     pinlist=(`cat $PIN_LIST`)
   else
-    # generate the list
-    log_debug "Generating PIN list for $length digits"
-    pinlist=(`seq -w 0 $top_number`)
+    # Check if an optimised list exists
+    if [ -f "optimised-pin-length-$length.txt" ]; then
+      log_info "Loading optimised PIN list for $length digits"
+      PIN_LIST="optimised-pin-length-$length.txt"
+      pinlist=(`cat $PIN_LIST`)
+    else
+      # generate the list
+      log_info "Generating PIN list for $length digits"
+      pinlist=(`seq -w 0 $top_number`)
+    fi
   fi
+  log_info "PIN list contains ${#pinlist[@]} PINs"
+    
 
   if [ -n "$MASK" ]; then
     pinlist=(`echo "${pinlist[@]}" | tr ' ' '\n' | egrep "$MASK" | tr '\n' ' '`)
@@ -427,13 +438,16 @@ if test -n "$ac_prev"; then
   { echo "configure: error: missing argument to --`echo $ac_prev | sed 's/_/-/g'`" 1>&2; exit 1; }
 fi
 
-# load the config file first
-if [[ -f "$config" ]]; then
-  log_info "Loaded configuration file: $config"
-  source $config
-else
-  log_fail "Unable to load configuration file: $config"
-  abort
+
+if [[ -n "$config" ]]; then
+  # load the config file first
+  if [[ -f "$config" ]]; then
+    log_info "Loaded configuration file: $config"
+    source $config
+  else
+    log_fail "Unable to load configuration file: $config"
+    abort
+  fi
 fi
 
 # only set VARS if specified in commandline arguments
