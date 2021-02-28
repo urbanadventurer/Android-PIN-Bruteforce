@@ -13,7 +13,6 @@ source config.default
 # Load Configuration
 source config
 
-
 VERSION=0.1
 
 DIRECTION=1 # go forwards
@@ -47,6 +46,7 @@ Options:
   -t, --type TYPE\tSelect PIN or PATTERN cracking
   -l, --length NUM\tCrack PINs of NUM length
   -c, --config FILE\tSpecify configuration file to load
+  -p, --pinlist FILE\tSpecify a custom PIN list
   -d, --dry-run\t\tDry run for testing. Doesn't send any keys.
   -v, --verbose\t\tOutput verbose logs.
 
@@ -393,6 +393,12 @@ do
   -type=* | -t=* | --type=*)
     type="$ac_optarg" ;;
 
+  -pinlist | -p | --pinlist)
+    ac_prev=type ;;
+
+  -pinlist=* | -p=* | --pinlist=*)
+    pinlist="$ac_optarg" ;;
+
   -verbose | -v | --verbose)
     VERBOSE=1 ;;
 
@@ -451,6 +457,7 @@ if [[ -n "$config" ]]; then
 fi
 
 # only set VARS if specified in commandline arguments
+# commandline arguments overide the config file
 if [[ -n "$mask" ]]; then
   MASK=$mask
 fi
@@ -463,7 +470,9 @@ fi
 if [[ -n "$length" ]]; then
   PIN_LENGTH=$length
 fi
-
+if [[ -n "$pinlist" ]]; then
+  PIN_LIST=$pinlist
+fi
 
 # Validation
 
@@ -485,6 +494,17 @@ if [[ "$PIN_LENGTH" -gt 0 ]] && [[ "$PIN_LENGTH" -le 8 ]]; then
   echo -n
 else
   log_fail "PIN length $PIN_LENGTH is invalid. Valid lengths are 1 to 8."
+fi
+
+# Validate PIN LIST
+# either set by config or commandline options
+if [[ -n "$PIN_LIST" ]]; then
+  if [[ -f "$PIN_LIST" ]]; then
+    echo -n
+  else
+    log_fail "$PIN_LIST is not a valid PIN LIST"
+    exit 1
+  fi
 fi
 
 # rewind, resume require that RESUME_FROM_PIN be set
