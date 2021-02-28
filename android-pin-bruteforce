@@ -518,6 +518,8 @@ if [[ $DRY_RUN -eq 1 ]]; then
   log_info "Dry run enabled"
 fi
 
+load_pinlist $PIN_LENGTH
+
 if [[ $VERBOSE > 0 ]]; then
   show_configuration
 fi
@@ -529,7 +531,6 @@ check_environment
 send_keys "$KEYS_BEFORE_STARTING"
 sleep $DELAY_BEFORE_STARTING
 
-load_pinlist $PIN_LENGTH
 position=$resume_from_index
 pinlist_n_elements=${#pinlist[@]}
 
