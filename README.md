@@ -36,7 +36,7 @@ The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID
 
 - Crack PINs of any length from 1 to 10 digits
 - Use config files to support different phones
-- Optimised PIN list for 4 digit PINs
+- Optimised PIN lists for 3,4,5, and 6 digit PINs
 - Bypasses phone pop-ups including the Low Power warning
 - Detects when the phone is unplugged or powered off, and waits while retrying every 5 seconds
 - Configurable delays of N seconds after every X PIN attempts
