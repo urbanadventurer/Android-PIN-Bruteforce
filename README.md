@@ -34,7 +34,9 @@ The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID
 
 ## ⭐ Features
 
-- Optimised PIN list
+- Crack PINs of any length from 1 to 10 digits
+- Use config files to support different phones
+- Optimised PIN list for 4 digit PINs
 - Bypasses phone pop-ups including the Low Power warning
 - Detects when the phone is unplugged or powered off, and waits while retrying every 5 seconds
 - Configurable delays of N seconds after every X PIN attempts
@@ -90,7 +92,18 @@ https://github.com/urbanadventurer/Android-PIN-Bruteforce/wiki/Phone-Database
 
 ## 🎳 PIN Lists
 
-### Optimised PIN list
+
+### Cracking PINs of different lengths
+
+Use the `--length` commandline option.
+
+Use this command to crack a 3 digit PIN, 
+`./android-pin-bruteforce crack --length 3`
+
+Use this command to crack a 6 digit PIN
+`./android-pin-bruteforce crack --length 6`
+
+### Where did the 4 digit optimised PIN list come from?
 
 `pinlist.txt` is an optimised list of all possible 4 digit PINs, sorted by order of likelihood.
 pinlist.txt is from https://github.com/mandatoryprogrammer/droidbrute
@@ -126,80 +139,6 @@ Masks use regular expressions with the standard grep extended format.
 - Implement for iPhone
 - Try to detect when phone is unlocked (Use Nethunter camera as a sensor?)
 - Crack Android Patterns (try common patterns first)
-
-
-## 🔧 Troubleshooting
-
-### If it is not bruteforcing PINs
-
-#### Check the orientation of the cables
-
-The Nethunter phone should have a regular USB cable attached, while the locked phone should have an OTG adaptor attached.
-
-The OTG cable should be connected to the locked Android phone. The regular USB cable should be connected to the Nethunter phone.
-
-Refer to the graphic on how to connect the phones.
-
-#### Check it is emulating a keyboard
-
-You can verify that the NetHunter phone is succesfully emulating a keyboard by connecting it to a computer using a regular charging/data USB cable. Open a text editor like Notepad while it is cracking and you should see it entering PIN numbers into the text editor.
-
-Note that you will not need an OTG cable for this. 
-
-#### Try restarting the phones
-
-Try powering off the phones and even taking out the batteries if that is possible.
-
-#### Try new cables
-
-Try using new cables/adaptors as you may have a faulty cable/adaptor.
-
-### If it doesn't unlock the phone with a correct PIN
-
-You might be sending keys too fast for the phone to process. Increase the DELAY_BETWEEN_KEYS variable in the config file.
-💡 If you don't see 4 dots come up on the phone's screen then maybe it is not receiving 4 keys.
-
-### 🔋 If your phone runs out of power too soon
-
-Try using a USB OTG cable that has an external power supply. This will charge the phone's battery while it operates.
-
-### Check the Diagnostics Report
-
-Use the command `diag` display diagnostic information.
-
-```bash ./android-pin-bruteforce diag```
-
-If you receive this message when the USB cable is plugged in then try taking the battery out of the locked Android phone and power cycling it.
-
-```[FAIL] HID USB device not ready. Return code from /system/xbin/hid-keyboard was 5.```
-
-### How the usb-devices command works
-
-The diagnostics command uses the `usb-devices` script but it is only necessary as part of determining whether the USB cables are incorrectly connected. This can be downloaded from
-https://github.com/gregkh/usbutils/blob/master/usb-devices
-
-### Use verbose output
-
-Use the `--verbose` option to check the configuration is as expected. This is especially useful when you are modifying the configuration.
-
-### Use the dry-run
-
-Use the `--dry-run` option to check how it operates without sending any keys to a device. This is especially useful when you are modifying the configuration or during development.
-
-Dry run will:
-
-- Not send any keys
-- Will continue instead of aborting if the `KEYBOARD_DEVICE` or `HID_KEYBOARD` is missing.
-
-### HID USB Mode
-
-Try this command in a shell on the NetHunter phone:
-```/system/bin/setprop sys.usb.config hid```
-
-## 💣 Known Issues
-
-- This cannot detect when the correct PIN is guessed and the phone unlocks.
-- Your phones may run out of 🔋 battery before the correct PIN is found.
 
 
 ## 📱 Configuration for different phones
@@ -330,6 +269,78 @@ Keys are sent using `/system/xbin/hid-keyboard`. To test this and send the key 1
 
 In Kali Nethunter, `/system/xbin/hid-keyboard` is a compiled copy of `hid_gadget_test.c`. This is a small program for testing the HID gadget driver that is included in the Linux Kernel. The source code for this file can be found at https://www.kernel.org/doc/html/latest/usb/gadget_hid.html and https://github.com/aagallag/hid_gadget_test.
 
+## 🔧 Troubleshooting
+
+### If it is not bruteforcing PINs
+
+#### Check the orientation of the cables
+
+The Nethunter phone should have a regular USB cable attached, while the locked phone should have an OTG adaptor attached.
+
+The OTG cable should be connected to the locked Android phone. The regular USB cable should be connected to the Nethunter phone.
+
+Refer to the graphic on how to connect the phones.
+
+#### Check it is emulating a keyboard
+
+You can verify that the NetHunter phone is succesfully emulating a keyboard by connecting it to a computer using a regular charging/data USB cable. Open a text editor like Notepad while it is cracking and you should see it entering PIN numbers into the text editor.
+
+Note that you will not need an OTG cable for this. 
+
+#### Try restarting the phones
+
+Try powering off the phones and even taking out the batteries if that is possible.
+
+#### Try new cables
+
+Try using new cables/adaptors as you may have a faulty cable/adaptor.
+
+### If it doesn't unlock the phone with a correct PIN
+
+You might be sending keys too fast for the phone to process. Increase the DELAY_BETWEEN_KEYS variable in the config file.
+💡 If you don't see 4 dots come up on the phone's screen then maybe it is not receiving 4 keys.
+
+### 🔋 If your phone runs out of power too soon
+
+Try using a USB OTG cable that has an external power supply. This will charge the phone's battery while it operates.
+
+### Check the Diagnostics Report
+
+Use the command `diag` display diagnostic information.
+
+```bash ./android-pin-bruteforce diag```
+
+If you receive this message when the USB cable is plugged in then try taking the battery out of the locked Android phone and power cycling it.
+
+```[FAIL] HID USB device not ready. Return code from /system/xbin/hid-keyboard was 5.```
+
+### How the usb-devices command works
+
+The diagnostics command uses the `usb-devices` script but it is only necessary as part of determining whether the USB cables are incorrectly connected. This can be downloaded from
+https://github.com/gregkh/usbutils/blob/master/usb-devices
+
+### Use verbose output
+
+Use the `--verbose` option to check the configuration is as expected. This is especially useful when you are modifying the configuration.
+
+### Use the dry-run
+
+Use the `--dry-run` option to check how it operates without sending any keys to a device. This is especially useful when you are modifying the configuration or during development.
+
+Dry run will:
+
+- Not send any keys
+- Will continue instead of aborting if the `KEYBOARD_DEVICE` or `HID_KEYBOARD` is missing.
+
+### HID USB Mode
+
+Try this command in a shell on the NetHunter phone:
+```/system/bin/setprop sys.usb.config hid```
+
+## 💣 Known Issues
+
+- This cannot detect when the correct PIN is guessed and the phone unlocks.
+- Your phones may run out of 🔋 battery before the correct PIN is found.
 
 ## 🙋 Contributing
 
