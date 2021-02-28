@@ -449,7 +449,8 @@ if [[ -n "$config" ]]; then
   # load the config file first
   if [[ -f "$config" ]]; then
     log_info "Loaded configuration file: $config"
-    source $config
+    source "$config"
+    CONFIG_FILE="$config"
   else
     log_fail "Unable to load configuration file: $config"
     abort
