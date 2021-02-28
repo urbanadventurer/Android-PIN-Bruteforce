@@ -48,7 +48,7 @@ Options:
   -c, --config FILE\tSpecify configuration file to load
   -p, --pinlist FILE\tSpecify a custom PIN list
   -d, --dry-run\t\tDry run for testing. Doesn't send any keys.
-  -v, --verbose\t\tOutput verbose logs.
+  -v, --verbose\t\tOutput verbose logs
 
 Usage:
   android-pin-bruteforce <command> [options]
