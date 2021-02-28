@@ -67,6 +67,7 @@ function load_pinlist() {
     pinlist=(`cat $PIN_LIST`)
   else
     # generate the list
+    log_debug "Generating PIN list for $length digits"
     pinlist=(`seq -w 0 $top_number`)
   fi
 
@@ -465,11 +466,11 @@ case "$PIN_TYPE" in
 esac
 
 # Validate PIN LENGTH
-if [[ "$PIN_LENGTH" > 0 ]] && [[ "$PIN_LENGTH" < 9 ]]; then
+if [[ "$PIN_LENGTH" > 0 ]] && [[ "$PIN_LENGTH" < 11 ]]; then
   # nothing
   echo -n
 else
-  log_fail "PIN length is invalid. Valid lengths are 1 to 9."
+  log_fail "PIN length is invalid. Valid lengths are 1 to 10."
 fi
 
 # rewind, resume require that RESUME_FROM_PIN be set
