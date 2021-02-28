@@ -55,8 +55,6 @@ RESUME_FROM_PIN=
 # Input and Output
 ## LOG is the filename of a log file
 LOG=bruter.log
-## PIN_LIST is the filename for the optimised 4 digit PIN list. It is only used when the length is 4.
-PIN_LIST=pinlist.txt
 
 # Exiting
 ## EXIT_AFTER_FAIL_COUNT controls when it will exit after reaching a threshold of errors when trying to send keys.
