@@ -519,6 +519,21 @@ do
   done
   send_enter
 
+
+  # check PROGRESSIVE_COOLDOWN
+  if [ $PROGRESSIVE_COOLDOWN -eq 1 ]; then
+
+    if [ $count -eq 11 ]; then
+      log_info "Eleven attempts have been reached! Now cooldown for $COOLDOWN_TIME seconds after every PIN attempt."
+      COOLDOWN_AFTER_N_ATTEMPTS=1
+    fi
+    if [ $count -eq 40 ]; then
+      COOLDOWN_TIME=60
+      log_info "Forty attempts have been reached! Now cooldown for $COOLDOWN_TIME seconds after every PIN attempt."
+      COOLDOWN_AFTER_N_ATTEMPTS=1
+    fi
+  fi
+
   # COOLDOWN_TIME_AFTER_EACH_PIN is optional
   if [[ $COOLDOWN_TIME_AFTER_EACH_PIN > 0 ]]; then
       # countdown COOLDOWN_TIME seconds
@@ -554,19 +569,6 @@ do
     fi
   fi
 
-  # check PROGRESSIVE_COOLDOWN
-  if [ $PROGRESSIVE_COOLDOWN -eq 1 ]; then
-
-    if [ $count -eq 10 ]; then
-      log_info "Ten attempts have been reached! Now cooldown for $COOLDOWN_TIME seconds after every PIN attempt."
-      COOLDOWN_AFTER_N_ATTEMPTS=1
-    fi
-    if [ $count -eq 39 ]; then
-      COOLDOWN_TIME=60
-      log_info "Forty attempts have been reached! Now cooldown for $COOLDOWN_TIME seconds after every PIN attempt."
-      COOLDOWN_AFTER_N_ATTEMPTS=1
-    fi
-  fi
 done
 
 log_info "End of PIN list reached"
