@@ -480,11 +480,11 @@ case "$PIN_TYPE" in
 esac
 
 # Validate PIN LENGTH
-if [[ "$PIN_LENGTH" > 0 ]] && [[ "$PIN_LENGTH" < 11 ]]; then
+if [[ "$PIN_LENGTH" -gt 0 ]] && [[ "$PIN_LENGTH" -le 8 ]]; then
   # nothing
   echo -n
 else
-  log_fail "PIN length is invalid. Valid lengths are 1 to 10."
+  log_fail "PIN length $PIN_LENGTH is invalid. Valid lengths are 1 to 8."
 fi
 
 # rewind, resume require that RESUME_FROM_PIN be set
