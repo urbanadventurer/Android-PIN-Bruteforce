@@ -375,11 +375,11 @@ do
   -from=* | -f=* | --from=*)
     from="$ac_optarg" ;;
 
-  -length=* | -l=* | --length=*)
-    length="$ac_optarg" ;;
-
   -length | -l | --length)
     ac_prev=length ;;
+
+  -length=* | -l=* | --length=*)
+    length="$ac_optarg" ;;
 
   -mask | -m | --mask)
     ac_prev=mask ;;
@@ -394,7 +394,7 @@ do
     type="$ac_optarg" ;;
 
   -pinlist | -p | --pinlist)
-    ac_prev=type ;;
+    ac_prev=pinlist ;;
 
   -pinlist=* | -p=* | --pinlist=*)
     pinlist="$ac_optarg" ;;
