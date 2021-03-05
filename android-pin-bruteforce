@@ -255,14 +255,61 @@ function send_keys() {
   prompt="$1"
 
   for key in $prompt; do
-    if [ $key == "ctrl_escape" ] || [ $key == "ctrl-escape" ] ; then
-      send_key "left-ctrl escape"
-    else
-      send_key $key
-    fi
+
+    case $key in 
+      "ctrl_escape")
+        send_key "left-ctrl escape"
+        ;;
+      "ctrl-escape")
+        send_key "left-ctrl escape"
+        ;;
+      "mouse-move")
+        test_send_mouse_btn
+        ;;
+      "mouse_move")
+        test_send_mouse_btn
+        ;;
+      "mouse-left-button")
+        test_send_mouse_move
+        ;;
+      "mouse_left_button")
+        test_send_mouse_move
+        ;;
+      *)
+        send_key $key
+      ;;
+    esac
+#    if [ $key == "ctrl_escape" ] || [ $key == "ctrl-escape" ] ; then
+#      send_key "left-ctrl escape"
+#    else
+#      send_key $key
+#    fi
   done
 }
 
+function test_send_mouse_btn(){
+  log_debug "Sending mouse: $1"
+  if [ $DRY_RUN -eq 0 ]; then
+    echo "0 0" | $HID_KEYBOARD $KEYBOARD_DEVICE mouse --b1 2>/dev/null
+    RET=$?
+  else
+    RET=0 # as if it succeeded
+  fi
+  sleep $DELAY_BETWEEN_KEYS
+
+}
+
+function test_send_mouse_move(){
+  log_debug "Sending mouse: $1"
+  if [ $DRY_RUN -eq 0 ]; then
+    echo "0 0" | $HID_KEYBOARD $KEYBOARD_DEVICE mouse 2>/dev/null
+    RET=$?
+  else
+    RET=0 # as if it succeeded
+  fi
+  sleep $DELAY_BETWEEN_KEYS
+  
+}
 
 function send_key(){
   log_debug "Sending key: $1"
