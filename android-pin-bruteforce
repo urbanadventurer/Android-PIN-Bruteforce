@@ -70,8 +70,8 @@ function load_pinlist() {
   else
     # Check if an optimised list exists
     if [ -f "optimised-pin-length-$length.txt" ]; then
-      log_info "Loading optimised PIN list for $length digits"
       PIN_LIST="optimised-pin-length-$length.txt"
+      log_info "Loading optimised PIN list for $length digits ($PIN_LIST)"
       pinlist=(`cat $PIN_LIST`)
     else
       # generate the list
