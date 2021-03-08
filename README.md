@@ -207,9 +207,11 @@ In this example, the enter key is sent.
 
 `echo "enter" | /system/xbin/hid-keyboard /dev/hidg0 keyboard`
 
-In this example, ctrl-escape is sent.
+In this example, ctrl-escape is sent. 
 
 `echo "left-ctrl escape" | /system/xbin/hid-keyboard /dev/hidg0 keyboard`
+
+Note: Sending combinations of keys in `config` file variables is different. Currently only `ctrl_escape` is supported.
 
 In this example, keys a, b, c are sent.
 
