@@ -580,10 +580,15 @@ sleep $DELAY_BEFORE_STARTING
 
 position=$resume_from_index
 pinlist_n_elements=${#pinlist[@]}
+cooldown_counter=0
+# attempt_counter=0
 
 for (( position=$resume_from_index ; position>=0 && position <= pinlist_n_elements; position=position+DIRECTION ))
 do
+  # rename to attempt_counter
   ((count++))
+  ((attempts_before_cooldown_counter++))
+
   pin=${pinlist[position]}
 
   # send prompt keys,e.g. escape and enter before every PIN attempted
@@ -603,18 +608,27 @@ do
   done
   send_enter
 
-
   # check PROGRESSIVE_COOLDOWN
   if [ $PROGRESSIVE_COOLDOWN -eq 1 ]; then
 
-    if [ $count -eq 11 ]; then
-      log_info "Eleven attempts have been reached! Now cooldown for $COOLDOWN_TIME seconds after every PIN attempt."
-      COOLDOWN_AFTER_N_ATTEMPTS=1
-    fi
-    if [ $count -eq 40 ]; then
-      COOLDOWN_TIME=60
-      log_info "Forty attempts have been reached! Now cooldown for $COOLDOWN_TIME seconds after every PIN attempt."
-      COOLDOWN_AFTER_N_ATTEMPTS=1
+
+    log_info "Count: $count  Attempts_before_cooldown_counter: $attempts_before_cooldown_counter    Cooldown_time: $COOLDOWN_TIME   Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
+    if [ $attempts_before_cooldown_counter -eq ${PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[0]} ]; then
+      COOLDOWN_TIME=${PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____[0]}
+      COOLDOWN_AFTER_N_ATTEMPTS=${PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN[0]}
+
+      # shift the first value off the array
+      PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________=("${PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[@]:1}")
+      PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____=("${PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____[@]:1}")
+      PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN=("${PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN[@]:1}")
+      # reset the attempts_before_cooldown_counter
+      attempts_before_cooldown_counter=0
+
+      if [ $count -eq 1 ]; then
+        attempts_before_cooldown_counter=1
+      fi
+
+      log_info "$count attempts have been reached! Now cooldown for $COOLDOWN_TIME seconds after every $COOLDOWN_AFTER_N_ATTEMPTS PIN attempt(s)."
     fi
   fi
 
@@ -634,7 +648,7 @@ do
   # COOLDOWN_TIME is optional
   if [[ $COOLDOWN_TIME > 0 && $COOLDOWN_AFTER_N_ATTEMPTS > 0 ]]; then
     # if we are after N attempts
-    if [ $((count % $COOLDOWN_AFTER_N_ATTEMPTS)) = 0 ]; then
+    if [ $((attempts_before_cooldown_counter % $COOLDOWN_AFTER_N_ATTEMPTS)) = 0 ]; then
       # countdown COOLDOWN_TIME seconds
       log_debug "Countdown for $COOLDOWN_TIME"
       for (( countdown=$COOLDOWN_TIME; countdown > 0; countdown-- ))
