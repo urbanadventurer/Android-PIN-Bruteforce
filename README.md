@@ -251,6 +251,35 @@ To send more than one key at the same time, use the following list:
 
 If you need more key combinations please open a new issue in the GitHub issues list.
 
+### Customising the Progressive Cooldown
+
+The following section of the `config` file controls the progressive cooldown.
+
+
+```
+## PROGRESSIVE_COOLDOWN can be set to 1 for enabled or 0 disabled. When enabled, after 10 attempts it changes the COOLDOWN_AFTER_N_ATTEMPTS to 1.
+PROGRESSIVE_COOLDOWN=1
+
+## The PROGRESSIVE_COOLDOWN_ARRAY variables act as multi-dimensional array to customise the progressive cooldown
+## PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________ is the attempt number
+## PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN is how many attempts to try before cooling down
+## PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____ is the cooldown in seconds
+
+PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________=(1  11 41)
+PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN=(5   1  1)
+PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____=(30 30 60)
+
+```
+
+The array is the same as this table.
+
+| attempt number   | attempts until cooldown  | cooldown   |
+| ---------------- | ------------------------ | ---------- |
+| 1                | 5                        | 30         |
+| 11               | 1                        | 30         |
+| 41               | 1                        | 60         |
+
+
 ### Why can't you use a laptop?
 
 This works from an Android phone because the USB ports are not bidirectional, unlike the ports on a laptop.
@@ -350,7 +379,7 @@ Try this command in a shell on the NetHunter phone:
 - ASCII art
 - Nicer GUI for NetHunter
 - Implement for iPhone
-- Try to detect when phone is unlocked (Use Nethunter camera as a sensor?)
+- Detect when a phone is unlocked (Use Nethunter camera as a sensor?)
 - Crack Android Patterns (try common patterns first)
 
 ## 🙋 Contributing
