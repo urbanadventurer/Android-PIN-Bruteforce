@@ -214,6 +214,12 @@ function show_configuration() {
   log_conf "Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
   log_conf "Send keys to stay awake during cooldown every N seconds: $SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS"
   log_conf "Progessive Cooldown: $PROGRESSIVE_COOLDOWN"
+  row_count="${PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[@]}"
+  row_attempts="${PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN[@]}"
+  row_cooldown="${PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____[@]}"
+  log_conf " - Attempt count          : $row_count"
+  log_conf " - Attempts until cooldown: $row_attempts"
+  log_conf " - Cooldown in seconds    : $row_cooldown"
   log_conf
   log_conf "## Keys:"
   log_conf "Keys to send before starting: $KEYS_BEFORE_STARTING"  
