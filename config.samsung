@@ -25,6 +25,15 @@ COOLDOWN_AFTER_N_ATTEMPTS=5
 ## PROGRESSIVE_COOLDOWN can be set to 1 for enabled or 0 disabled. When enabled, after 10 attempts it changes the COOLDOWN_AFTER_N_ATTEMPTS to 1.
 PROGRESSIVE_COOLDOWN=0
 
+## The PROGRESSIVE_COOLDOWN_ARRAY variables act as multi-dimensional array to customise the progressive cooldown
+## PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________ is the attempt number
+## PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN is how many attempts to try before cooling down
+## PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____ is the cooldown in seconds
+
+PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________=(1  11 41)
+PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN=(5   1  1)
+PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____=(30 30 60)
+
 ## COOLDOWN_TIME_AFTER_EACH_PIN is the period of time in seconds to wait after every PIN attempt in seconds. It is disabled if set to 0.
 COOLDOWN_TIME_AFTER_EACH_PIN=0
 
