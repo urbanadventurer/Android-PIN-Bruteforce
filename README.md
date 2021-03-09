@@ -403,6 +403,11 @@ Please make sure to update tests as appropriate.
 
 Developed by Andrew Horton (urbanadventurer).
 
+👏 The following people have been very helpful:
+
+- Vlad Filatov: Testing many phones for the Wiki Phone Database 
+
+
 ### Motivation
 
 My original motivation to develop this was to unlock a Samsung S5 Android phone. It had belonged to someone who had passed away, and their family needed access to the data on it. As I didn't have a USB Rubber Ducky or any other hardware handy, I tried using a variety of methods, and eventually realised I had to develop something new.
