@@ -616,10 +616,9 @@ do
 
   # check PROGRESSIVE_COOLDOWN
   if [ $PROGRESSIVE_COOLDOWN -eq 1 ] && [ $progressive_array_finished -ne 1 ]; then
-#    log_info "Count: $count  Attempts_before_cooldown_counter: $attempts_before_cooldown_counter    Cooldown_time: $COOLDOWN_TIME   Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
+    # log_info "Count: $count  Attempts_before_cooldown_counter: $attempts_before_cooldown_counter    Cooldown_time: $COOLDOWN_TIME   Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
     # check if we are changing the cooldown variables
-    if [ $count -eq ${PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[0]} ] && [ ${#PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[@]} -ge 1 ]; then
-#      echo "array size is ${#PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[@]}"
+    if [ $count -eq ${PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[0]} ]; then
       COOLDOWN_TIME=${PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____[0]}
       COOLDOWN_AFTER_N_ATTEMPTS=${PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN[0]}
 
