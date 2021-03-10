@@ -587,7 +587,7 @@ sleep $DELAY_BEFORE_STARTING
 position=$resume_from_index
 pinlist_n_elements=${#pinlist[@]}
 cooldown_counter=0
-# attempt_counter=0
+progressive_array_finished=0
 
 for (( position=$resume_from_index ; position>=0 && position <= pinlist_n_elements; position=position+DIRECTION ))
 do
@@ -615,26 +615,31 @@ do
   send_enter
 
   # check PROGRESSIVE_COOLDOWN
-  if [ $PROGRESSIVE_COOLDOWN -eq 1 ]; then
-
-
-    log_info "Count: $count  Attempts_before_cooldown_counter: $attempts_before_cooldown_counter    Cooldown_time: $COOLDOWN_TIME   Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
-    if [ $attempts_before_cooldown_counter -eq ${PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[0]} ]; then
+  if [ $PROGRESSIVE_COOLDOWN -eq 1 ] && [ $progressive_array_finished -ne 1 ]; then
+#    log_info "Count: $count  Attempts_before_cooldown_counter: $attempts_before_cooldown_counter    Cooldown_time: $COOLDOWN_TIME   Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
+    # check if we are changing the cooldown variables
+    if [ $count -eq ${PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[0]} ] && [ ${#PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[@]} -ge 1 ]; then
+#      echo "array size is ${#PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[@]}"
       COOLDOWN_TIME=${PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____[0]}
       COOLDOWN_AFTER_N_ATTEMPTS=${PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN[0]}
 
-      # shift the first value off the array
-      PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________=("${PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[@]:1}")
-      PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____=("${PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____[@]:1}")
-      PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN=("${PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN[@]:1}")
-      # reset the attempts_before_cooldown_counter
-      attempts_before_cooldown_counter=0
+      if [ ${#PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[@]} -gt 1 ]; then
+        # shift the first value off the array
+        PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________=("${PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[@]:1}")
+        PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____=("${PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____[@]:1}")
+        PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN=("${PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN[@]:1}")
+        # reset the attempts_before_cooldown_counter
+        attempts_before_cooldown_counter=0
+      else
+        progressive_array_finished=1
+      fi
 
+      # first time only
       if [ $count -eq 1 ]; then
         attempts_before_cooldown_counter=1
       fi
 
-      log_info "$count attempts have been reached! Now cooldown for $COOLDOWN_TIME seconds after every $COOLDOWN_AFTER_N_ATTEMPTS PIN attempt(s)."
+      log_info "Progressive Cooldown for $count attempts. Cooldown time is $COOLDOWN_TIME seconds after every $COOLDOWN_AFTER_N_ATTEMPTS PIN attempt(s)."
     fi
   fi
 
@@ -653,6 +658,7 @@ do
 
   # COOLDOWN_TIME is optional
   if [[ $COOLDOWN_TIME > 0 && $COOLDOWN_AFTER_N_ATTEMPTS > 0 ]]; then
+    #log_info "Cooldown for :$COOLDOWN_TIME"
     # if we are after N attempts
     if [ $((attempts_before_cooldown_counter % $COOLDOWN_AFTER_N_ATTEMPTS)) = 0 ]; then
       # countdown COOLDOWN_TIME seconds
