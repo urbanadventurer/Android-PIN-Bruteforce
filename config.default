@@ -22,7 +22,7 @@ COOLDOWN_TIME=30
 ## COOLDOWN_AFTER_N_ATTEMPTS is how many attemps to make before waiting for the COOLDOWN_TIME 
 COOLDOWN_AFTER_N_ATTEMPTS=5
 
-## PROGRESSIVE_COOLDOWN can be set to 1 for enabled or 0 disabled. When enabled, after 10 attempts it changes the COOLDOWN_AFTER_N_ATTEMPTS to 1.
+## PROGRESSIVE_COOLDOWN can be set to 1 for enabled or 0 disabled. When enabled, it uses the PROGRESSIVE_ARRAY_* variables.
 PROGRESSIVE_COOLDOWN=0
 
 ## The PROGRESSIVE_COOLDOWN_ARRAY variables act as multi-dimensional array to customise the progressive cooldown
