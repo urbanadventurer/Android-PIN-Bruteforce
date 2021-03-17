@@ -332,9 +332,15 @@ Try using new cables/adaptors as you may have a faulty cable/adaptor.
 You might be sending keys too fast for the phone to process. Increase the DELAY_BETWEEN_KEYS variable in the config file.
 💡 If you don't see 4 dots come up on the phone's screen then maybe it is not receiving 4 keys.
 
-### 🔋 If your phone runs out of power too soon
+### 🔋 Managing Power Consumption
 
-Try using a USB OTG cable that has an external power supply. This will charge the phone's battery while it operates.
+If your phone runs out of power too soon, follow these steps:
+
+- Make sure both phones are fully charged to 100% before you begin
+- Use a USB OTG cable with a Y splitter for an external power supply, to allow charging while cracking
+- Reduce the screen brightness on both the victim phone and NetHunter phone
+- Increase the SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS configuration option. This will cause the locked phone to wakes up less often during cooldown, and the screen will use less power.
+- Take breaks to charge your devices. Pause the script with CTRL-Z and resume with the `fg` shell command.
 
 ### Check the Diagnostics Report
 
