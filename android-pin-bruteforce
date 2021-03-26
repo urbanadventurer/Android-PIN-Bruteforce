@@ -602,8 +602,7 @@ else
 fi
 
 # this will change for different values of count
-top_progressive_array_position=${#PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[@]}
-((top_progressive_array_position--))
+top_progressive_array_position=$(( ${#PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[@]} - 1 ))
 
 progressive_array_position=0
 cooldown_time=${PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____[$progressive_array_position]}
