@@ -34,9 +34,6 @@ PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________=(1  11 41)
 PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN=(5   1  1)
 PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____=(30 30 60)
 
-## COOLDOWN_TIME_AFTER_EACH_PIN is the period of time in seconds to wait after every PIN attempt in seconds. It is disabled if set to 0.
-COOLDOWN_TIME_AFTER_EACH_PIN=0
-
 ## KEYS_BEFORE_EACH_PIN configures the keys that are sent to prompt the lock screen to appear. This is sent before each PIN.
 ## By default it sends "escape enter", but some phones will respond to other keys.
 

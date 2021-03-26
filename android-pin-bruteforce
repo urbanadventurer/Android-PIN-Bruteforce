@@ -655,19 +655,6 @@ do
     fi
   fi
 
-  # COOLDOWN_TIME_AFTER_EACH_PIN is optional
-  if [[ $COOLDOWN_TIME_AFTER_EACH_PIN > 0 ]]; then
-      # countdown COOLDOWN_TIME seconds
-      for (( countdown=$COOLDOWN_TIME_AFTER_EACH_PIN; countdown > 0; countdown-- ))
-      do
-        echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" # clear line and move cursor left
-        echo -ne "[${LIGHT_YELLOW}WAIT${DEFAULT}] "
-        echo -ne "$countdown"
-        sleep 1
-      done
-      echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT"
-  fi
-
   # COOLDOWN_TIME is optional
   if [[ $COOLDOWN_TIME > 0 && $COOLDOWN_AFTER_N_ATTEMPTS > 0 ]]; then
     #log_info "Cooldown for :$COOLDOWN_TIME"

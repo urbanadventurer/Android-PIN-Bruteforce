@@ -34,9 +34,6 @@ PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________=(1   6 )
 PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN=(6   1 )
 PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____=(30 30 )
 
-## COOLDOWN_TIME_AFTER_EACH_PIN is the period of time in seconds to wait after every PIN attempt in seconds. It is disabled if set to 0.
-COOLDOWN_TIME_AFTER_EACH_PIN=0
-
 ## SEND_KEYS_DISMISS_POPUPS_N_SECONDS_BEFORE_COOLDOWN_END defines how many seconds before the end of the cooldown period, keys will be sent
 # set to 0 to disable
 SEND_KEYS_DISMISS_POPUPS_N_SECONDS_BEFORE_COOLDOWN_END=5
