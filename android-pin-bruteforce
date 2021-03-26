@@ -597,6 +597,7 @@ pinlist_n_elements=${#pinlist[@]}
 cooldown_counter=0
 progressive_array_finished=0
 
+
 for (( position=$resume_from_index ; position>=0 && position <= pinlist_n_elements; position=position+DIRECTION ))
 do
   # rename to attempt_counter
@@ -675,8 +676,16 @@ do
         echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" # clear line and move cursor left
         echo -ne "[${LIGHT_YELLOW}WAIT${DEFAULT}] "
         echo -ne "$countdown"
+
+        # Optionally send keys during COOLDOWN EVERY N SECONDS
+        # note: nodelay works best for sending a single key during cooldown, but is this really a useful feature?
         if [[ $SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS > 0 && $(($countdown % ${SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS})) = 0 ]]; then
           send_keys "$KEYS_STAY_AWAKE_DURING_COOLDOWN" nodelay
+        fi
+
+        # Optionally send keys just before COOLDOWN ends to wake up and dismiss popups, instead of during cooldown
+        if [[ $SEND_KEYS_DISMISS_POPUPS_N_SECONDS_BEFORE_COOLDOWN_END > 0 && $countdown -eq $SEND_KEYS_DISMISS_POPUPS_N_SECONDS_BEFORE_COOLDOWN_END ]]; then
+          send_keys $SEND_KEYS_DISMISS_POPUPS_AT_COOLDOWN_END
         fi
         sleep 1
       done
@@ -685,10 +694,6 @@ do
       echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" 
     fi
   fi
-
-  # send keys after COOLDOWN to wake up, instead of during cooldown
-  
-
 
 done
 
