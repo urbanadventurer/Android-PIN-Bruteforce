@@ -414,11 +414,11 @@ Please make sure to update tests as appropriate.
 
 ## 😎 Authors and acknowledgment
 
-Developed by Andrew Horton (urbanadventurer).
+Developed by Andrew Horton (@urbanadventurer).
 
 👏 The following people have been very helpful:
 
-- Vlad Filatov: Testing many phones for the Wiki Phone Database 
+- Vlad Filatov (@v1adf): Testing many phones for the Wiki Phone Database 
 
 
 ### Motivation
