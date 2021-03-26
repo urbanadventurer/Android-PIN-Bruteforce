@@ -213,6 +213,7 @@ function show_configuration() {
   log_conf "Cooldown time: $COOLDOWN_TIME"
   log_conf "Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
   log_conf "Send keys to stay awake during cooldown every N seconds: $SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS"
+  log_conf "Send keys to dismiss popups N seconds before cooldown ends: $SEND_KEYS_DISMISS_POPUPS_N_SECONDS_BEFORE_COOLDOWN_END"
   log_conf "Progessive Cooldown: $PROGRESSIVE_COOLDOWN"
   row_count="${PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[@]}"
   row_attempts="${PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN[@]}"
@@ -225,6 +226,7 @@ function show_configuration() {
   log_conf "Keys to send before starting: $KEYS_BEFORE_STARTING"  
   log_conf "Keys to bring up the lock screen: $KEYS_BEFORE_EACH_PIN"
   log_conf "Keys to stay awake during cooldown: $KEYS_STAY_AWAKE_DURING_COOLDOWN"
+  log_conf "Keys to send at end of cooldown: $SEND_KEYS_DISMISS_POPUPS_AT_COOLDOWN_END"
   log_conf
   log_conf "## Exiting"
   log_conf "Exit after fail count: $EXIT_AFTER_FAIL_COUNT"
