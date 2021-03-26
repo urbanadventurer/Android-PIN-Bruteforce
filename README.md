@@ -433,7 +433,7 @@ I've been asked what makes this project unique when there are other open-source 
 Android-PIN-Bruteforce is unique because it cracks the PIN on Android phones from a NetHunter phone and it doesn't need the locked phone to be pre-hacked.
 
 It works:
-- Without having to buy special hardware, such as a Rubber Ducky, Celebrite, or XKEY.
+- Without having to buy special hardware, such as a Rubber Ducky, Celebrite, or XPIN Clip.
 - Without ADB or root access (the phone doesn't have to be pre-hacked).
 
 | Project                                               | ADB/USB Debugging  | Requires root | Requires $ hardware | Commercial  |
