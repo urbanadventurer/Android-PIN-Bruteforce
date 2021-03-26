@@ -328,10 +328,12 @@ You might be sending keys too fast for the phone to process. Increase the DELAY_
 If your phone runs out of power too soon, follow these steps:
 
 - Make sure both phones are fully charged to 100% before you begin
-- Use a USB OTG cable with a Y splitter for an external power supply, to allow charging while cracking
-- Reduce the screen brightness on both the victim phone and NetHunter phone
-- Increase the SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS configuration option. This will cause the locked phone to wakes up less often during cooldown, and the screen will use less power.
+- Reduce the screen brightness on both the victim phone and NetHunter phone if possible
+- Place both phones into Airplane mode, however you may want to enable WiFi to access the NetHunter phone via SSH.
+- The locked phone will power the NetHunter phone, because it appears as a keyboard accessory
+- Use a USB OTG cable with a Y splitter for an external power supply, to allow charging of the NetHunter phone while cracking
 - Take breaks to charge your devices. Pause the script with CTRL-Z and resume with the `fg` shell command.
+- Avoid the SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS configuration option. This will cause the locked phone to use more battery to keep the screen powered. Instead use the SEND_KEYS_DISMISS_POPUPS_N_SECONDS_BEFORE_COOLDOWN_END option (Default).
 
 ### Check the Diagnostics Report
 
