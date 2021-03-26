@@ -152,15 +152,6 @@ The following configuration variables can be used to support a different phone's
 ## DELAY_BETWEEN_KEYS is the period of time in seconds to wait after each key is sent
 DELAY_BETWEEN_KEYS=0.25
 
-## COOLDOWN_TIME is the period of time in seconds to wait after N attempts is reached, by default after 5 attempts it pauses for 30 seconds
-COOLDOWN_TIME=30
-
-## COOLDOWN_AFTER_N_ATTEMPTS is how many attemps to make before waiting for the COOLDOWN_TIME 
-COOLDOWN_AFTER_N_ATTEMPTS=5
-
-## PROGRESSIVE_COOLDOWN can be set to 1 for enabled or 0 disabled. When enabled, after 10 attempts it changes the COOLDOWN_AFTER_N_ATTEMPTS to 1.
-PROGRESSIVE_COOLDOWN=0
-
 ## The PROGRESSIVE_COOLDOWN_ARRAY variables act as multi-dimensional array to customise the progressive cooldown
 ## PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________ is the attempt number
 ## PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN is how many attempts to try before cooling down
@@ -269,11 +260,7 @@ If you need more key combinations please open a new issue in the GitHub issues l
 
 The following section of the `config` file controls the progressive cooldown.
 
-
 ```
-## PROGRESSIVE_COOLDOWN can be set to 1 for enabled or 0 disabled. When enabled, after 10 attempts it changes the COOLDOWN_AFTER_N_ATTEMPTS to 1.
-PROGRESSIVE_COOLDOWN=1
-
 ## The PROGRESSIVE_COOLDOWN_ARRAY variables act as multi-dimensional array to customise the progressive cooldown
 ## PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________ is the attempt number
 ## PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN is how many attempts to try before cooling down

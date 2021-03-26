@@ -16,23 +16,14 @@ PIN_LENGTH=4
 ## DELAY_BETWEEN_KEYS is the period of time in seconds to wait after each key is sent
 DELAY_BETWEEN_KEYS=0.25
 
-## COOLDOWN_TIME is the period of time in seconds to wait after N attempts is reached, by default after 5 attempts it pauses for 30 seconds
-COOLDOWN_TIME=30
-
-## COOLDOWN_AFTER_N_ATTEMPTS is how many attemps to make before waiting for the COOLDOWN_TIME 
-COOLDOWN_AFTER_N_ATTEMPTS=5
-
-## PROGRESSIVE_COOLDOWN can be set to 1 for enabled or 0 disabled. When enabled, it uses the PROGRESSIVE_ARRAY_* variables.
-PROGRESSIVE_COOLDOWN=0
-
 ## The PROGRESSIVE_COOLDOWN_ARRAY variables act as multi-dimensional array to customise the progressive cooldown
 ## PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________ is the attempt number
 ## PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN is how many attempts to try before cooling down
 ## PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____ is the cooldown in seconds
 
-PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________=(1  11 41)
-PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN=(5   1  1)
-PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____=(30 30 60)
+PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________=(1 )
+PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN=(5 )
+PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____=(30)
 
 ## SEND_KEYS_DISMISS_POPUPS_N_SECONDS_BEFORE_COOLDOWN_END defines how many seconds before the end of the cooldown period, keys will be sent
 # set to 0 to disable

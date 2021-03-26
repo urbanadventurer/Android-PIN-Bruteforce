@@ -210,11 +210,8 @@ function show_configuration() {
   log_conf "## Timing:"
   log_conf "Delay before starting: $DELAY_BEFORE_STARTING"
   log_conf "Delay between keys: $DELAY_BETWEEN_KEYS"
-  log_conf "Cooldown time: $COOLDOWN_TIME"
-  log_conf "Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
   log_conf "Send keys to stay awake during cooldown every N seconds: $SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS"
   log_conf "Send keys to dismiss popups N seconds before cooldown ends: $SEND_KEYS_DISMISS_POPUPS_N_SECONDS_BEFORE_COOLDOWN_END"
-  log_conf "Progessive Cooldown: $PROGRESSIVE_COOLDOWN"
   row_count="${PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[@]}"
   row_attempts="${PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN[@]}"
   row_cooldown="${PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____[@]}"
@@ -598,6 +595,15 @@ pinlist_n_elements=${#pinlist[@]}
 cooldown_counter=0
 progressive_array_finished=0
 
+if [[ $STARTING_ATTEMPTS > 0 ]]; then
+  count=$((STARTING_ATTEMPTS - 1))
+else
+  count=0
+fi
+
+# this will change for different values of count
+COOLDOWN_TIME=${PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____[0]}
+COOLDOWN_AFTER_N_ATTEMPTS=${PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN[0]}
 
 for (( position=$resume_from_index ; position>=0 && position <= pinlist_n_elements; position=position+DIRECTION ))
 do
@@ -628,7 +634,7 @@ do
   ## change this, given an arbitrary attempt number, give back the curent values
   ## no shifting
 
-  if [ $PROGRESSIVE_COOLDOWN -eq 1 ] && [ $progressive_array_finished -ne 1 ]; then
+  if [ $progressive_array_finished -ne 1 ]; then
     # log_info "Count: $count  Attempts_before_cooldown_counter: $attempts_before_cooldown_counter    Cooldown_time: $COOLDOWN_TIME   Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
     # check if we are changing the cooldown variables
     if [ $count -eq ${PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[0]} ]; then
