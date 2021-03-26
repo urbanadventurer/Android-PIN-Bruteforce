@@ -190,7 +190,7 @@ KEYS_BEFORE_STARTING="enter"
 
 ### Popups
 
-We send keys during the cooldown period. This is to keep the lockscreen app active and to dismiss any popups about the number of incorrect PIN attempts or a low battery warning.
+We send keys before the end of the cooldown period, or optionally during the cooldown period. This is to keep the lockscreen app active and to dismiss any popups about the number of incorrect PIN attempts or a low battery warning.
 
 ## Test sending keys from the NetHunter phone
 
