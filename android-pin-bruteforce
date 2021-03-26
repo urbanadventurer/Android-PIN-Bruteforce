@@ -321,13 +321,12 @@ function test_send_mouse_move(){
 }
 
 function send_key(){
-  log_debug "Sending key: $1 with delay: $2"
-
   if [ "$2" = "nodelay" ]; then
     delay=0
   else
     delay=$DELAY_BETWEEN_KEYS
   fi
+  log_debug "Sending key: $1 with delay: $delay"
 
   if [ $DRY_RUN -eq 0 ]; then
     echo "$1" | $HID_KEYBOARD $KEYBOARD_DEVICE keyboard 2>/dev/null
