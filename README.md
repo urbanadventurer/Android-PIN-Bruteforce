@@ -142,7 +142,7 @@ To find out what keys your phone needs, plug a keyboard into the phone and try o
 Load a different configuration file, with the `--config FILE` commandline parameter.
 
 Example:
-`./android-pin-bruteforce --config ./config.samsung crack`
+`./android-pin-bruteforce --config ./config.samsung.s5 crack`
 
 You can also edit the `config` file by customising the timing and keys sent.
 
