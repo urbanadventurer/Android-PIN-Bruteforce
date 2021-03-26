@@ -14,7 +14,7 @@ It uses a USB OTG cable to connect the locked phone to the Nethunter device. It 
 
 The USB HID Gadget driver provides emulation of USB Human Interface Devices (HID). This enables an Android Nethunter device to emulate keyboard input to the locked phone. It's just like plugging a keyboard into the locked phone and pressing keys.
 
-⏱ This takes just over 16.6 hours to try all possible 4 digit PINs, but with the optimised PIN list it should take you much less time.
+⏱ This takes just over 16.6 hours with a Samsung S5 to try all possible 4 digit PINs, but with the optimised PIN list it should take you much less time.
 
 ### You will need
 
@@ -86,7 +86,7 @@ Usage:
 
 ## Supported Android Phones/Devices
 
-This has been tested with Samsung phones including the S5, S7, S7 Edge, S8, J7, A5, A50 and the LG Nexus 5.
+This has been tested with Samsung phones including the S5, S7, S7 Edge, S8, J7, A5 and the LG Nexus 5.
 
 It can unlock Android versions 6.0.1 through to 10.0, however it depends on device manufacturer's lockscreen.
 
@@ -379,6 +379,7 @@ Try this command in a shell on the NetHunter phone:
 
 - This cannot detect when the correct PIN is guessed and the phone unlocks.
 - Your phones may run out of 🔋 battery before the correct PIN is found.
+- Don't trust phone configuration files from unknown sources without reviewing them first. The configuration files are shell scripts and could include malicious commands.
 
 ## 🚀 Roadmap
 
