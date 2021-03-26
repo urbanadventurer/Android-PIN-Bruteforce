@@ -259,6 +259,7 @@ function send_esc() {
 
 function send_keys() {
   prompt="$1"
+  delay="$2"
 
   for key in $prompt; do
 
@@ -282,7 +283,7 @@ function send_keys() {
         test_send_mouse_move
         ;;
       *)
-        send_key $key
+        send_key $key $delay
       ;;
     esac
 #    if [ $key == "ctrl_escape" ] || [ $key == "ctrl-escape" ] ; then
@@ -318,14 +319,21 @@ function test_send_mouse_move(){
 }
 
 function send_key(){
-  log_debug "Sending key: $1"
+  log_debug "Sending key: $1 with delay: $2"
+
+  if [ "$2" = "nodelay" ]; then
+    delay=0
+  else
+    delay=$DELAY_BETWEEN_KEYS
+  fi
+
   if [ $DRY_RUN -eq 0 ]; then
     echo "$1" | $HID_KEYBOARD $KEYBOARD_DEVICE keyboard 2>/dev/null
     RET=$?
   else
     RET=0 # as if it succeeded
   fi
-  sleep $DELAY_BETWEEN_KEYS
+  sleep $delay
 }
 
 
@@ -667,8 +675,8 @@ do
         echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" # clear line and move cursor left
         echo -ne "[${LIGHT_YELLOW}WAIT${DEFAULT}] "
         echo -ne "$countdown"
-        if [ $(($countdown % ${SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS})) = 0 ]; then
-          send_keys "$KEYS_STAY_AWAKE_DURING_COOLDOWN"
+        if [[ $SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS > 0 && $(($countdown % ${SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS})) = 0 ]]; then
+          send_keys "$KEYS_STAY_AWAKE_DURING_COOLDOWN" nodelay
         fi
         sleep 1
       done
@@ -677,6 +685,10 @@ do
       echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" 
     fi
   fi
+
+  # send keys after COOLDOWN to wake up, instead of during cooldown
+  
+
 
 done
 
