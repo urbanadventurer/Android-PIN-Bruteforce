@@ -625,6 +625,9 @@ do
   send_enter
 
   # check PROGRESSIVE_COOLDOWN
+  ## change this, given an arbitrary attempt number, give back the curent values
+  ## no shifting
+
   if [ $PROGRESSIVE_COOLDOWN -eq 1 ] && [ $progressive_array_finished -ne 1 ]; then
     # log_info "Count: $count  Attempts_before_cooldown_counter: $attempts_before_cooldown_counter    Cooldown_time: $COOLDOWN_TIME   Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
     # check if we are changing the cooldown variables
@@ -686,7 +689,8 @@ do
 
         # Optionally send keys just before COOLDOWN ends to wake up and dismiss popups, instead of during cooldown
         if [[ $SEND_KEYS_DISMISS_POPUPS_N_SECONDS_BEFORE_COOLDOWN_END > 0 && $countdown -eq $SEND_KEYS_DISMISS_POPUPS_N_SECONDS_BEFORE_COOLDOWN_END ]]; then
-          send_keys $SEND_KEYS_DISMISS_POPUPS_AT_COOLDOWN_END
+          log_debug "Sending keys to dismiss popups: $SEND_KEYS_DISMISS_POPUPS_AT_COOLDOWN_END"
+          send_keys "$SEND_KEYS_DISMISS_POPUPS_AT_COOLDOWN_END"
         fi
         sleep 1
       done
