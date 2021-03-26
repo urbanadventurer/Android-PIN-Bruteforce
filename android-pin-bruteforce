@@ -42,6 +42,7 @@ Commands:
 
 Options:
   -f, --from PIN\tResume from this PIN
+  -a, --attempts NUM\tStarting from NUM incorrect attempts
   -m, --mask REGEX\tUse a mask for known digits in the PIN
   -t, --type TYPE\tSelect PIN or PATTERN cracking
   -l, --length NUM\tCrack PINs of NUM length
@@ -422,6 +423,12 @@ do
 
   case "$ac_option" in
 
+  -attempts | -a | --attempts)
+    ac_prev=attempts ;;
+
+  -attempts=* | -a=* | --attempts=*)
+    attempts="$ac_optarg" ;;
+
   -config | -c | --config)
     ac_prev=config ;;
 
@@ -533,6 +540,9 @@ fi
 if [[ -n "$pinlist" ]]; then
   PIN_LIST=$pinlist
 fi
+if [[ -n "$attempts" ]]; then
+  STARTING_ATTEMPTS=$attempts
+fi
 
 # Validation
 
@@ -595,19 +605,31 @@ pinlist_n_elements=${#pinlist[@]}
 cooldown_counter=0
 progressive_array_finished=0
 
+# Handle starting attempts
 if [[ $STARTING_ATTEMPTS > 0 ]]; then
   count=$((STARTING_ATTEMPTS - 1))
 else
   count=0
 fi
 
-# this will change for different values of count
 top_progressive_array_position=$(( ${#PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[@]} - 1 ))
 
+# find the position in PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________
 progressive_array_position=0
+for (( n=0; n <= $top_progressive_array_position; n++ ))
+do
+  if [[ ${PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[$n]} -gt $count ]]; then
+    break
+  fi
+  progressive_array_position=$n
+done
+# is it the last position?
+if [ $progressive_array_position -eq $top_progressive_array_position ]; then 
+  progressive_array_finished=1
+fi
+
 cooldown_time=${PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____[$progressive_array_position]}
 cooldown_after_n_attempts=${PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN[$progressive_array_position]}
-
 
 for (( position=$resume_from_index ; position>=0 && position <= pinlist_n_elements; position=position+DIRECTION ))
 do
