@@ -605,11 +605,9 @@ fi
 top_progressive_array_position=${#PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[@]}
 ((top_progressive_array_position--))
 
-echo $top_progressive_array_position
-
 progressive_array_position=0
-COOLDOWN_TIME=${PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____[$progressive_array_position]}
-COOLDOWN_AFTER_N_ATTEMPTS=${PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN[$progressive_array_position]}
+cooldown_time=${PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____[$progressive_array_position]}
+cooldown_after_n_attempts=${PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN[$progressive_array_position]}
 
 
 for (( position=$resume_from_index ; position>=0 && position <= pinlist_n_elements; position=position+DIRECTION ))
@@ -638,14 +636,14 @@ do
   send_enter
 
   if [[ $progressive_array_finished -ne 1 && $top_progressive_array_position -gt 0 ]]; then
-    # log_info "Count: $count  Attempts_before_cooldown_counter: $attempts_before_cooldown_counter    Cooldown_time: $COOLDOWN_TIME   Cooldown after N attempts: $COOLDOWN_AFTER_N_ATTEMPTS"
+    # log_info "Count: $count  Attempts_before_cooldown_counter: $attempts_before_cooldown_counter    Cooldown_time: $cooldown_time   Cooldown after N attempts: $cooldown_after_n_attempts"
     # check if we are changing the cooldown variables
     
     if [ $count -eq ${PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________[$progressive_array_position + 1]} ]; then
       ((progressive_array_position++))
 
-      COOLDOWN_TIME=${PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____[$progressive_array_position]}
-      COOLDOWN_AFTER_N_ATTEMPTS=${PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN[$progressive_array_position]}
+      cooldown_time=${PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____[$progressive_array_position]}
+      cooldown_after_n_attempts=${PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN[$progressive_array_position]}
       
       if [ $progressive_array_position -lt $top_progressive_array_position ]; then 
         attempts_before_cooldown_counter=0
@@ -658,18 +656,18 @@ do
       if [ $count -eq 1 ]; then
         attempts_before_cooldown_counter=1
       fi
-      log_info "Progressive Array [$progressive_array_position]. Reached $count attempts. Cooldown time is $COOLDOWN_TIME seconds after every $COOLDOWN_AFTER_N_ATTEMPTS PIN attempt(s)."
+      log_info "Progressive Array [$progressive_array_position]. Reached $count attempts. Cooldown time is $cooldown_time seconds after every $cooldown_after_n_attempts PIN attempt(s)."
     fi
   fi
 
-  # COOLDOWN_TIME is optional
-  if [[ $COOLDOWN_TIME > 0 && $COOLDOWN_AFTER_N_ATTEMPTS > 0 ]]; then
-    #log_info "Cooldown for :$COOLDOWN_TIME"
+  # cooldown_time is optional
+  if [[ $cooldown_time > 0 && $cooldown_after_n_attempts > 0 ]]; then
+    #log_info "Cooldown for :$cooldown_time"
     # if we are after N attempts
-    if [ $((attempts_before_cooldown_counter % $COOLDOWN_AFTER_N_ATTEMPTS)) = 0 ]; then
-      # countdown COOLDOWN_TIME seconds
-      log_debug "Countdown for $COOLDOWN_TIME"
-      for (( countdown=$COOLDOWN_TIME; countdown > 0; countdown-- ))
+    if [ $((attempts_before_cooldown_counter % $cooldown_after_n_attempts)) = 0 ]; then
+      # countdown cooldown_time seconds
+      log_debug "Countdown for $cooldown_time"
+      for (( countdown=$cooldown_time; countdown > 0; countdown-- ))
       do
         echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" # clear line and move cursor left
         echo -ne "[${LIGHT_YELLOW}WAIT${DEFAULT}] "
@@ -693,7 +691,6 @@ do
       echo -ne "$CLEAR_LINE$MOVE_CURSOR_LEFT" 
     fi
   fi
-
 done
 
 log_info "End of PIN list reached"
