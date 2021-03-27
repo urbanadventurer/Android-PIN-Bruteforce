@@ -647,6 +647,8 @@ do
     monitor_phone_connection
   fi
 
+  sleep $DELAY_AFTER_KEYS_BEFORE_EACH_PIN
+
   percent_complete=$((100*$position/$pinlist_n_elements))
   echo "[SEND] $pin. Attempt $count ($percent_complete%) at $(date +"%b%d %r")" | tee -a "$LOG" 
 #  prog $percent_complete

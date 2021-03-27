@@ -39,6 +39,9 @@ SEND_KEYS_DISMISS_POPUPS_AT_COOLDOWN_END="enter enter enter"
 # KEYS_BEFORE_EACH_PIN="escape space"
 KEYS_BEFORE_EACH_PIN="ctrl_escape enter"
 
+## DELAY_AFTER_KEYS_BEFORE_EACH_PIN is the period of time in seconds to wait after KEYS_BEFORE_EACH_PIN is sent
+DELAY_AFTER_KEYS_BEFORE_EACH_PIN=0.25
+
 ## KEYS_STAY_AWAKE_DURING_COOLDOWN the keys that are sent during the cooldown period to keep the phone awake
 KEYS_STAY_AWAKE_DURING_COOLDOWN="enter"
 
