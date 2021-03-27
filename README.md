@@ -87,9 +87,9 @@ Usage:
 
 ## Supported Android Phones/Devices
 
-This has been tested with Samsung phones including the S5, S7, S7 Edge, S8, J7, A5 and the LG Nexus 5.
+This has been successfully tested with various phones including the Samsung S5 and the Motorola G4 Plus.
 
-It can unlock Android versions 6.0.1 through to 10.0, however it depends on device manufacturer's lockscreen.
+It can unlock Android versions 6.0.1 through to 10.0. The ability to perform a bruteforce attack doesn't depend on the Android version in use. It depends on how the device vendor developed their own lockscreen.
 
 Check the Phone Database for more details
 https://github.com/urbanadventurer/Android-PIN-Bruteforce/wiki/Phone-Database
