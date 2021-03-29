@@ -87,7 +87,7 @@ Usage:
 
 ## Supported Android Phones/Devices
 
-This has been successfully tested with various phones including the Samsung S5 and the Motorola G4 Plus.
+This has been successfully tested with various phones including the Samsung S5, S7, Motorola G4 Plus and G5 Plus.
 
 It can unlock Android versions 6.0.1 through to 10.0. The ability to perform a bruteforce attack doesn't depend on the Android version in use. It depends on how the device vendor developed their own lockscreen.
 
