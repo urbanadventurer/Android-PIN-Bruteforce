@@ -270,6 +270,12 @@ function send_keys() {
       "ctrl-escape")
         send_key "left-ctrl escape"
         ;;
+      "space_enter")
+        send_key "spacebar return"
+        ;;
+      "space-enter")
+        send_key "spacebar return"
+        ;;
       "mouse-move")
         test_send_mouse_btn
         ;;
