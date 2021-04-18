@@ -32,6 +32,7 @@ PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____=(30 30 60)
 # KEYS_BEFORE_EACH_PIN="ctrl_escape enter"
 # KEYS_BEFORE_EACH_PIN="escape space"
 KEYS_BEFORE_EACH_PIN="escape enter"
+KEYS_AFTER_EACH_PIN="enter"
 
 ## DELAY_AFTER_KEYS_BEFORE_EACH_PIN is the period of time in seconds to wait after KEYS_BEFORE_EACH_PIN is sent
 DELAY_AFTER_KEYS_BEFORE_EACH_PIN=0.25

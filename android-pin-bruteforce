@@ -662,7 +662,7 @@ do
   for i in `echo "$pin" | grep -o .`; do
     send_key $i
   done
-  send_enter
+  send_keys "$KEYS_AFTER_EACH_PIN"
 
   if [[ $progressive_array_finished -ne 1 && $top_progressive_array_position -gt 0 ]]; then
     # log_info "Count: $count  Attempts_before_cooldown_counter: $attempts_before_cooldown_counter    Cooldown_time: $cooldown_time   Cooldown after N attempts: $cooldown_after_n_attempts"

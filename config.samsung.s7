@@ -38,6 +38,7 @@ SEND_KEYS_DISMISS_POPUPS_AT_COOLDOWN_END="enter enter"
 # KEYS_BEFORE_EACH_PIN="ctrl_escape enter"
 # KEYS_BEFORE_EACH_PIN="escape space"
 KEYS_BEFORE_EACH_PIN="ctrl_escape"
+KEYS_AFTER_EACH_PIN="enter"
 
 ## DELAY_AFTER_KEYS_BEFORE_EACH_PIN is the period of time in seconds to wait after KEYS_BEFORE_EACH_PIN is sent
 DELAY_AFTER_KEYS_BEFORE_EACH_PIN=0.25
