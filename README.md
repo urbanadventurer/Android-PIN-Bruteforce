@@ -282,9 +282,11 @@ The array is the same as this table.
 | 41               | 1                        | 60         |
 
 
-### Why can't you use a laptop?
+### Why can't you use a laptop, or is a Windows or Linux version coming soon?
 
-This works from an Android phone because the USB ports are not bidirectional, unlike the ports on a laptop.
+This script works by emulating USB Human Interface Devices (HID), in this case it is keyboard and mouse input. Laptops have uni-directional USB ports and an Android mobile device/ phone has a bi-directional USB port. A bi-directional port is required to emulate a keyboard.
+
+This might change in the future as USB-C is supposed to be uni-directional.
 
 ### How Android emulates a keyboard
 
