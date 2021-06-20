@@ -1,0 +1,74 @@
+# Android-PIN-Bruteforce
+
+# Configuration files
+## config           This file defines the default configuration values. These values can be overriden by using commandline options.
+## config.default   This file is a copy of the default config. Copy this over the config file to restore the defaults.
+
+## PIN_TYPE can be set to PATTERN or PIN.
+## This is equivalent to -t, --type TYPE commandline options
+PIN_TYPE=PIN
+
+## PIN_LENGTH can be set to a number
+## It is equivalent to the -l, --length NUM commandline option
+PIN_LENGTH=4
+
+# Timing
+## DELAY_BETWEEN_KEYS is the period of time in seconds to wait after each key is sent
+DELAY_BETWEEN_KEYS=0.1
+
+## The PROGRESSIVE_COOLDOWN_ARRAY variables act as multi-dimensional array to customise the progressive cooldown
+## PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________ is the attempt number
+## PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN is how many attempts to try before cooling down
+## PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____ is the cooldown in seconds
+
+PROGRESSIVE_ARRAY_ATTEMPT_COUNT__________=(1  11 40  51  61)
+PROGRESSIVE_ARRAY_ATTEMPTS_UNTIL_COOLDOWN=(5   1  1   1   1)
+PROGRESSIVE_ARRAY_COOLDOWN_IN_SECONDS____=(30 30 60 120 240)
+
+## SEND_KEYS_DISMISS_POPUPS_N_SECONDS_BEFORE_COOLDOWN_END defines how many seconds before the end of the cooldown period, keys will be sent
+# set to 0 to disable
+SEND_KEYS_DISMISS_POPUPS_N_SECONDS_BEFORE_COOLDOWN_END=1
+## SEND_KEYS_DISMISS_POPUPS_AT_COOLDOWN_END configures the keys that are sent to dismiss messages and popups before the end of the cooldown period
+SEND_KEYS_DISMISS_POPUPS_AT_COOLDOWN_END="space space space"
+
+## KEYS_BEFORE_EACH_PIN configures the keys that are sent to prompt the lock screen to appear. This is sent before each PIN.
+## By default it sends "escape enter", but some phones will respond to other keys.
+
+# Examples:
+#KEYS_BEFORE_EACH_PIN="ctrl_escape enter"
+#KEYS_AFTER_EACH_PIN="enter"
+KEYS_BEFORE_EACH_PIN=""
+KEYS_AFTER_EACH_PIN="tab tab tab tab tab tab"
+
+## DELAY_AFTER_KEYS_BEFORE_EACH_PIN is the period of time in seconds to wait after KEYS_BEFORE_EACH_PIN is sent
+DELAY_AFTER_KEYS_BEFORE_EACH_PIN=0.25
+
+## KEYS_STAY_AWAKE_DURING_COOLDOWN the keys that are sent during the cooldown period to keep the phone awake
+KEYS_STAY_AWAKE_DURING_COOLDOWN="escape"
+
+## SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS how often the keys are sent, in seconds
+SEND_KEYS_STAY_AWAKE_DURING_COOLDOWN_EVERY_N_SECONDS=0
+
+## DELAY_BEFORE_STARTING is the period of time in seconds to wait before the bruteforce begins
+DELAY_BEFORE_STARTING=2
+## KEYS_BEFORE_STARTING configures the keys that are sent before the bruteforce begins
+KEYS_BEFORE_STARTING="space space"
+
+# Resume
+## RESUME_FROM_PIN sets the PIN that you resume cracking from.
+## This is equivalent to setting the -f, --from PIN commandline option
+RESUME_FROM_PIN=
+
+# Input and Output
+## LOG is the filename of a log file
+LOG=bruter.log
+
+# Exiting
+## EXIT_AFTER_FAIL_COUNT controls when it will exit after reaching a threshold of errors when trying to send keys.
+EXIT_AFTER_FAIL_COUNT=15
+
+# Operating System Environment
+KEYBOARD_DEVICE=/dev/hidg0
+## The location of HID_KEYBOARD may be different if you are not using Kali Net Hunter
+HID_KEYBOARD=/system/xbin/hid-keyboard
+USB_DEVICES=/usr/bin/usb-devices
