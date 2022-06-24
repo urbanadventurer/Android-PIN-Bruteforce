@@ -59,7 +59,7 @@ Note that Android mounts /sdcard with the noexec flag. You can verify this with 
 
 ```
 
-Android-PIN-Bruteforce (0.1) is used to unlock an Android phone (or device) by bruteforcing the lockscreen PIN.
+Android-PIN-Bruteforce (0.2) is used to unlock an Android phone (or device) by bruteforcing the lockscreen PIN.
   Find more information at: https://github.com/urbanadventurer/Android-PIN-Bruteforce
 
 Commands:

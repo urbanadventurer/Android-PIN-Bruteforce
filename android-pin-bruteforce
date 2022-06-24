@@ -13,7 +13,7 @@ source config.default
 # Load Configuration
 source config
 
-VERSION=0.1
+VERSION=0.2
 
 DIRECTION=1 # go forwards
 VERBOSE=0
